@@ -24,4 +24,4 @@
 
 ==*!AutoSense界面效果图*==
 
- [svn/wiki/autosense1.jpg]
+ [http://code.google.com/p/holmos/source/browse/wiki/autosense1.jpg]
