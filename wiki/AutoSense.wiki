@@ -2,7 +2,7 @@
 
 = 介绍 =
 
-    [AutoSense]是什么?
+    ~AutoSense是什么?
 
 = Details =
 
