@@ -24,4 +24,4 @@
 
 ==*!AutoSense界面效果图*==
 
- [wiki/autosense1.jpg]
+ [svn/wiki/autosense1.jpg]
