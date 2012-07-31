@@ -24,4 +24,4 @@
 
 ==*!AutoSense界面效果图*==
 
- [autosense1.jpg]
+ [/autosense1.jpg]
