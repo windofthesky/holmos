@@ -7,6 +7,9 @@ import Holmos.webtest.Allocator;
 import Holmos.webtest.element.locator.Locator;
 import Holmos.webtest.element.locator.LocatorFinder;
 import Holmos.webtest.element.locator.LocatorValue;
+import Holmos.webtest.struct.Collection;
+import Holmos.webtest.struct.Frame;
+import Holmos.webtest.struct.Page;
 /**
  * 用来判断webdriver web元素是否存在的类，采用的是策略模式
  * @author 吴银龙(15857164387)

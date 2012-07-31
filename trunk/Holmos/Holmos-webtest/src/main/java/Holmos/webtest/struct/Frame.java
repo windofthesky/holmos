@@ -6,12 +6,11 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import Holmos.constvalue.ConfigConstValue;
 import Holmos.webtest.Allocator;
 import Holmos.webtest.BrowserWindow;
 import Holmos.webtest.SeleniumBrowserWindow;
 import Holmos.webtest.WebDriverBrowserWindow;
+import Holmos.webtest.constvalue.ConfigConstValue;
 import Holmos.webtest.element.locator.Locator;
 import Holmos.webtest.element.locator.LocatorChain;
 import Holmos.webtest.element.tool.SeleniumElementExist;

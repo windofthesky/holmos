@@ -3,10 +3,9 @@ package Holmos.webtest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
-
 import org.openqa.selenium.WebDriver;
 
-import Holmos.webtest.tools.HolmosBaseTools;
+import Holmos.webtest.basetools.HolmosBaseTools;
 
 /**最为窗口的全局分配者<br>
  * 管理所有Holmos框架打开的窗口的分配，来实现对窗口的选择<br>

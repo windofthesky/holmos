@@ -3,7 +3,11 @@ package Holmos.webtest.element.tool;
 import java.util.ArrayList;
 
 import Holmos.webtest.Allocator;
+import Holmos.webtest.element.locator.Locator;
 import Holmos.webtest.element.locator.LocatorValue;
+import Holmos.webtest.struct.Collection;
+import Holmos.webtest.struct.Frame;
+import Holmos.webtest.struct.Page;
 
 import com.thoughtworks.selenium.Selenium;
 

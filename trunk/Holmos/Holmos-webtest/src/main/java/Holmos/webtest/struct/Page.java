@@ -10,16 +10,16 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import Holmos.constvalue.ConstValue;
 import Holmos.webtest.Allocator;
 import Holmos.webtest.BrowserWindow;
 import Holmos.webtest.SeleniumBrowserWindow;
 import Holmos.webtest.WebDriverBrowserWindow;
+import Holmos.webtest.basetools.HolmosBaseTools;
+import Holmos.webtest.constvalue.ConstValue;
 import Holmos.webtest.element.Element;
 import Holmos.webtest.element.locator.Locator;
 import Holmos.webtest.element.locator.LocatorChain;
 import Holmos.webtest.element.locator.LocatorValue;
-import Holmos.webtest.tools.HolmosBaseTools;
 
 import com.thoughtworks.selenium.Selenium;
 

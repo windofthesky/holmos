@@ -1,4 +1,4 @@
-package Holmos.basetools.file;
+package Holmos.webtest.basetools.file;
 
 import java.io.File;
 import java.io.FileInputStream;
