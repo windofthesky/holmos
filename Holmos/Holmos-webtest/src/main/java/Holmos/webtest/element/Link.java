@@ -7,5 +7,7 @@ public class Link extends Element{
 	public Link(String comment) {
 		super(comment);
 	}
-
+	public String getHref(){
+		return this.getAttribute("href");
+	}
 }
