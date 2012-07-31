@@ -391,15 +391,15 @@ public class Element implements LocatorValue{
 		}
 	}
 	/**模拟在这个元素上按下一个键盘按钮，即以此元素为焦点*/
-	public void keyPress(char keyValue){
+	public void keyPress(Keys keyValue){
 		StringBuilder message=new StringBuilder(this.comment+":");
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
 			if(currentWindow instanceof SeleniumBrowserWindow){
-				((Selenium)currentWindow.getDriver().getEngine()).keyPress(locator.getSeleniumCurrentLocator(), Character.toString(keyValue));
+				((Selenium)currentWindow.getDriver().getEngine()).keyPress(locator.getSeleniumCurrentLocator(), keyValue.toString());
 			}else{
 				Actions action=new Actions((WebDriver) currentWindow.getDriver().getEngine());
-				action.keyDown(element, Keys.valueOf(Character.toString(keyValue)));
+				action.keyDown(element, keyValue);
 			}
 			message.append("按钮"+keyValue+"已按下!");
 			logger.info(message);
@@ -409,15 +409,15 @@ public class Element implements LocatorValue{
 		}
 	}
 	/**模拟松开键盘的操作，以此元素为焦点*/
-	public void keyUp(char keyValue){
+	public void keyUp(Keys keyValue){
 		StringBuilder message=new StringBuilder(this.comment+":");
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
 			if(currentWindow instanceof SeleniumBrowserWindow){
-				((Selenium)currentWindow.getDriver().getEngine()).keyUp(locator.getSeleniumCurrentLocator(), Character.toString(keyValue));
+				((Selenium)currentWindow.getDriver().getEngine()).keyUp(locator.getSeleniumCurrentLocator(), keyValue.toString());
 			}else{
 				Actions action=new Actions((WebDriver) currentWindow.getDriver().getEngine());
-				action.keyUp(element, Keys.valueOf(Character.toString(keyValue)));
+				action.keyUp(element, keyValue);
 			}
 			message.append("按钮"+keyValue+"已松开!");
 			logger.info(message);
