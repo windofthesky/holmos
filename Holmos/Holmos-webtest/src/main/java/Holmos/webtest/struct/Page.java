@@ -10,6 +10,7 @@ import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import Holmos.constvalue.ConstValue;
 import Holmos.webtest.Allocator;
 import Holmos.webtest.BrowserWindow;
 import Holmos.webtest.SeleniumBrowserWindow;
@@ -33,6 +34,8 @@ import com.thoughtworks.selenium.Selenium;
  * @author 吴银龙(15857164387)
  * */
 public class Page implements LocatorValue{
+	/**这个页面的url*/
+	protected String url;
 	/**这个页面的注释说明*/
 	protected String comment;
 	public String getComment() {

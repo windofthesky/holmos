@@ -3,8 +3,20 @@ package Holmos.webtest.css;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
+
+import Holmos.basetools.HolmosPropertiesTool;
+import Holmos.constvalue.ConstValue;
+import Holmos.exceptions.HolmosFailedError;
+import Holmos.reflect.HolmosReflectCheck;
+import Holmos.reflect.reflectCheck.HolmosRefectionComparatorMode;
+import Holmos.webtest.asserttool.HolmosSimpleCheckTool;
+import Holmos.webtest.element.Element;
+import Holmos.webtest.element.Image;
+import Holmos.webtest.tools.HolmosBaseTools;
 
 
 /**页面样式校验工具*/
