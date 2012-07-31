@@ -1,0 +1,44 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Holmos</groupId>
+  <artifactId>Holmos</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>Holmos</name>
+  <description>An automated testing framework for web testing,interface testing,database testing;also contains regression testing and the management for testcase</description>
+  <packaging>pom</packaging>
+  
+  <properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.build.jdk>1.6</project.build.jdk>
+	</properties>
+  <modules>
+		<module>Holmos-reflectAssert</module>
+		<module>Holmos-dbtest</module>
+		<module>Holmos-regression</module>
+		<module>Holmos-managePlatform</module>
+		<module>Holmos-basetools</module>
+		<module>Holmos-autosense</module>
+  </modules>
+  <dependencies>
+  	<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.4</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<source>${project.build.jdk}</source>
+					<target>${project.build.jdk}</target>
+					<showWarnings>true</showWarnings>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
