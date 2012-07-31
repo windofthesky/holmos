@@ -191,9 +191,4 @@ public class HolmosTreeDifferenceView implements HolmosDifferenceView{
 	        }
 		
 	}
-	public String createView(
-			Holmos.reflect.reflectCheck.report.HolmosDifference difference) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }
