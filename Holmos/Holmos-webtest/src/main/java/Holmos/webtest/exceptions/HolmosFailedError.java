@@ -1,6 +1,6 @@
-package Holmos.exceptions;
+package Holmos.webtest.exceptions;
 
-import Holmos.webtest.tools.HolmosWindow;
+import Holmos.webtest.basetools.HolmosWindow;
 import junit.framework.AssertionFailedError;
 
 public class HolmosFailedError extends AssertionFailedError{

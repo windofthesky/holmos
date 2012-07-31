@@ -3,8 +3,8 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
-import Holmos.basetools.HolmosBaseTools;
-import Holmos.exceptions.HolmosFailedError;
+import Holmos.webtest.basetools.HolmosBaseTools;
+import Holmos.webtest.exceptions.HolmosFailedError;
 /**
  * @author 吴银龙(15857164387)
  * */

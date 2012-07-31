@@ -1,4 +1,4 @@
-package Holmos.basetools;
+package Holmos.webtest.basetools;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -7,7 +7,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
-import Holmos.exceptions.HolmosFailedError;
+import Holmos.webtest.exceptions.HolmosFailedError;
 
 /**反射的工具类,提供常见的get和set字段value,执行方法,构造对象
  * @author 吴银龙(15857164387)

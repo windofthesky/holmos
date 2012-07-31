@@ -1,4 +1,4 @@
-package Holmos.basetools;
+package Holmos.webtest.basetools;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -9,22 +9,22 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
-import Holmos.constvalue.ConfigConstValue;
-import Holmos.constvalue.ConstValue;
-import Holmos.exceptions.HolmosFailedError;
+
 import Holmos.webtest.Allocator;
+import Holmos.webtest.constvalue.ConfigConstValue;
+import Holmos.webtest.constvalue.ConstValue;
 import Holmos.webtest.element.Element;
+import Holmos.webtest.exceptions.HolmosFailedError;
 import Holmos.webtest.struct.Collection;
 import Holmos.webtest.struct.Frame;
 import Holmos.webtest.struct.Page;
 import Holmos.webtest.struct.SubPage;
-import Holmos.webtest.tools.HolmosWindow;
 /**
- * @author ÎâÒøÁú(15857164387)
+ * @author å´é“¶é¾™(15857164387)
  * */
 public class HolmosBaseTools {
-	/**ÅäÖÃÈÕÖ¾ÎÄ¼şµÄµØÖ·£¬´òÓ¡±ØÒªµÄÈÕÖ¾<br>
-	 * Èç¹ûÈÕÖ¾ÎÄ¼şµØÖ·ÕÒ²»µ½£¬ÄÇÃ´¾ÍÔÚ¿ò¼ÜÀïÃæÄ¬ÈÏµÄµØÖ·´´½¨ÈÕÖ¾ÎÄ¼ş<br>*/
+	/**é…ç½®æ—¥å¿—æ–‡ä»¶çš„åœ°å€ï¼Œæ‰“å°å¿…è¦çš„æ—¥å¿—<br>
+	 * å¦‚æœæ—¥å¿—æ–‡ä»¶åœ°å€æ‰¾ä¸åˆ°ï¼Œé‚£ä¹ˆå°±åœ¨æ¡†æ¶é‡Œé¢é»˜è®¤çš„åœ°å€åˆ›å»ºæ—¥å¿—æ–‡ä»¶<br>*/
 	public static void configLogProperties(){
 		String logDirPath=getLogDirPath();
 		File file=new File(logDirPath);
@@ -35,14 +35,14 @@ public class HolmosBaseTools {
 					new File(logDirPath+"\\error.log").createNewFile();
 				}
 			} catch (Exception e1) {
-				System.out.println("·¢ÏÖÈÕÖ¾ÎÄ¼ş²»´æÔÚ£¬µ«´´½¨ÎÄ¼şÊ§°Ü£¡ÇëÁªÏµ»ÆÍ¥£¡");
+				System.out.println("å‘ç°æ—¥å¿—æ–‡ä»¶ä¸å­˜åœ¨ï¼Œä½†åˆ›å»ºæ–‡ä»¶å¤±è´¥ï¼è¯·è”ç³»é»„åº­ï¼");
 				e1.printStackTrace();
 			}
 		}
 		PropertyConfigurator.configure(ConfigConstValue.LOGCONFIG);
 	}
-	/**»ñµÃÈÕÖ¾Ä¿Â¼µØÖ·
-	 * @return ÈÕÖ¾Ä¿Â¼µØÖ·
+	/**è·å¾—æ—¥å¿—ç›®å½•åœ°å€
+	 * @return æ—¥å¿—ç›®å½•åœ°å€
 	 * @throws FileNotFoundException 
 	 * */
 	private static String getLogDirPath(){
@@ -52,11 +52,11 @@ public class HolmosBaseTools {
 			properties.load(in);
 			return HolmosPropertiesTool.getValue(properties, "logdir");
 		}catch(IOException e){
-			throw new HolmosFailedError("holmos¿ò¼ÜÅäÖÃÎÄ¼şÕÒ²»µ½!"); 
+			throw new HolmosFailedError("holmosæ¡†æ¶é…ç½®æ–‡ä»¶æ‰¾ä¸åˆ°!"); 
 		}
 	}
 	/**
-	 * ¸ù¾İÅäÖÃºÃµÄ½ØÆÁ´æ·ÅµØÖ·£¬Èç¹û¸ÃµØÖ·Ä¿Â¼²»´æÔÚ£¬Ôò´´½¨£¬Èç¹û´æÔÚ£¬Ôò²»×÷²Ù×÷
+	 * æ ¹æ®é…ç½®å¥½çš„æˆªå±å­˜æ”¾åœ°å€ï¼Œå¦‚æœè¯¥åœ°å€ç›®å½•ä¸å­˜åœ¨ï¼Œåˆ™åˆ›å»ºï¼Œå¦‚æœå­˜åœ¨ï¼Œåˆ™ä¸ä½œæ“ä½œ
 	 * */
 	public static void configScreenShotLocation(){
 		String screenShotDir=getScreenShotDirPath();
@@ -65,7 +65,7 @@ public class HolmosBaseTools {
 		if(!file.exists()){
 			try {
 				if(file.mkdirs()){
-					System.out.println("½ØÆÁµØÖ·´´½¨³É¹¦!");
+					System.out.println("æˆªå±åœ°å€åˆ›å»ºæˆåŠŸ!");
 				}
 			}catch (Exception e) {
 				e.printStackTrace();
@@ -73,7 +73,7 @@ public class HolmosBaseTools {
 		}
 	}
 	/**
-	 * ´ÓHolmosÅäÖÃÎÄ¼şÖĞÈ¡µÃ½ØÆÁµØÖ·
+	 * ä»Holmosé…ç½®æ–‡ä»¶ä¸­å–å¾—æˆªå±åœ°å€
 	 * */
 	public static String getScreenShotDirPath(){
 		if(ConstValue.screenShotDir!=null)
@@ -84,10 +84,10 @@ public class HolmosBaseTools {
 			properties.load(in);
 			return HolmosPropertiesTool.getValue(properties, "screenShotDir");
 		}catch(IOException e){
-			throw new HolmosFailedError("holmos¿ò¼ÜÅäÖÃÎÄ¼şÕÒ²»µ½!"); 
+			throw new HolmosFailedError("holmosæ¡†æ¶é…ç½®æ–‡ä»¶æ‰¾ä¸åˆ°!"); 
 		}
 	}
-	/**µ±Ç°Ïß³ÌĞİÏ¢miliSecondsºÁÃë*/
+	/**å½“å‰çº¿ç¨‹ä¼‘æ¯miliSecondsæ¯«ç§’*/
 	public static void sleep(int miliSeconds){
 		try {
 			Thread.sleep(miliSeconds);
@@ -95,7 +95,7 @@ public class HolmosBaseTools {
 			e.printStackTrace();
 		}
 	}
-	/**¸ù¾İtargetÀ´´ò¿ªÒ³Ãæ£¬¸ù¾İtargetÀ´ÅĞ¶ÏÊÇ·ñÔÚĞÂÒ³Ãæ´ò¿ª*/
+	/**æ ¹æ®targetæ¥æ‰“å¼€é¡µé¢ï¼Œæ ¹æ®targetæ¥åˆ¤æ–­æ˜¯å¦åœ¨æ–°é¡µé¢æ‰“å¼€*/
 	public static void openByTarget(String url,String target){
 		if(target==null){
 			Allocator.getInstance().currentWindow.open(url);
@@ -105,31 +105,31 @@ public class HolmosBaseTools {
 			Allocator.getInstance().currentWindow.open(url);
 		}
 	}
-	/**±ä¸üElement±äÁ¿µÄ×¢ÊÍËµÃ÷£¬ÔÚ·´Éäµ÷¶¯¹Û²ìÕßµÄÊ±ºò½«Õâ¸ö±äÁ¿µÄÃû×Ö¼Óµ½ËµÃ÷ÀïÃæ*/
+	/**å˜æ›´Elementå˜é‡çš„æ³¨é‡Šè¯´æ˜ï¼Œåœ¨åå°„è°ƒåŠ¨è§‚å¯Ÿè€…çš„æ—¶å€™å°†è¿™ä¸ªå˜é‡çš„åå­—åŠ åˆ°è¯´æ˜é‡Œé¢*/
 	public static void insertElementName(Element element,String name){
 		StringBuilder commentTemp=new StringBuilder(element.getComment());
 		commentTemp.insert(1, name);
 		element.setComment(commentTemp.toString());
 	}
-	/**±ä¸üSubPage±äÁ¿µÄ×¢ÊÍËµÃ÷£¬ÔÚ·´Éäµ÷¶¯¹Û²ìÕßµÄÊ±ºò½«Õâ¸ö±äÁ¿µÄÃû×Ö¼Óµ½ËµÃ÷ÀïÃæ*/
+	/**å˜æ›´SubPageå˜é‡çš„æ³¨é‡Šè¯´æ˜ï¼Œåœ¨åå°„è°ƒåŠ¨è§‚å¯Ÿè€…çš„æ—¶å€™å°†è¿™ä¸ªå˜é‡çš„åå­—åŠ åˆ°è¯´æ˜é‡Œé¢*/
 	public static void insertSubPageName(SubPage subpage,String name){
 		StringBuilder commentTemp=new StringBuilder(subpage.getComment());
 		commentTemp.insert(1, name);
 		subpage.setComment(commentTemp.toString());
 	}
-	/**±ä¸üPage±äÁ¿µÄ×¢ÊÍËµÃ÷£¬ÔÚ·´Éäµ÷¶¯¹Û²ìÕßµÄÊ±ºò½«Õâ¸ö±äÁ¿µÄÃû×Ö¼Óµ½ËµÃ÷ÀïÃæ*/
+	/**å˜æ›´Pageå˜é‡çš„æ³¨é‡Šè¯´æ˜ï¼Œåœ¨åå°„è°ƒåŠ¨è§‚å¯Ÿè€…çš„æ—¶å€™å°†è¿™ä¸ªå˜é‡çš„åå­—åŠ åˆ°è¯´æ˜é‡Œé¢*/
 	public static void insertPageName(Page page,String name){
 		StringBuilder commentTemp=new StringBuilder(page.getComment());
 		commentTemp.insert(1, name);
 		page.setComment(commentTemp.toString());
 	}
-	/**±ä¸üFrame±äÁ¿µÄ×¢ÊÍËµÃ÷£¬ÔÚ·´Éäµ÷¶¯¹Û²ìÕßµÄÊ±ºò½«Õâ¸ö±äÁ¿µÄÃû×Ö¼Óµ½ËµÃ÷ÀïÃæ*/
+	/**å˜æ›´Frameå˜é‡çš„æ³¨é‡Šè¯´æ˜ï¼Œåœ¨åå°„è°ƒåŠ¨è§‚å¯Ÿè€…çš„æ—¶å€™å°†è¿™ä¸ªå˜é‡çš„åå­—åŠ åˆ°è¯´æ˜é‡Œé¢*/
 	public static void insertFrameName(Frame frame,String name){
 		StringBuilder commentTemp=new StringBuilder(frame.getComment());
 		commentTemp.insert(1, name);
 		frame.setComment(commentTemp.toString());
 	}
-	/**±ä¸üCollection±äÁ¿µÄ×¢ÊÍËµÃ÷£¬ÔÚ·´Éäµ÷¶¯¹Û²ìÕßµÄÊ±ºò½«Õâ¸ö±äÁ¿µÄÃû×Ö¼Óµ½ËµÃ÷ÀïÃæ*/
+	/**å˜æ›´Collectionå˜é‡çš„æ³¨é‡Šè¯´æ˜ï¼Œåœ¨åå°„è°ƒåŠ¨è§‚å¯Ÿè€…çš„æ—¶å€™å°†è¿™ä¸ªå˜é‡çš„åå­—åŠ åˆ°è¯´æ˜é‡Œé¢*/
 	public static void insertCollectionName(Collection collection,String name){
 		StringBuilder commentTemp=new StringBuilder(collection.getComment());
 		commentTemp.insert(1, name);

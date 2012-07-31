@@ -6,6 +6,8 @@ import Holmos.webtest.Allocator;
 import Holmos.webtest.BrowserWindow;
 import Holmos.webtest.SeleniumBrowserWindow;
 import Holmos.webtest.WebDriverBrowserWindow;
+import Holmos.webtest.basetools.HolmosWindow;
+import Holmos.webtest.constvalue.ConfigConstValue;
 
 import com.thoughtworks.selenium.Selenium;
 /**
