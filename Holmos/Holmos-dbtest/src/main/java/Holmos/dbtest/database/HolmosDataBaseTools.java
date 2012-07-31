@@ -16,9 +16,9 @@ import org.apache.commons.lang.ClassUtils;
 import org.dom4j.Document;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 
-import Holmos.basetools.HolmosPropertiesTool;
-import Holmos.exceptions.HolmosFailedError;
 import Holmos.testlistener.modules.HolmosModule;
+import Holmos.webtest.basetools.HolmosPropertiesTool;
+import Holmos.webtest.exceptions.HolmosFailedError;
 
 /**Holmos框架数据库支持的工具类
  * @author 吴银龙(15857164387)

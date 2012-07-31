@@ -5,10 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-
-import Holmos.basetools.HolmosPropertiesTool;
 import Holmos.dbtest.database.dbtool.DBToolBox;
 import Holmos.dbtest.database.operation.SQLOperation;
+import Holmos.webtest.basetools.HolmosConfTool;
+import Holmos.webtest.basetools.HolmosPropertiesTool;
 
 public class DBToolBoxFactory {
 	public static DBToolBox getToolBox(Properties properties,SQLOperation operation,String schemaName){
