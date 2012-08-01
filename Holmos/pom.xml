@@ -20,6 +20,7 @@
 		<module>Holmos-managePlatform</module>
 		<module>Holmos-autosense</module>
 		<module>Holmos-webtest</module>
+		<module>Holmos-basetools</module>
 	</modules>
 
 	<dependencies>
