@@ -6,11 +6,10 @@ import javax.swing.tree.DefaultMutableTreeNode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import Holmos.Holmos.plug.PSM.NetPageInfo;
-import Holmos.Holmos.plug.PSM.VariableInfo;
-import Holmos.Holmos.plug.PSM.container.PageInfo;
-import Holmos.Holmos.plug.PSM.folder.FolderInfo;
 import cn.autosense.browser.util.PageType;
+import cn.autosense.plug.psm.NetPageInfo;
+import cn.autosense.plug.psm.container.PageInfo;
+import cn.autosense.plug.psm.folder.FolderInfo;
 
 /**
  * 

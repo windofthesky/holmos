@@ -4,10 +4,7 @@ import java.io.Serializable;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import Holmos.Holmos.plug.PSM.NetPageInfo;
-import Holmos.Holmos.plug.PSM.VariableInfo;
-import Holmos.Holmos.plug.PSM.container.PageInfo;
-import Holmos.Holmos.plug.PSM.folder.FolderInfo;
+import cn.autosense.plug.psm.NetPageInfo;
 
 /**
  * 创建各种Info返回信息
