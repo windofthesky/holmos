@@ -1,10 +1,10 @@
 package cn.autosense.browser.exchange;
 
-import Holmos.Holmos.plug.PSM.folder.FolderInfo;
 import cn.autosense.browser.exchange.util.CatalogDataType;
 import cn.autosense.browser.exchange.util.CreateReturnInfo;
 import cn.autosense.browser.exchange.util.ReturnInfo;
 import cn.autosense.browser.gui.render.PageNode;
+import cn.autosense.plug.psm.folder.FolderInfo;
 
 /**
  * 根据传入的CatalogPathType, 决定整个类中的data是什么格式的.

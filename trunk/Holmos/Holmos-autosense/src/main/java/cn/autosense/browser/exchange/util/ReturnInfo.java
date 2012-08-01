@@ -6,11 +6,11 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import Holmos.Holmos.plug.PSM.container.CollectionInfo;
-import Holmos.Holmos.plug.PSM.container.FrameInfo;
-import Holmos.Holmos.plug.PSM.container.PageInfo;
-import Holmos.Holmos.plug.PSM.container.SubPageInfo;
-import Holmos.Holmos.plug.PSM.folder.FolderInfo;
+import cn.autosense.plug.psm.container.CollectionInfo;
+import cn.autosense.plug.psm.container.FrameInfo;
+import cn.autosense.plug.psm.container.PageInfo;
+import cn.autosense.plug.psm.container.SubPageInfo;
+import cn.autosense.plug.psm.folder.FolderInfo;
 
 /**
  * 

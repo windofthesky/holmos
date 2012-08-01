@@ -20,7 +20,6 @@ import lombok.Getter;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
-import Holmos.Holmos.plug.PSM.INFOTYPE;
 import cn.autosense.browser.data.ComponentBean;
 import cn.autosense.browser.data.HtmlFiledBean;
 import cn.autosense.browser.data.InitDataBean;
@@ -28,6 +27,7 @@ import cn.autosense.browser.data.RuntimeDataBean;
 import cn.autosense.browser.data.SelectedFieldBean;
 import cn.autosense.browser.gui.componment.JMeWebBrowser;
 import cn.autosense.browser.util.CommonUtil;
+import cn.autosense.plug.psm.INFOTYPE;
 
 import com.breeze.core.util.Util;
 import com.breeze.core.util.UtilGUI;

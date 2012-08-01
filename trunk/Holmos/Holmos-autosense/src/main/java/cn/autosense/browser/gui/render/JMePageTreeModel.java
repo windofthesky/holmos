@@ -7,9 +7,9 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeNode;
 
-import Holmos.Holmos.plug.PSM.VariableInfo;
-import Holmos.Holmos.plug.PSM.folder.FolderInfo;
 import cn.autosense.browser.util.PageType;
+import cn.autosense.plug.psm.VariableInfo;
+import cn.autosense.plug.psm.folder.FolderInfo;
 
 import com.breeze.core.util.UtilGUI;
 
