@@ -20,6 +20,7 @@ import Holmos.webtest.element.Element;
 import Holmos.webtest.element.locator.Locator;
 import Holmos.webtest.element.locator.LocatorChain;
 import Holmos.webtest.element.locator.LocatorValue;
+import Holmos.webtest.log.MyLogger;
 
 import com.thoughtworks.selenium.Selenium;
 
@@ -51,6 +52,7 @@ public class Page implements LocatorValue{
 	protected List<SubPage> subpages=new ArrayList<SubPage>();
 	/**这个页面中的嵌套的iframe和frameset，在清空页面缓存的时候用到*/
 	protected List<Frame> frames=new ArrayList<Frame>();
+	private static MyLogger logger=MyLogger.getLogger(Frame.class);
 	/**这个页面的集合Collections*/
 	protected List<Collection> collections=new ArrayList<Collection>();
 	public Page(){
@@ -103,7 +105,7 @@ public class Page implements LocatorValue{
 	 * 获得活动页面body部分的源码<br>
 	 * @return 活动页面body部分的源码*/
 	public String getBodyText(){
-		System.out.println("获得"+this.comment+"页面body源码");
+		logger.info("获得"+this.comment+"页面body源码");
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
 			return ((Selenium)currentWindow.getDriver().getEngine()).getBodyText();
@@ -116,7 +118,7 @@ public class Page implements LocatorValue{
 	 * 获得活动页面的源码<br>
 	 * @return 活动页面的源码*/
 	public String getHtmlText(){
-		System.out.println("获得"+this.comment+"页面body源码");
+		logger.info("获得"+this.comment+"页面body源码");
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
 			return ((Selenium)currentWindow.getDriver().getEngine()).getHtmlSource();
@@ -127,7 +129,7 @@ public class Page implements LocatorValue{
 	/**获得活动页面的title<br>
 	 * @return 活动页面的title*/
 	public String getTitle(){
-		System.out.println("获得"+this.comment+"页面body源码");
+		logger.info("获得"+this.comment+"页面body源码");
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
 			return ((Selenium)currentWindow.getDriver().getEngine()).getTitle();
@@ -137,7 +139,7 @@ public class Page implements LocatorValue{
 	}
 	/**获得该页面所有的cookies*/
 	public String getAllCookies(){
-		System.out.println("获得"+this.comment+"所有的cookies");
+		logger.info("获得"+this.comment+"所有的cookies");
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
 			return ((Selenium)currentWindow.getDriver().getEngine()).getCookie();

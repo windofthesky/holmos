@@ -21,9 +21,10 @@ public class RichTextField extends TextField{
 	 * 这种富文本不是RichTextField，是用body模拟的<br>
 	 * @param value 要输入的字符窜，对字符没有什么特别限制*/
 	public void setBodyText(String value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				String js="selenium.browserbot.getCurrentWindow().document.body.innerHTML=\'"+value+"\';";
 				((Selenium)currentWindow.getDriver().getEngine()).getEval(js);
@@ -35,6 +36,7 @@ public class RichTextField extends TextField{
 			message.append("用body模拟的富文本设置成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("用body模拟的富文本设置失败!找不到元素!");
 			logger.error(message);
 		}
@@ -43,9 +45,10 @@ public class RichTextField extends TextField{
 	 * 清空富文本框的内容
 	 * */
 	public void clearBodyText(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				String js="selenium.browserbot.getCurrentWindow().document.body.innerHTML=\'\';";
 				((Selenium)currentWindow.getDriver().getEngine()).getEval(js);
@@ -57,6 +60,7 @@ public class RichTextField extends TextField{
 			message.append("清空富文本框的内容成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("清空富文本框的内容失败!找不到元素!");
 			logger.error(message);
 		}

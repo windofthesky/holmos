@@ -1,15 +1,14 @@
 package Holmos.webtest.asserttool;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
-
 import Holmos.webtest.basetools.HolmosBaseTools;
 import Holmos.webtest.exceptions.HolmosFailedError;
+import Holmos.webtest.log.MyLogger;
 /**
  * @author 吴银龙(15857164387)
  * */
 public class HolmosSimpleCheckTool {
-	private static Logger logger=Logger.getLogger(HolmosSimpleCheckTool.class.getName());
+	private static MyLogger logger=MyLogger.getLogger(HolmosSimpleCheckTool.class);
 	static{
 		HolmosBaseTools.configLogProperties();
 	}

@@ -22,10 +22,11 @@ public class CheckBox extends Element{
 	 * @return true 被选中<br>
 	 * 		   false 没有被选中*/
 	public boolean isChecked(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		boolean checked=false;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				checked=((Selenium)currentWindow.getDriver().getEngine()).
 						isChecked(locator.getSeleniumCurrentLocator());
@@ -33,6 +34,7 @@ public class CheckBox extends Element{
 				checked=element.isSelected();
 			}
 		}else{
+			message.append(this.comment+":");
 			message.append("检验选中失败！找不到元素！");
 			logger.error(message);
 		}
@@ -42,9 +44,10 @@ public class CheckBox extends Element{
 	 * @param value true 设置为选中   <br>false  取消选中
 	 * */
 	public void setValue(boolean value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				if(((Selenium)currentWindow.getDriver().getEngine()).isChecked(locator.getSeleniumCurrentLocator())!=value){
 					((Selenium)currentWindow.getDriver().getEngine()).click(locator.getSeleniumCurrentLocator());
@@ -55,6 +58,7 @@ public class CheckBox extends Element{
 				}
 			}
 		}else{
+			message.append(this.comment+":");
 			message.append("设定值失败！找不到元素！");
 			logger.error(message);
 		}
@@ -62,9 +66,10 @@ public class CheckBox extends Element{
 	/**校验复选框是否被选中，如果没有被选中，则失败程序退出运行<br>
 	 * 如果被选中，程序继续执行，校验成功!*/
 	public void assertChecked(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				if(((Selenium)currentWindow.getDriver().getEngine()).isChecked(locator.getSeleniumCurrentLocator())){
 					message.append("校验多选框选中成功！当前处于选中状态");
@@ -87,6 +92,7 @@ public class CheckBox extends Element{
 				}
 			}
 		}else{
+			message.append(this.comment+":");
 			message.append("校验多选框选中失败！当前处于未选中状态");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -96,9 +102,10 @@ public class CheckBox extends Element{
 	/**校验复选框是否被选中，如果没有被选中，则失败程序继续运行<br>
 	 * 如果被选中，程序继续执行，校验成功!*/
 	public void verifyChecked(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				if(((Selenium)currentWindow.getDriver().getEngine()).isChecked(locator.getSeleniumCurrentLocator())){
 					message.append("校验多选框选中成功！当前处于选中状态");
@@ -121,6 +128,7 @@ public class CheckBox extends Element{
 				}
 			}
 		}else{
+			message.append(this.comment+":");
 			message.append("校验多选框选中失败！当前处于未选中状态");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -130,10 +138,11 @@ public class CheckBox extends Element{
 	/**等待此复选框的状态变更改,默认等待30s<br>
 	 * @param value true 选中 false 没选中*/
 	private void waitForValue(boolean value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		int waitStep=0;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				while(waitStep++<ConfigConstValue.waitCount){
 					if(((Selenium)currentWindow.getDriver().getEngine()).
@@ -157,6 +166,7 @@ public class CheckBox extends Element{
 				}
 			}
 		}else{
+			message.append(this.comment+":");
 			message.append("无法等待元素的状态更改，找不到元素!");
 			logger.error(message);
 		}

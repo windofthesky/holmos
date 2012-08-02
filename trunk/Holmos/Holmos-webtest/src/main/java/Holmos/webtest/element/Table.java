@@ -26,10 +26,11 @@ public class Table extends Element{
 	 * @param col 列号
 	 * @return 此table指定行，指定列的值*/
 	public String getElementContent(int row,int col){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		String content=null;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				try{
 					content=((Selenium)currentWindow.getDriver().getEngine()).
@@ -51,6 +52,7 @@ public class Table extends Element{
 				}
 			}
 		}else{
+			message.append(this.comment+":");
 			message.append("第"+(row+1)+"行，第"+(col+1)+"列的元素获取失败!找不到这个table");
 			logger.error(message);
 		}
@@ -60,10 +62,11 @@ public class Table extends Element{
 	 * @param column 列号
 	 * @return 字符窜List，column列所有行的信息*/
 	public List<String> getElementsContentByColumn(int column){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		List<String> contents=new ArrayList<String>();
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				try{
 					int rowCount=0;
@@ -84,6 +87,7 @@ public class Table extends Element{
 			message.append("第"+column+"列的元素的信息获得成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("第"+column+"列的元素的信息获得失败!找不到该table!");
 			logger.error(message);
 		}
@@ -107,10 +111,11 @@ public class Table extends Element{
 	 * @return 字符窜List，row列所有列的信息*/
 	public List<String> getElementsContentByRow(int row){
 		/***多层table的时候有点问题,暂时先放，不只是这个，很多都是有问题的，多个table的时候，对于WebDriver作为引擎的时候*/
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		List<String> contents=new ArrayList<String>();
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				try{
 					int colCount=0;
@@ -132,6 +137,7 @@ public class Table extends Element{
 			message.append("第"+row+"行的元素的信息获得成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("第"+row+"行的元素的信息获得失败!找不到该table!");
 			logger.error(message);
 		}
@@ -143,7 +149,7 @@ public class Table extends Element{
 	 * @param rows 行的列表
 	 * @return 字符窜二维List，返回的是找到的指定行的所有行信息*/
 	public List<List<String>> getElementsContentByRows(int[] rows){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		List<List<String>>contents=new ArrayList<List<String>>();
 		message.append("开始获得若干行的元素内容");
 		logger.info(message);
@@ -157,7 +163,7 @@ public class Table extends Element{
 	 * @param locations 指定的位置列表
 	 * @return 获得的指定位置处的值的字符窜列表*/
 	public List<String> getElementsContentByLocations(Location[] locations){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		List<String>contents=new ArrayList<String>();
 		message.append("开始获得若干行的元素内容");
 		logger.info(message);
@@ -170,11 +176,12 @@ public class Table extends Element{
 	 * @return 获得的所有行和所有列的值，如果table是空的，那么返回null
 	 * */
 	public List<List<String>> getAllElementsContent(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		List<List<String>>contents=new ArrayList<List<String>>();
 		message.append("开始获得所有元素的内容");
 		if(isExist()){
+			message.append(this.comment+":");
 			int rowCount=0;
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				while(true){
@@ -197,7 +204,6 @@ public class Table extends Element{
 				}
 			}
 		}else{
-			message.append("获取所有元素失败，找不到该table");
 		}
 		return contents;
 	}
@@ -207,7 +213,7 @@ public class Table extends Element{
 //	 * @param col 列号
 //	 * @return 此table指定行，指定列的元素信息*/
 //	public Element getElement(int row,int col){
-//		StringBuilder message=new StringBuilder(this.comment+":");
+//		StringBuilder message=new StringBuilder();
 //		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 //		if(isExist()){
 //			if(currentWindow instanceof SeleniumBrowserWindow){

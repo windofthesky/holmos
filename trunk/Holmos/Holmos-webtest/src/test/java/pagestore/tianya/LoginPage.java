@@ -21,7 +21,7 @@ public class LoginPage extends Page{
 		loginButton.addIDLocator("button1");
 	}
 	public void login(String username,String password){
-		HolmosWindow.openNewWindow(EngineType.WebDriverFirefox,"http://www.tianya.cn/");
+		HolmosWindow.openNewWindow(EngineType.WebDriverChrome,"http://www.tianya.cn/");
 		this.username.setText(username);
 		this.password.setText(password);
 		this.loginButton.click();

@@ -1,11 +1,8 @@
 package Holmos.webtest.struct;
 
-import java.util.NoSuchElementException;
-
-import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import Holmos.webtest.Allocator;
 import Holmos.webtest.BrowserWindow;
 import Holmos.webtest.SeleniumBrowserWindow;
@@ -16,6 +13,7 @@ import Holmos.webtest.element.locator.LocatorChain;
 import Holmos.webtest.element.tool.SeleniumElementExist;
 import Holmos.webtest.element.tool.WebDriverElementExist;
 import Holmos.webtest.element.tool.WebElementExist;
+import Holmos.webtest.log.MyLogger;
 
 import com.thoughtworks.selenium.Selenium;
 
@@ -41,7 +39,7 @@ public class Frame extends Page{
 	/**Frame的定位器*/
 	private Locator locator=new Locator();
 	/**Frame操作的日志记录器*/
-	private static Logger logger=Logger.getLogger(Frame.class.getName());
+	private static MyLogger logger=MyLogger.getLogger(Frame.class);
 	public Locator getLocator() {
 		return locator;
 	}
@@ -106,9 +104,10 @@ public class Frame extends Page{
 	/**选中当前的Frame，如果有多级Frame，需要按照层级<br>
 	 * 级级递进的顺序，步步选择<br>*/
 	public void select(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).selectFrame(locator.getSeleniumCurrentLocator());
 			}else if(currentWindow instanceof WebDriverBrowserWindow){

@@ -19,11 +19,11 @@ public class HolmosReflectionTool {
 	 * <br> false 不改变访问权限,访问权限不够的话抛出异常
 	 * @return 构造出的变量实例*/
 	@SuppressWarnings("unchecked")
-	public static <T> T createInstanceAsType(String typeName,boolean isAccessible){
+	public static Object createInstanceAsType(String typeName,boolean isAccessible){
 		Class<?> typeForInstance;
 		try {
 			typeForInstance = Class.forName(typeName);
-			return (T) createInstanceAsType(typeForInstance, isAccessible);
+			return createInstanceAsType(typeForInstance, isAccessible);
 		} catch (ClassNotFoundException e) {
 			throw new HolmosFailedError("创建无参对象实例失败!");
 		}
@@ -33,7 +33,7 @@ public class HolmosReflectionTool {
 	 * @param isAccessible true 改变构造函数的访问控制,如果构造函数的访问权不是public的话,不抛出异常
 	 * <br> false 不改变访问权限,访问权限不够的话抛出异常
 	 * @return 构造出的变量实例*/
-	public static <T> T createInstanceAsType(Class<T> typeForInstance,
+	public static Object createInstanceAsType(Class typeForInstance,
 			boolean isAccessible) {
 		return createInstanceOfType(typeForInstance, isAccessible, new Class[0], new Object[0]);
 	}
@@ -44,7 +44,7 @@ public class HolmosReflectionTool {
 	 * @param argumentsType	参数的类型列表
 	 * @param arguments 参数的实例列表
 	 * @return 构造出的变量实例*/
-	public static <T> T createInstanceOfType(Class<T> typeForInstance,
+	public static Object createInstanceOfType(Class typeForInstance,
 			boolean isAccessible, @SuppressWarnings("rawtypes") Class[] argumentsType, Object[] arguments) {
 		if(typeForInstance.isMemberClass()||Modifier.isStatic(typeForInstance.getModifiers())){
 			/*如果是成员类(内部类的一种)或者是静态类的时候,不能实例化;原因是成员内部类在外层类的外部是不可见的,是一种
@@ -55,7 +55,7 @@ public class HolmosReflectionTool {
 					"静态类的定义!请参照:http://baike.baidu.com/view/6497553.htm和http://baike.baidu.com/view/3671198.htm");
 		}
 		try{
-			Constructor<T> constructor=typeForInstance.getDeclaredConstructor(argumentsType);
+			Constructor constructor=typeForInstance.getDeclaredConstructor(argumentsType);
 			if(isAccessible){
 				constructor.setAccessible(isAccessible);
 			}
@@ -73,11 +73,11 @@ public class HolmosReflectionTool {
 	 * @return 获取的字段的值
 	 *  */
 	@SuppressWarnings("unchecked")
-	public static <T> T getFieldValue(Object object,Field field){
+	public static Object getFieldValue(Object object,Field field){
 		//对非public类型的字段修改访问权限
 		try {
 			field.setAccessible(true);
-			return (T) field.get(object);
+			return field.get(object);
 		} catch (IllegalArgumentException e) {
 			throw new HolmosFailedError("字段"+field.getName()+"的值获取失败!");
 		} catch (IllegalAccessException e) {
@@ -89,10 +89,10 @@ public class HolmosReflectionTool {
 	 * @param fieldName 字段名字
 	 * @return 获取的字段的值
 	 *  */
-	public static <T> T getFieldValue(Object object,String fieldName){
+	public static Object getFieldValue(Object object,String fieldName){
 		try {
 			Field field=object.getClass().getDeclaredField(fieldName);
-			return (T) getFieldValue(object, field);
+			return getFieldValue(object, field);
 		} catch (SecurityException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -169,10 +169,10 @@ public class HolmosReflectionTool {
 	 * @param arguments 方法的参数
 	 * */
 	@SuppressWarnings("unchecked")
-	public static <T> T invokeMethod(Object object,Method method,Object...arguments)throws InvocationTargetException{
+	public static Object invokeMethod(Object object,Method method,Object...arguments)throws InvocationTargetException{
 		try {
 			method.setAccessible(true);
-			return (T) method.invoke(object, arguments);
+			return method.invoke(object, arguments);
 		} catch (IllegalArgumentException e) {
 			throw new HolmosFailedError("方法"+method.getName()+"执行失败!");
 		} catch (IllegalAccessException e) {
@@ -193,9 +193,9 @@ public class HolmosReflectionTool {
 			return true;
 		}return false;
 	}
-	public static <T>Class<T> getClassWithName(String valueAsString) {
+	public static Class getClassWithName(String valueAsString) {
 		try {
-			return (Class<T>) Class.forName(valueAsString);
+			return Class.forName(valueAsString);
 		} catch (ClassNotFoundException e) {
 			throw new HolmosFailedError("获得"+valueAsString+"类失败!");
 		}

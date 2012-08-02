@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
+
 import Holmos.webtest.asserttool.HolmosSimpleCheckTool;
 import Holmos.webtest.basetools.HolmosBaseTools;
 import Holmos.webtest.basetools.HolmosPropertiesTool;
@@ -14,9 +14,10 @@ import Holmos.webtest.constvalue.ConstValue;
 import Holmos.webtest.element.Element;
 import Holmos.webtest.element.Image;
 import Holmos.webtest.exceptions.HolmosFailedError;
+import Holmos.webtest.log.MyLogger;
 /**页面样式校验工具*/
 public class HolmosCSSTool {
-	private static Logger logger=Logger.getLogger(HolmosBaseTools.class);
+	private static MyLogger logger=MyLogger.getLogger(HolmosBaseTools.class);
 	private static String commProConf="css_comman_property_config.properties";
 	private static String imgProConf="css_img_property_config.properties";
 	private static Properties cssCommanPropertiesConfig;
