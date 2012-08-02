@@ -1,6 +1,6 @@
 package Holmos.webtest;
 
-import org.apache.log4j.Logger;
+import Holmos.webtest.log.MyLogger;
 
 /**浏览器窗口的基本单位<br>
  * 窗口句柄，句柄在整个框架里面唯一，当为webdriver的时候，由底层<br>
@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
  * @author 吴银龙(15857164387)
  * */
 public interface BrowserWindow {
-	static Logger logger=Logger.getLogger(BrowserWindow.class);
+	static MyLogger logger=MyLogger.getLogger(BrowserWindow.class);
 	public String getHandle();
 	/**获得当前窗口当前页面的url<br>*/
 	public String getUrl();

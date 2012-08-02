@@ -6,7 +6,6 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
@@ -27,6 +26,7 @@ import Holmos.webtest.element.locator.LocatorValue;
 import Holmos.webtest.element.tool.SeleniumElementExist;
 import Holmos.webtest.element.tool.WebDriverElementExist;
 import Holmos.webtest.element.tool.WebElementExist;
+import Holmos.webtest.log.MyLogger;
 
 import com.thoughtworks.selenium.Selenium;
 /**
@@ -40,7 +40,7 @@ public class Collection implements LocatorValue{
 		this.fullName = fullName;
 	}
 	/**Collection的注释说明*/
-	private String comment;
+	public String comment;
 	/**用来保存当前用到的是collection里面的第几个元素*/
 	private int index;
 	public int getIndex() {
@@ -87,7 +87,7 @@ public class Collection implements LocatorValue{
 		return element;
 	}
 	/**此Collection的日志记录器*/
-	protected Logger logger=Logger.getLogger(this.getClass().getName());
+	protected MyLogger logger=MyLogger.getLogger(this.getClass());
 	public Collection(String comment) {
 		this.locator=new Locator();
 		this.infoChain=new LocatorChain();
@@ -208,11 +208,13 @@ public class Collection implements LocatorValue{
 	}
 	/**校验集合是否存在，则失败返回*/
 	public void assertExist(){
-		StringBuilder message=new StringBuilder(comment);
+		StringBuilder message=new StringBuilder();
 		if(isExist()){
+			message.append(this.comment+":");
 			message.append(":元素存在性校验成功！元素存在！");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append(":元素存在校验失败！元素不存在!");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -221,11 +223,13 @@ public class Collection implements LocatorValue{
 	}
 	/**校验集合是否不存在，则失败返回*/
 	public void assertNotExist(){
-		StringBuilder message=new StringBuilder(comment);
+		StringBuilder message=new StringBuilder();
 		if(!isExist()){
+			message.append(this.comment+":");
 			message.append("元素不存在性校验成功！元素不存在！");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("元素存在校验失败！元素存在!");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -234,22 +238,26 @@ public class Collection implements LocatorValue{
 	}
 	/**校验集合是否存在，失败继续运行*/
 	public void verifyExist(){
-		StringBuilder message=new StringBuilder(comment);
+		StringBuilder message=new StringBuilder();
 		if(isExist()){
+			message.append(this.comment+":");
 			message.append("元素存在性校验成功！元素存在！");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("元素存在校验失败！元素不存在!");
 			logger.error(message);
 		}
 	}
 	/**校验集合是否不存在，失败继续运行*/
 	public void verifyNotExist(){
-		StringBuilder message=new StringBuilder(comment);
+		StringBuilder message=new StringBuilder();
 		if(!isExist()){
+			message.append(this.comment+":");
 			message.append("元素不存在性校验成功！元素不存在！");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("元素存在校验失败！元素存在!");
 			logger.error(message);
 		}

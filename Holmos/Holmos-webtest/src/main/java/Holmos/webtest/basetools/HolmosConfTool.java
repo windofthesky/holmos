@@ -1,9 +1,10 @@
 package Holmos.webtest.basetools;
 
 import java.util.Properties;
-import org.apache.log4j.Logger;
 
 import Holmos.webtest.exceptions.HolmosFailedError;
+import Holmos.webtest.log.MyLogger;
+
 /**
  * Holmos 框架处理配置文件的工具类
  * 
@@ -11,7 +12,7 @@ import Holmos.webtest.exceptions.HolmosFailedError;
  * 
  * */
 public class HolmosConfTool {
-	private static Logger logger=Logger.getLogger(HolmosConfTool.class);
+	private static MyLogger logger=MyLogger.getLogger(HolmosConfTool.class);
 	{
 		HolmosBaseTools.configLogProperties();
 	}
@@ -22,7 +23,7 @@ public class HolmosConfTool {
 	 * @param implementerValues 具体实现者，配置文件里面书写的格式为:type.impClassName.implementerValue[0].implementerValue[1]...
 	 * @return 构造出的实例
 	 * */
-	public static <T> T getInstanceOf(Class<?>type,Properties properties,String ...implementerValues){
+	public static Object getInstanceOf(Class<?>type,Properties properties,String ...implementerValues){
 		String fullClassName=getImplementerName(type,properties,implementerValues);
 		logger.info("创建"+fullClassName+"实例");
 		return HolmosReflectionTool.createInstanceAsType(fullClassName, false);

@@ -6,11 +6,8 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +27,7 @@ import Holmos.webtest.element.property.Location;
 import Holmos.webtest.element.tool.SeleniumElementExist;
 import Holmos.webtest.element.tool.WebDriverElementExist;
 import Holmos.webtest.element.tool.WebElementExist;
+import Holmos.webtest.log.MyLogger;
 
 import com.thoughtworks.selenium.Selenium;
 /**元素的基础类，对应页面的一个确定元素，具有很多的基于元素的方法和元素具有的属性
@@ -83,7 +81,7 @@ public class Element implements LocatorValue{
 		return element;
 	}
 	/**元素操作的日志记录器*/
-	protected Logger logger=Logger.getLogger(this.getClass().getName());
+	protected MyLogger logger=MyLogger.getLogger(this.getClass());
 	{
 		HolmosBaseTools.configLogProperties();
 	}
@@ -134,11 +132,13 @@ public class Element implements LocatorValue{
 	}
 	/**校验元素是否存在，则失败返回*/
 	public void assertExist(){
-		StringBuilder message=new StringBuilder(comment);
+		StringBuilder message=new StringBuilder();
 		if(isExist()){
+			message.append(this.comment+":");
 			message.append(":元素存在性校验成功！元素存在！");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append(":元素存在校验失败！元素不存在!");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -147,11 +147,13 @@ public class Element implements LocatorValue{
 	}
 	/**校验元素是否不存在，则失败返回*/
 	public void assertNotExist(){
-		StringBuilder message=new StringBuilder(comment);
+		StringBuilder message=new StringBuilder();
 		if(!isExist()){
+			message.append(this.comment+":");
 			message.append("元素不存在性校验成功！元素不存在！");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("元素存在校验失败！元素存在!");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -160,22 +162,26 @@ public class Element implements LocatorValue{
 	}
 	/**校验元素是否存在，失败继续运行*/
 	public void verifyExist(){
-		StringBuilder message=new StringBuilder(comment);
+		StringBuilder message=new StringBuilder();
 		if(isExist()){
+			message.append(this.comment+":");
 			message.append("元素存在性校验成功！元素存在！");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("元素存在校验失败！元素不存在!");
 			logger.error(message);
 		}
 	}
 	/**校验元素是否不存在，失败继续运行*/
 	public void verifyNotExist(){
-		StringBuilder message=new StringBuilder(comment);
+		StringBuilder message=new StringBuilder();
 		if(!isExist()){
+			message.append(this.comment+":");
 			message.append("元素不存在性校验成功！元素不存在！");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("元素存在校验失败！元素存在!");
 			logger.error(message);
 		}
@@ -201,9 +207,10 @@ public class Element implements LocatorValue{
 	 * 不做记录，也就是说新的页面无法操控,所以对于点击新开页面的操作，对于selenium<br>
 	 * selenium引擎用clickAndWaitForPageLoad()方法<br>*/
 	public void click(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).click(locator.getSeleniumCurrentLocator());
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -218,6 +225,7 @@ public class Element implements LocatorValue{
 			message.append("click鼠标左键单击成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("click鼠标左键单击失败!找不到元素！");
 			logger.error(message);
 		}
@@ -232,9 +240,10 @@ public class Element implements LocatorValue{
 	 * 当引擎为webdriver的时候，和click()的处理方法一致
 	 * */
 	public void clickAndWaitForLoad(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				Selenium selenium = (Selenium) currentWindow.getDriver().getEngine();
 				try{
@@ -285,6 +294,7 @@ public class Element implements LocatorValue{
 			message.append("click()操作成功！");
 			logger.info(message.toString());
 		}else{
+			message.append(this.comment+":");
 			message.append("click()鼠标左键单击操作失败！找不到元素！");
 			logger.error(message);
 		}
@@ -314,9 +324,10 @@ public class Element implements LocatorValue{
 	}
 	/**鼠标悬浮在元素上*/
 	public void mouseOver(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).mouseOver(locator.getSeleniumCurrentLocator());
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -326,6 +337,7 @@ public class Element implements LocatorValue{
 			message.append("悬停成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("悬停失败！找不到元素！");
 			logger.error(message);
 		}
@@ -334,10 +346,11 @@ public class Element implements LocatorValue{
 	 * 这个获得了标签<biaoqian>text</biaoqian>之间的text
 	 * @return 两标签之间的文本值*/
 	public String getText(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		String text=null;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				text=((Selenium)currentWindow.getDriver().getEngine()).getText(locator.getSeleniumCurrentLocator());
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -346,6 +359,7 @@ public class Element implements LocatorValue{
 			message.append("文本活的成功，为:"+text);
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("文本活的失败，元素找不到!");
 			logger.error(message);
 		}
@@ -357,9 +371,10 @@ public class Element implements LocatorValue{
 	}
 	/**让当前组件活的焦点*/
 	public void focus(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).focus(locator.getSeleniumCurrentLocator());
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -368,15 +383,17 @@ public class Element implements LocatorValue{
 			message.append("焦点获得成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("焦点获得失败，找不到元素!");
 			logger.error(message);
 		}
 	}
 	/**模拟元素鼠标左键双击操作*/
 	public void doubleClick(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).doubleClick(locator.getSeleniumCurrentLocator());
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -386,15 +403,17 @@ public class Element implements LocatorValue{
 			message.append("双击操作成功!");
 			logger.info(message);
 		}else {
+			message.append(this.comment+":");
 			message.append("双击操作失败！找不到元素!");
 			logger.error(message);
 		}
 	}
 	/**模拟在这个元素上按下一个键盘按钮，即以此元素为焦点*/
 	public void keyPress(Keys keyValue){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).keyPress(locator.getSeleniumCurrentLocator(), keyValue.toString());
 			}else{
@@ -404,15 +423,17 @@ public class Element implements LocatorValue{
 			message.append("按钮"+keyValue+"已按下!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("按钮按下失败，找不到元素！");
 			logger.error(message);
 		}
 	}
 	/**模拟松开键盘的操作，以此元素为焦点*/
 	public void keyUp(Keys keyValue){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).keyUp(locator.getSeleniumCurrentLocator(), keyValue.toString());
 			}else{
@@ -422,15 +443,17 @@ public class Element implements LocatorValue{
 			message.append("按钮"+keyValue+"已松开!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("按钮松开失败，找不到元素！");
 			logger.error(message);
 		}
 	}
 	/**模拟在此元素上面按下鼠标左键操作*/
 	public void leftMouseDown(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).mouseDown(locator.getSeleniumCurrentLocator());
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -440,15 +463,17 @@ public class Element implements LocatorValue{
 			message.append("鼠标左键在"+this.comment+"已按下!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("鼠标左键按下失败!找不到元素!");
 			logger.error(message);
 		}
 	}
 	/**模拟在这个元素上面松开鼠标左键*/
 	public void leftMouseUp(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).mouseUp(locator.getSeleniumCurrentLocator());
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -458,15 +483,17 @@ public class Element implements LocatorValue{
 			message.append("鼠标左键在"+this.comment+"已松开!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("鼠标左键松开失败!找不到元素!");
 			logger.error(message);
 		}
 	}
 	/**模拟在这个元素上面按下鼠标右键*/
 	public void rightMouseDown(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).mouseDownRight(locator.getSeleniumCurrentLocator());
 			}else{
@@ -475,15 +502,17 @@ public class Element implements LocatorValue{
 			message.append("右键按下成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("右键按下失败!找不到元素！");
 			logger.error(message);
 		}
 	}
 	/**模拟在这个元素上面松开鼠标右键*/
 	public void rightMouseUp(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).mouseUpRight(locator.getSeleniumCurrentLocator());
 			}else{
@@ -492,15 +521,17 @@ public class Element implements LocatorValue{
 			message.append("右键松开成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("右键松开失败!找不到元素！");
 			logger.error(message);
 		}
 	}
 	/**模拟在该元素上单击鼠标右键*/
 	public void rightMouseClick(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).mouseDownRight(locator.getSeleniumCurrentLocator());
 				((Selenium)currentWindow.getDriver().getEngine()).mouseUpRight(locator.getSeleniumCurrentLocator());
@@ -511,6 +542,7 @@ public class Element implements LocatorValue{
 			message.append("右键按下成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("右键按下失败!找不到元素！");
 			logger.error(message);
 		}
@@ -518,9 +550,10 @@ public class Element implements LocatorValue{
 	/**拖拽元素到targetLocation<br>
 	 * @param targetLocation 目的地坐标，是这个元素的中间坐标*/
 	public void mouseDragAndDrop(Location targetLocation){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 //				((Selenium)currentWindow.getDriver().getEngine()).dr
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -530,16 +563,18 @@ public class Element implements LocatorValue{
 			message.append("拖拽至("+targetLocation.getxLocation()+","+targetLocation.getyLocation()+")成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("拖拽失败，找不到元素！");
 		}
 	}
 	/**判断这个元素是否可编辑<br>
 	 * @return 可编辑 ：true ；不可编辑  false */
 	public boolean isEditable(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		boolean editable=false;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				editable=((Selenium)currentWindow.getDriver().getEngine()).isEditable(locator.getSeleniumCurrentLocator());
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -548,6 +583,7 @@ public class Element implements LocatorValue{
 			message.append("可编辑属性获取成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("可编辑属性获取失败!找不到元素!");
 			logger.error(message);
 		}
@@ -556,9 +592,10 @@ public class Element implements LocatorValue{
 	/**判断这个元素是否可见<br>
 	 * @return 可见 ：true ；不可见  false */
 	public boolean isVisable(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		boolean visible=false;
+		message.append(this.comment+":");
 		if(isExist()){
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				visible=((Selenium)currentWindow.getDriver().getEngine()).isVisible(locator.getSeleniumCurrentLocator());
@@ -568,6 +605,7 @@ public class Element implements LocatorValue{
 			message.append("可见属性获取成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("可见属性获取失败!找不到元素!");
 			logger.error(message);
 		}
@@ -576,8 +614,9 @@ public class Element implements LocatorValue{
 	/**校验text是否和value相同，如果不同，则退出运行<br>
 	 * @parameter value 期望的字符窜，与这个元素的文本进行比较<br>*/
 	public void assertEqualText(String expected){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		String actual=getText();
+		message.append(this.comment+":");
 		if(actual==null){
 			if(expected==null){
 				message.append("文本相同校验成功,预期和实际都是null");
@@ -590,6 +629,7 @@ public class Element implements LocatorValue{
 			}
 		}
 		else if(actual.equalsIgnoreCase(expected)){
+			message.append(this.comment+":");
 			message.append("文本相同校验成功,预期和实际都是null");
 			logger.info(message);
 		}else{
@@ -602,8 +642,9 @@ public class Element implements LocatorValue{
 	/**校验text是否和value相同，如果相同，则退出运行<br>
 	 * @parameter value 期望的字符窜，与这个元素的文本进行比较<br>*/
 	public void assertNotEqualText(String expected){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		String actual=getText();
+		message.append(this.comment+":");
 		if(actual==null){
 			if(expected==null){
 				message.append("文本不相同校验失败,预期和实际都是null");
@@ -628,8 +669,9 @@ public class Element implements LocatorValue{
 	/**校验text是否和value相同，如果不同，会继续执行，但是给出日志信息，校验错误<br>
 	 * @parameter value 期望的字符窜，与这个元素的文本进行比较<br>*/
 	public void verifyEqualText(String expected){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		String actual=getText();
+		message.append(this.comment+":");
 		if(actual==null){
 			if(expected==null){
 				message.append("文本相同校验成功,预期和实际都是null");
@@ -650,8 +692,9 @@ public class Element implements LocatorValue{
 	/**校验text是否和value相同，如果相同，会继续运行，但是日志会给出校验错误信息<br>
 	 * @parameter value 期望的字符窜，与这个元素的文本进行比较<br>*/
 	public void verifyNotEqualText(String expected){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		String actual=getText();
+		message.append(this.comment+":");
 		if(actual==null){
 			if(expected==null){
 				message.append("文本不相同校验失败,预期和实际都是null");
@@ -673,10 +716,11 @@ public class Element implements LocatorValue{
 	 * 如果匹配则校验成功,程序继续执行，否则校验失败，程序退出<br>
 	 * @param regExpected 期望的字符窜，与这个元素的文本进行匹配<br>*/
 	public void assertRegMatchText(String regExpected){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		Pattern pattern=Pattern.compile(regExpected);
 		String actual=getText();
 		Matcher matcher=pattern.matcher(actual);
+		message.append(this.comment+":");
 		if(matcher.matches()){
 			message.append("正则匹配校验成功,预期的正则表达式为:"+regExpected+"|实际的文本值为:"+actual);
 			logger.info(message);
@@ -691,10 +735,11 @@ public class Element implements LocatorValue{
 	 * 否则校验失败，程序退出<br>
 	 * @parameter regExpected 期望的字符窜，与这个元素的文本进行匹配<br>*/
 	public void assertNotRegMatchText(String regExpected){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		Pattern pattern=Pattern.compile(regExpected);
 		String actual=getText();
 		Matcher matcher=pattern.matcher(actual);
+		message.append(this.comment+":");
 		if(matcher.matches()){
 			message.append("正则不匹配校验失败,预期的正则表达式为:"+regExpected+"|实际的文本值为:"+actual);
 			logger.info(message);
@@ -709,10 +754,11 @@ public class Element implements LocatorValue{
 	 * 否则校验失败，程序会继续运行，但是日志会给出错误信息<br>
 	 * @parameter regExpected 期望的字符窜，与这个元素的文本进行匹配<br>*/
 	public void verifyRegMatchText(String regExpected){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		Pattern pattern=Pattern.compile(regExpected);
 		String actual=getText();
 		Matcher matcher=pattern.matcher(actual);
+		message.append(this.comment+":");
 		if(matcher.matches()){
 			message.append("正则匹配校验成功,预期的正则表达式为:"+regExpected+"|实际的文本值为:"+actual);
 			logger.info(message);
@@ -725,10 +771,11 @@ public class Element implements LocatorValue{
 	 * 否则校验失败，但程序继续执行<br>
 	 * @parameter regExpected 期望的字符窜，与这个元素的文本进行匹配<br>*/
 	public void verifyNotRegMatchText(String regExpected){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		Pattern pattern=Pattern.compile(regExpected);
 		String actual=getText();
 		Matcher matcher=pattern.matcher(actual);
+		message.append(this.comment+":");
 		if(matcher.matches()){
 			message.append("正则不匹配校验失败,预期的正则表达式为:"+regExpected+"|实际的文本值为:"+actual);
 			logger.info(message);
@@ -742,10 +789,11 @@ public class Element implements LocatorValue{
 	 * @return 获取的属性信息，字符窜
 	 * */
 	public String getAttribute(String attributeName){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		String attribute=null;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				try{
 					attribute=((Selenium)currentWindow.getDriver().getEngine()).getAttribute(locator.getSeleniumCurrentLocator()+"@"+attributeName);
@@ -766,6 +814,7 @@ public class Element implements LocatorValue{
 				}
 			}
 		}else{
+			message.append(this.comment+":");
 			message.append("属性获取失败,找不到元素!");
 			logger.error(message);
 		}
@@ -775,8 +824,9 @@ public class Element implements LocatorValue{
 	 * 程序继续运行，否则校验失败，程序退出<br>
 	 * @parameter value 期望的字符窜，与这个元素的文本进行包含校验<br>*/
 	public void assertInclude(String value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		String actual=getText();
+		message.append(this.comment+":");
 		if(actual==null){
 			message.append("包含校验失败!获取元素的text为null!");
 			logger.error(message);
@@ -796,8 +846,9 @@ public class Element implements LocatorValue{
 	 * 程序继续运行，否则校验失败，程序继续执行<br>
 	 * @parameter value 期望的字符窜，与这个元素的文本进行包含校验<br>*/
 	public void verifyInclude(String value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		String actual=getText();
+		message.append(this.comment+":");
 		if(actual==null){
 			message.append("包含校验失败!获取元素的text为null!");
 			logger.error(message);
@@ -813,8 +864,9 @@ public class Element implements LocatorValue{
 	 * 程序退出，否则校验失败，程序继续运行<br>
 	 * @parameter value 期望的字符窜，与这个元素的文本进行不包含校验<br>*/
 	public void assertNotInclude(String value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		String actual=getText();
+		message.append(this.comment+":");
 		if(actual==null){
 			message.append("不包含校验失败!获取元素的text为null!");
 			logger.error(message);
@@ -834,8 +886,9 @@ public class Element implements LocatorValue{
 	 * 程序继续执行，否则校验失败，程序继续运行<br>
 	 * @parameter value 期望的字符窜，与这个元素的文本进行不包含校验<br>*/
 	public void verifyNotInclude(String value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		String actual=getText();
+		message.append(this.comment+":");
 		if(actual==null){
 			message.append("不包含校验失败!获取元素的text为null!");
 			logger.error(message);
@@ -851,10 +904,11 @@ public class Element implements LocatorValue{
 	 * 如果等待30s，仍然没有出现，则等待失败，但程序继续执行<br>
 	 * @param value 期待的文本*/
 	public void waitForText(String value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		int waitCount=0;
 		String actual=null;
 		if(waitForExist()){
+			message.append(this.comment+":");
 			while(waitCount++<ConfigConstValue.waitCount){
 				actual=getText();
 				if(actual==null)continue;
@@ -876,10 +930,11 @@ public class Element implements LocatorValue{
 	 * @param value 等待被包含的文本
 	 * */
 	public void waitForIncludeText(String value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		int waitCount=0;
 		String actual=null;
 		if(waitForExist()){
+			message.append(this.comment+":");
 			while(waitCount++<ConfigConstValue.waitCount){
 				actual=getText();
 				if(actual==null)continue;
@@ -898,8 +953,9 @@ public class Element implements LocatorValue{
 	/**android和iphone的单击<br>
 	 * 这个单击不能用selenium引擎，只能用webdriver引擎<br>*/
 	public void clickPhone(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		if(isExist()){
+			message.append(this.comment+":");
 			BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				message.append("您当前用的是selenium引擎，这个引擎不支持");
@@ -920,8 +976,9 @@ public class Element implements LocatorValue{
 	 * @param cssName css属性的名字
 	 * @return css属性的值*/
 	public String getCSSValue(String cssName){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		if(isExist()){
+			message.append(this.comment+":");
 			BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				message.append("您当前用的是selenium引擎，这个引擎不支持");
@@ -934,8 +991,9 @@ public class Element implements LocatorValue{
 	 * 获取此元素的大小
 	 * */
 	public Dimension getSize(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		if(isExist()){
+			message.append(this.comment+":");
 			BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				message.append("您当前用的是selenium引擎，这个引擎不支持");
@@ -951,6 +1009,7 @@ public class Element implements LocatorValue{
 	public Point getLocation(){
 		StringBuilder message=new StringBuilder(this.comment+":");
 		if(isExist()){
+			message.append(this.comment+":");
 			BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				message.append("您当前用的是selenium引擎，这个引擎不支持");

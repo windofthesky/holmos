@@ -21,6 +21,7 @@ public class WebDriverElementExist extends WebElementExist{
 	}
 	@Override
 	public boolean isElementExist(int waitCount){
+		initComment();
 		LocatorValue lastNode=infoChain.getInfoNodes().get(infoChain.getInfoNodes().size()-1);
 		if(lastNode instanceof Page || lastNode instanceof Frame){
 			return findOneLevelElement(waitCount);

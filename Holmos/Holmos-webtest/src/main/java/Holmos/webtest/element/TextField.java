@@ -17,9 +17,10 @@ public class TextField extends Element{
 	/**在此文本框里面输入value值，对value没有特殊要求<br>
 	 * @param value 要输入的value值*/
 	public void setText(String value){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).
 				type(locator.getSeleniumCurrentLocator(), value);
@@ -29,6 +30,7 @@ public class TextField extends Element{
 			message.append("设置值成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("设置值失败!找不到元素!");
 			logger.error(message);
 		}
@@ -37,10 +39,11 @@ public class TextField extends Element{
 	 * @return 输入框的内容，字符窜信息*/
 	@Override
 	public String getText(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		String content=null;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				content=((Selenium)currentWindow.getDriver().getEngine()).
 						getValue(locator.getSeleniumCurrentLocator());
@@ -50,6 +53,7 @@ public class TextField extends Element{
 			message.append("获得输入框文本内容成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("获得输入框文本内容失败!找不到元素");
 			logger.error(message);
 		}
@@ -59,9 +63,10 @@ public class TextField extends Element{
 	 * 清空输入框里面的内容
 	 * */
 	public void clear(){
-		StringBuilder message=new StringBuilder(this.comment+":");
+		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
+			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).type(locator.getSeleniumCurrentLocator(), "");
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -70,6 +75,7 @@ public class TextField extends Element{
 			message.append("输入框的值清空成功!");
 			logger.info(message);
 		}else{
+			message.append(this.comment+":");
 			message.append("输入框的值清空失败!找不到元素");
 			logger.error(message);
 		}

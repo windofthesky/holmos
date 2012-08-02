@@ -9,16 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
-
 import Holmos.webtest.basetools.file.MyFile;
 import Holmos.webtest.exceptions.HolmosFailedError;
+import Holmos.webtest.log.MyLogger;
 
 /**操作Properties文件的工具类
  * @author 吴银龙(15857164387)
  * */
 public class HolmosPropertiesTool {
-	private static Logger logger=Logger.getLogger(HolmosBaseTools.class);
+	private static MyLogger logger= MyLogger.getLogger(HolmosBaseTools.class);
 	static{
 		HolmosBaseTools.configLogProperties();
 	}

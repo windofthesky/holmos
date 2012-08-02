@@ -108,31 +108,31 @@ public class HolmosBaseTools {
 	/**变更Element变量的注释说明，在反射调动观察者的时候将这个变量的名字加到说明里面*/
 	public static void insertElementName(Element element,String name){
 		StringBuilder commentTemp=new StringBuilder(element.getComment());
-		commentTemp.insert(1, name);
+		commentTemp.append("["+name+"]");
 		element.setComment(commentTemp.toString());
 	}
 	/**变更SubPage变量的注释说明，在反射调动观察者的时候将这个变量的名字加到说明里面*/
 	public static void insertSubPageName(SubPage subpage,String name){
 		StringBuilder commentTemp=new StringBuilder(subpage.getComment());
-		commentTemp.insert(1, name);
+		commentTemp.append("["+name+"]");
 		subpage.setComment(commentTemp.toString());
 	}
 	/**变更Page变量的注释说明，在反射调动观察者的时候将这个变量的名字加到说明里面*/
 	public static void insertPageName(Page page,String name){
 		StringBuilder commentTemp=new StringBuilder(page.getComment());
-		commentTemp.insert(1, name);
+		commentTemp.append("["+name+"]");
 		page.setComment(commentTemp.toString());
 	}
 	/**变更Frame变量的注释说明，在反射调动观察者的时候将这个变量的名字加到说明里面*/
 	public static void insertFrameName(Frame frame,String name){
 		StringBuilder commentTemp=new StringBuilder(frame.getComment());
-		commentTemp.insert(1, name);
+		commentTemp.append("["+name+"]");
 		frame.setComment(commentTemp.toString());
 	}
 	/**变更Collection变量的注释说明，在反射调动观察者的时候将这个变量的名字加到说明里面*/
 	public static void insertCollectionName(Collection collection,String name){
-		StringBuilder commentTemp=new StringBuilder(collection.getComment());
-		commentTemp.insert(1, name);
+		StringBuilder commentTemp=new StringBuilder(collection.comment);
+		commentTemp.append("["+name+"]");
 		collection.setComment(commentTemp.toString());
 	}
 	

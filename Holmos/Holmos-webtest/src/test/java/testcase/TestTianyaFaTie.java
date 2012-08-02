@@ -33,11 +33,11 @@ public class TestTianyaFaTie {
 	}
 	@Test
 	public void getHuitieContents(){
-		HuitieContent huitieContent=new HuitieContent("D:\\data\\我把一切告诉你");
-		ArrayList<ArrayList<String>>contents=huitieContent.getContents();
-		for(ArrayList<String>content:contents){
-			huitieContent.outPutContent(content);
-			System.out.println("**************");
-		}
+//		HuitieContent huitieContent=new HuitieContent("D:\\data\\我把一切告诉你");
+//		ArrayList<ArrayList<String>>contents=huitieContent.getContents();
+//		for(ArrayList<String>content:contents){
+//			huitieContent.outPutContent(content);
+//			System.out.println("**************");
+//		}
 	}
 }
