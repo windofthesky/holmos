@@ -19,7 +19,7 @@ import Holmos.Holmos.plug.PSM.element.ElementInfo;
 
 public class ContainerInfo extends VariableInfo{
 
-	public ContainerInfo(String name, String comment, INFOTYPE type) {
+	public ContainerInfo(String name, String comment, VarType type) {
 		super(name, comment, type);
 	}
 	protected String importPath;
@@ -124,7 +124,7 @@ public class ContainerInfo extends VariableInfo{
 		ArrayList<String>containerFileContent=new ArrayList<String>();
 		containerFileContent.add(subpage.getPackagePath());
 		containerFileContent.add("");
-		containerFileContent.addAll(createNewContainerFile(subpage.name, INFOTYPE.SUBPAGE));
+		containerFileContent.addAll(createNewContainerFile(subpage.name, VarType.SUBPAGE));
 		subpage.fileOperationRobot.setFileContent(containerFileContent);
 		//更新本容器内容
 		this.createNewVariable(subpage);
@@ -134,7 +134,7 @@ public class ContainerInfo extends VariableInfo{
 	}
 	
 	/**获得一个新的container Java文件的内容*/
-	protected ArrayList<String>createNewContainerFile(String name,INFOTYPE type){
+	protected ArrayList<String>createNewContainerFile(String name,VarType type){
 		ArrayList<String>containerFileContent=new ArrayList<String>();
 		containerFileContent.add(ConstValue.STRUCTPACKAGEINFO);
 		containerFileContent.add(ConstValue.ELEMENTPACKAGEINFO);
@@ -181,7 +181,7 @@ public class ContainerInfo extends VariableInfo{
 		ArrayList<String>containerFileContent=new ArrayList<String>();
 		containerFileContent.add(collection.getPackagePath());
 		containerFileContent.add("");
-		containerFileContent.addAll(createNewContainerFile(collection.name, INFOTYPE.COLLECTION));
+		containerFileContent.addAll(createNewContainerFile(collection.name, VarType.COLLECTION));
 		//更新本容器内容
 		createNewVariable(collection);
 		//修改collections信息
@@ -721,7 +721,7 @@ public class ContainerInfo extends VariableInfo{
 		}
 		if(isSameAs(newContainer))
 			return;
-		if((type.equals(INFOTYPE.FRAME)&&!newContainer.type.equals(INFOTYPE.FRAME)&&
+		if((type.equals(VarType.FRAME)&&!newContainer.type.equals(VarType.FRAME)&&
 				((FrameInfo)this).frames.size()!=0)){
 			for(FrameInfo frame:((FrameInfo)this).frames){
 				((FrameInfo)this).removeFrame(frame.name);
@@ -759,37 +759,37 @@ public class ContainerInfo extends VariableInfo{
 			this.rename(newContainer.name);
 		}
 	}
-	private void changeParentContainerVariableOnly(INFOTYPE newType){
+	private void changeParentContainerVariableOnly(VarType newType){
 		if(parentContainer instanceof PageInfo){
-			if(type.equals(INFOTYPE.SUBPAGE)){
+			if(type.equals(VarType.SUBPAGE)){
 				((PageInfo)parentContainer).getSubpages().remove(this);
-			}else if(type.equals(INFOTYPE.COLLECTION)){
+			}else if(type.equals(VarType.COLLECTION)){
 				((PageInfo)parentContainer).getCollections().remove(this);
-			}else if(type.equals(INFOTYPE.FRAME)){
+			}else if(type.equals(VarType.FRAME)){
 				((PageInfo)parentContainer).getFrames().remove(this);
 			}
 			
-			if(newType.equals(INFOTYPE.SUBPAGE)){
+			if(newType.equals(VarType.SUBPAGE)){
 				((PageInfo)parentContainer).getSubpages().add((SubPageInfo) this);
-			}else if(newType.equals(INFOTYPE.COLLECTION)){
+			}else if(newType.equals(VarType.COLLECTION)){
 				((PageInfo)parentContainer).getCollections().add((CollectionInfo) this);
-			}else if(newType.equals(INFOTYPE.FRAME)){
+			}else if(newType.equals(VarType.FRAME)){
 				((PageInfo)parentContainer).getFrames().add((FrameInfo) this);
 			}
 		}else if(parentContainer instanceof ContainerInfo){
-			if(type.equals(INFOTYPE.SUBPAGE)){
+			if(type.equals(VarType.SUBPAGE)){
 				((PageInfo)parentContainer).getSubpages().remove(this);
-			}else if(type.equals(INFOTYPE.COLLECTION)){
+			}else if(type.equals(VarType.COLLECTION)){
 				((ContainerInfo)parentContainer).getCollections().remove(this);
-			}else if(type.equals(INFOTYPE.FRAME)){
+			}else if(type.equals(VarType.FRAME)){
 				((FrameInfo)parentContainer).getFrames().remove(this);
 			}
 			
-			if(newType.equals(INFOTYPE.SUBPAGE)){
+			if(newType.equals(VarType.SUBPAGE)){
 				((ContainerInfo)parentContainer).getSubpages().add((SubPageInfo) this);
-			}else if(newType.equals(INFOTYPE.COLLECTION)){
+			}else if(newType.equals(VarType.COLLECTION)){
 				((ContainerInfo)parentContainer).getCollections().add((CollectionInfo) this);
-			}else if(newType.equals(INFOTYPE.FRAME)){
+			}else if(newType.equals(VarType.FRAME)){
 				((FrameInfo)parentContainer).getFrames().add((FrameInfo) this);
 			}
 		}
