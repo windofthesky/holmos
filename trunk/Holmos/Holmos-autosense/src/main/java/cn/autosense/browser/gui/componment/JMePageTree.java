@@ -2,7 +2,6 @@ package cn.autosense.browser.gui.componment;
 
 import java.awt.event.MouseEvent;
 
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
 import lombok.Getter;
@@ -10,8 +9,7 @@ import cn.autosense.browser.data.InitDataBean;
 import cn.autosense.browser.gui.event.JMePageTreeActionAdapter;
 import cn.autosense.browser.gui.event.JMePageTreeMouseAdapter;
 import cn.autosense.browser.gui.render.JMePageTreeModel;
-import cn.autosense.browser.gui.render.PageNode;
-import cn.autosense.browser.util.PageType;
+import cn.autosense.browser.gui.render.VarNode;
 
 import com.breeze.core.util.UtilGUI;
 
@@ -59,7 +57,7 @@ public class JMePageTree extends JCScrollPane {
 			private static final long	serialVersionUID	= 1L;
 			public String getToolTipText(MouseEvent event) {
 				try {
-					PageNode node = (PageNode)tree.getPathForLocation(event.getX(), event.getY()).getLastPathComponent();
+					VarNode node = (VarNode)tree.getPathForLocation(event.getX(), event.getY()).getLastPathComponent();
 					// TODO
 					/*if(node.isRoot()) {
 						return "";
@@ -123,8 +121,12 @@ public class JMePageTree extends JCScrollPane {
     	if(rootPath.length() > 10) {
 			rootPath = rootPath.substring(0, 7) + "...";
 		}//"root(" + rootPath + ")"
-		PageNode rootNode = new PageNode(InitDataBean.getInstance().getDataExchange().getRootFolderInfo(), PageType.Folder);
-    	treeModel.setRoot(rootNode);
+		//VarNode rootNode = new VarNode(InitDataBean.getInstance().getDataExchange().root());
+		/*if(rootNode.hasChild()) {
+			rootNode.add(newChild)
+		}*/
+		// TODO 得到一级
+    	//treeModel.setRoot(rootNode);
     }
 
 	public static void main(String[] args) {

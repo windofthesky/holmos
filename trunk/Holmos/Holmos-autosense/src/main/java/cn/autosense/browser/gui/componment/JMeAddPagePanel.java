@@ -11,7 +11,7 @@ import javax.swing.JSeparator;
 import javax.swing.border.TitledBorder;
 
 import lombok.Getter;
-import cn.autosense.browser.util.PageType;
+import cn.autosense.plug.psm.type.VarType;
 
 import com.breeze.core.util.Util;
 
@@ -65,7 +65,7 @@ public class JMeAddPagePanel extends JPanel implements FocusListener {
 		add(typeLbl);
 		
 		typeCmb = new JCComboBox();
-		typeCmb.setModel(new DefaultComboBoxModel(PageType.values()));
+		typeCmb.setModel(new DefaultComboBoxModel(VarType.values()));
 		typeCmb.setBounds(76, 10, 145, 21);
 		add(typeCmb);
 		

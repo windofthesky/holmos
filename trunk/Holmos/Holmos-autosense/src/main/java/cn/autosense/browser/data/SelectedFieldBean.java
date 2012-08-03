@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import cn.autosense.plug.psm.INFOTYPE;
+import cn.autosense.plug.psm.type.VarType;
 
 /**
  * 
@@ -31,7 +31,7 @@ public class SelectedFieldBean implements Serializable {
     private String id;
     private String name;
     private String comment;
-    private INFOTYPE type;
+    private VarType type;
     private HtmlFiledBean fieldBean;
     
 }

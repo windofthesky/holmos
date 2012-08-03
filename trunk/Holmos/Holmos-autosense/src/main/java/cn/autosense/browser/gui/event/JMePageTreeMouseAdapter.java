@@ -5,13 +5,10 @@ import java.awt.event.MouseEvent;
 import java.util.List;
 
 import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
-import cn.autosense.browser.data.InitDataBean;
-import cn.autosense.browser.data.RuntimeDataBean;
 import cn.autosense.browser.gui.componment.JMePageTree;
-import cn.autosense.browser.gui.render.PageNode;
+import cn.autosense.browser.gui.render.VarNode;
 import cn.autosense.browser.util.CommonUtil;
 import craky.componentc.JCTree;
 
@@ -35,33 +32,26 @@ public class JMePageTreeMouseAdapter extends MouseAdapter {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		JTree tree = (JTree)e.getSource();
-		String selectPagePath = CommonUtil.getSelectTreePath(tree);
-		if(null != selectPagePath) {
-			//设置选择路径
-			RuntimeDataBean.getInstance().setSelectPagePath(selectPagePath);
-			
-			// 设置选择的节点名称
-			PageNode selectNode = (PageNode) tree.getLastSelectedPathComponent();
-//			if(!node.isRoot()) {
-//				RuntimeDataBean.getInstance().setSelectPageName(node.toString());
-//			}
-
-			// 增加子节点
-			List<String> fileNamesList = CommonUtil.readFileName(InitDataBean.getInstance().getRootPath() + selectPagePath);
-			
-			if(!fileNamesList.isEmpty()) {
-				pageTree.getTreeModel().insertNode(fileNamesList.toArray(new String[0]), selectNode);
-				tree.expandPath(tree.getSelectionPath());// 展开选择的节点
-			}
-
-			/*System.out.println(tree.getSelectionPath().getLastPathComponent().toString());
-			System.out.println(tree.getSelectionPath().getParentPath().toString());
-			System.out.println(tree.getSelectionPath().getPathCount());
-			System.out.println(tree.getSelectionPath().toString());
-			System.out.println(tree.getSelectionCount());
-			System.out.println(((DefaultMutableTreeNode)tree.getLastSelectedPathComponent()).isRoot());
-			System.out.println("!!!!!!!!!!!!!!!");*/
+		// 设置选择的节点名称
+		VarNode selectNode = (VarNode) tree.getLastSelectedPathComponent();
+		//String selectPagePath = CommonUtil.getSelectTreePath(tree);
+		if(null == selectNode) {
+			// TODO 选择的node为null
+			return;
 		}
+		if(selectNode.isRoot()) {
+			// TODO
+		}
+		
+		// 增加子节点
+		List<VarNode> children = CommonUtil.getChildNode(selectNode);
+		if(null != children) {
+			for (VarNode node : children) {
+				selectNode.add(node);
+			}
+		}
+		// 展开选择的节点
+		tree.expandPath(tree.getSelectionPath());
 	}
 
 	@Override
@@ -74,7 +64,7 @@ public class JMePageTreeMouseAdapter extends MouseAdapter {
 		tree.setSelectionPath(path);
 
 		if (e.getButton() == 3) {
-			if(((PageNode)tree.getLastSelectedPathComponent()).isRoot()) { // 根节点
+			if(((VarNode)tree.getLastSelectedPathComponent()).isRoot()) { // 根节点
 				setMenuItemVisiable(false);
 			} else {
 				setMenuItemVisiable(true);

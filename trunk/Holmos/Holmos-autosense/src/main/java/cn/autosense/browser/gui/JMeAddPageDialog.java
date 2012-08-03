@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 import lombok.Getter;
 import cn.autosense.browser.gui.componment.JMeAddPagePanel;
 import cn.autosense.browser.util.PageType;
+import cn.autosense.plug.psm.type.VarType;
 
 import com.breeze.core.util.Util;
 import com.breeze.core.util.UtilGUI;
@@ -75,8 +76,8 @@ public class JMeAddPageDialog extends JCDialog implements ActionListener {
 		return addPagePanel.getCommentTxf().getText();
 	}
 	
-	public PageType getPageType() {
-		return (PageType) addPagePanel.getTypeCmb().getSelectedItem();
+	public VarType getPageType() {
+		return (VarType) addPagePanel.getTypeCmb().getSelectedItem();
 	}
 	
 	/**
