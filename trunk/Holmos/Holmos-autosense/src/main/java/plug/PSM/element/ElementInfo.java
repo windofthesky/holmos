@@ -11,7 +11,7 @@ import Holmos.Holmos.plug.PSM.container.PageInfo;
 
 public class ElementInfo extends VariableInfo{
 
-	public ElementInfo(String name, String comment, INFOTYPE type) {
+	public ElementInfo(String name, String comment, VarType type) {
 		super(name, comment, type);
 	}
 	public void rename(String newName){

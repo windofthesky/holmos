@@ -17,7 +17,7 @@ import Holmos.Holmos.plug.PSM.element.ElementInfo;
 public class FrameInfo extends ContainerInfo{
 	protected List<FrameInfo>frames=new ArrayList<FrameInfo>();
 	public FrameInfo(String name, String comment) {
-		super(name, comment, INFOTYPE.FRAME);
+		super(name, comment, VarType.FRAME);
 	}
 	/**在此FrameInfo里面添加一个变量,名字为frameName,然后并且在框架默认的位置新建一个名字为frameName的Frame.java文件,里面没有包括任何元素:
 	 * <li>检查frameName是否合法,创建一个新的Frame.java文件,在框架指定的位置</li>
@@ -39,7 +39,7 @@ public class FrameInfo extends ContainerInfo{
 		ArrayList<String>containerFileContent=new ArrayList<String>();
 		containerFileContent.add(frame.getPackagePath());
 		containerFileContent.add("");
-		containerFileContent.addAll(createNewContainerFile(frameName, INFOTYPE.SUBPAGE));
+		containerFileContent.addAll(createNewContainerFile(frameName, VarType.SUBPAGE));
 		frame.fileOperationRobot.setFileContent(containerFileContent);
 		//更新本容器内容
 		this.createNewVariable(frame);

@@ -115,7 +115,7 @@ public class PageInfo implements NetPageInfo {
 		ArrayList<String>containerFileContent=new ArrayList<String>();
 		containerFileContent.add(subpage.getPackagePath());
 		containerFileContent.add("");
-		containerFileContent.addAll(createNewContainerFile(subpage.getName(), INFOTYPE.SUBPAGE));
+		containerFileContent.addAll(createNewContainerFile(subpage.getName(), VarType.SUBPAGE));
 		subpage.fileOperationRobot.setFileContent(containerFileContent);
 		//更新本容器内容
 		this.createNewVariable(subpage);
@@ -139,7 +139,7 @@ public class PageInfo implements NetPageInfo {
 		this.fileOperationRobot.setFileContent(containerFileContent);
 	}
 	/**获得一个新的container Java文件的内容*/
-	protected ArrayList<String>createNewContainerFile(String name,INFOTYPE type){
+	protected ArrayList<String>createNewContainerFile(String name,VarType type){
 		ArrayList<String>containerFileContent=new ArrayList<String>();
 		containerFileContent.add(ConstValue.STRUCTPACKAGEINFO);
 		containerFileContent.add(ConstValue.ELEMENTPACKAGEINFO);
@@ -174,7 +174,7 @@ public class PageInfo implements NetPageInfo {
 		ArrayList<String>containerFileContent=new ArrayList<String>();
 		containerFileContent.add(collection.getPackagePath());
 		containerFileContent.add("");
-		containerFileContent.addAll(createNewContainerFile(collection.getName(), INFOTYPE.SUBPAGE));
+		containerFileContent.addAll(createNewContainerFile(collection.getName(), VarType.SUBPAGE));
 		collection.fileOperationRobot.setFileContent(containerFileContent);
 		//更新本容器内容
 		createNewVariable(collection);
@@ -704,7 +704,7 @@ public class PageInfo implements NetPageInfo {
 		ArrayList<String>containerFileContent=new ArrayList<String>();
 		containerFileContent.add(frame.getPackagePath());
 		containerFileContent.add("");
-		containerFileContent.addAll(createNewContainerFile(frameName, INFOTYPE.SUBPAGE));
+		containerFileContent.addAll(createNewContainerFile(frameName, VarType.SUBPAGE));
 		frame.fileOperationRobot.setFileContent(containerFileContent);
 		//更新本容器内容
 		this.createNewVariable(frame);
