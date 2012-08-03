@@ -27,14 +27,14 @@ public class InitDataBean implements Serializable {
 
     private static InitDataBean bean;
     private Properties initInfo;
-    @Getter
-    private IDataExchange dataExchange;
+    //@Getter
+    //private IDataExchange dataExchange;
     //@Getter
     //private String initNodeStr;
 
     private InitDataBean() {
         initInfo = CommonUtil.loadProperties(Const.INIT_FILE);
-        dataExchange = DataExchangeFactory.build(getDataExchangeClassName());
+        //dataExchange = DataExchangeFactory.build(getDataExchangeClassName());
         //initNodeStr = dataExchange.loadFolderPageInfo(getRootPath());
     }
 

@@ -25,9 +25,9 @@ public class RuntimeDataBean implements Serializable {
 	private static RuntimeDataBean bean;
 	@Getter
     private Map<String, SelectedFieldBean> selectedData;
-	@Getter
-	@Setter
-	private String selectPagePath;
+//	@Getter
+//	@Setter
+//	private String selectPagePath;
 //	@Getter
 //	@Setter
 //	private String selectPageName;

@@ -7,8 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import cn.autosense.browser.data.ComponentBean;
 import cn.autosense.browser.data.InitDataBean;
-import cn.autosense.browser.data.RuntimeDataBean;
 import cn.autosense.browser.gui.componment.JMeFieldCollectionPanel;
 import cn.autosense.browser.util.CommonUtil;
 
@@ -71,11 +71,12 @@ public class JMeFieldHtmlAdapter implements ActionListener {
 		fieldHtmlPanel.getTypeCmb().setSelectedIndex(0);
 		table.updateUI();
 		// 在文件中删除该元素
-		String selectPagePath = RuntimeDataBean.getInstance().getSelectPagePath();
+		String selectPagePath = ComponentBean.getInstance().getPageTreePanel().getSelectNodePath();
     	if(Util.strIsNullOrEmpty(selectPagePath)) {
     		JOptionPane.showMessageDialog(null, "请先选择page!", "警告", JOptionPane.WARNING_MESSAGE);
     	}else {
-    		InitDataBean.getInstance().getDataExchange().removeElement(selectPagePath, table.getModel().getValueAt(selectRowCount, 0).toString());
+    		// TODO
+    		//InitDataBean.getInstance().getDataExchange().removeElement(selectPagePath, table.getModel().getValueAt(selectRowCount, 0).toString());
     	}
 		
 	}
@@ -92,11 +93,12 @@ public class JMeFieldHtmlAdapter implements ActionListener {
 			CommonUtil.clearTable((DefaultTableModel) fieldHtmlPanel.getSelectedElementTable()
 					.getModel());
 			// 文件中删除
-			String selectPagePath = RuntimeDataBean.getInstance().getSelectPagePath();
+			String selectPagePath = ComponentBean.getInstance().getPageTreePanel().getSelectNodePath();
 	    	if(Util.strIsNullOrEmpty(selectPagePath)) {
 	    		JOptionPane.showMessageDialog(null, "请先选择page!", "警告", JOptionPane.WARNING_MESSAGE);
 	    	}else {
-	    		InitDataBean.getInstance().getDataExchange().removeAllElements(selectPagePath);
+	    		// TODO
+	    		//InitDataBean.getInstance().getDataExchange().removeAllElements(selectPagePath);
 	    	}
 		} else {
 			return;

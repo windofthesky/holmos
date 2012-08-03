@@ -46,5 +46,9 @@ public class JMePageTreePanel extends JPanel {
 		
 		ComponentBean.getInstance().setPageTreePanel(this);
 	}
+	
+	public String getSelectNodePath() {
+		return pageSelectTextField.getTextField().getText();
+	}
 
 }

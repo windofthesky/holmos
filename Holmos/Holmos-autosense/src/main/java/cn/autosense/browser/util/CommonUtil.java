@@ -21,6 +21,8 @@ import org.nutz.lang.Files;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import cn.autosense.browser.gui.render.VarNode;
+
 /**
  * 
  * @author MashupEye(mashupeye@gmail.com)<br>
@@ -135,6 +137,11 @@ public class CommonUtil {
             }
         }
     }
+    
+    public static List<VarNode> getChildNode(VarNode node) {
+    	return null;
+    }
+    
 
     /**
      * 读取目录下面一级的所有文件或者文件夹名称

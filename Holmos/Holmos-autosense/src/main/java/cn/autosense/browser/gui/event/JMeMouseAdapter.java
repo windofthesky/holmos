@@ -27,7 +27,7 @@ import cn.autosense.browser.data.RuntimeDataBean;
 import cn.autosense.browser.data.SelectedFieldBean;
 import cn.autosense.browser.gui.componment.JMeWebBrowser;
 import cn.autosense.browser.util.CommonUtil;
-import cn.autosense.plug.psm.INFOTYPE;
+import cn.autosense.plug.psm.type.VarType;
 
 import com.breeze.core.util.Util;
 import com.breeze.core.util.UtilGUI;
@@ -66,14 +66,13 @@ public class JMeMouseAdapter extends MouseAdapter {
 	        	RuntimeDataBean.getInstance().putSelectedFieldBean(fieldBean);
 	        	String data = new Gson().toJson(fieldBean, new TypeToken<SelectedFieldBean>() {}.getType());
 	        	
-	        	String selectPagePath = RuntimeDataBean.getInstance().getSelectPagePath();
-	        	//String selectPageName = RuntimeDataBean.getInstance().getSelectPageName();
-	        	//if(Util.strIsNullOrEmpty(selectPagePath) || Util.strIsNullOrEmpty(selectPageName)) {
+	        	String selectPagePath = ComponentBean.getInstance().getPageTreePanel().getSelectNodePath();
 	        	if(Util.strIsNullOrEmpty(selectPagePath)) {
 	        		JOptionPane.showMessageDialog(null, "请先选择page!", "警告", JOptionPane.WARNING_MESSAGE);
 	        	}else {
 	        		putDataToSelectedFieldPanel(fieldBean);
-	        		InitDataBean.getInstance().getDataExchange().addElement(selectPagePath, data);
+	        		// TODO
+	        		//InitDataBean.getInstance().getDataExchange().addElement(selectPagePath, data);
 	        	}
 	        }
         } else {
@@ -121,7 +120,7 @@ public class JMeMouseAdapter extends MouseAdapter {
 
     	if (!Util.strIsNullOrEmpty(selectedBean.getHtml())) {
     		String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-    		fieldBean = new SelectedFieldBean(uuid, createElementName(selectedBean, uuid), "", INFOTYPE.getInfoType(selectedBean.getTagName()), selectedBean);
+    		fieldBean = new SelectedFieldBean(uuid, createElementName(selectedBean, uuid), "", VarType.getInfoType(selectedBean.getTagName()), selectedBean);
     	}
     	return fieldBean;
     }

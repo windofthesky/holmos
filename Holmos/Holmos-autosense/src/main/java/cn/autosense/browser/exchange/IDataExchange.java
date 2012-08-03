@@ -3,8 +3,8 @@ package cn.autosense.browser.exchange;
 import cn.autosense.browser.exchange.util.CatalogDataType;
 import cn.autosense.browser.exchange.util.CreateReturnInfo;
 import cn.autosense.browser.exchange.util.ReturnInfo;
-import cn.autosense.browser.gui.render.PageNode;
-import cn.autosense.plug.psm.folder.FolderInfo;
+import cn.autosense.browser.gui.render.VarNode;
+import cn.autosense.plug.psm.impl.FolderInfo;
 
 /**
  * 根据传入的CatalogPathType, 决定整个类中的data是什么格式的.
@@ -17,26 +17,31 @@ import cn.autosense.plug.psm.folder.FolderInfo;
  * 
  */
 public interface IDataExchange {
-	
+
 	public String getSelectPagePath();
+
 	public void setSelectPagePath(String selectPagePath);
 
 	public CatalogDataType getCatalogDataType();
+
 	public void setCatalogDataType(CatalogDataType type);
-	
-	public FolderInfo getRootFolderInfo();
+
+	public FolderInfo root();
 
 	/**
 	 * 根据参数目录得到该目录下所有的目录和文件结构
+	 * 
 	 * @param rootPath
 	 * @return
 	 */
-	public ReturnInfo loadInfo(PageNode selectNode);
+	public ReturnInfo loadInfo(VarNode selectNode);
 
 	public CreateReturnInfo addVariable(String parentPagePath, String jsondata);
-	
-	////////////////////////////////////////////////////////////////////
+
+	// //////////////////////////////////////////////////////////////////
 	public void addElement(String pagePath, String jsondata);
+
 	public void removeElement(String pageNamePath, String elementName);
+
 	public void removeAllElements(String pageNamePath);
 }

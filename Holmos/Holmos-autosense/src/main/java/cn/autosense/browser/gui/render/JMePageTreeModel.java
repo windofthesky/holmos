@@ -7,9 +7,7 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreeNode;
 
-import cn.autosense.browser.util.PageType;
-import cn.autosense.plug.psm.VariableInfo;
-import cn.autosense.plug.psm.folder.FolderInfo;
+import cn.autosense.plug.psm.VarInfo;
 
 import com.breeze.core.util.UtilGUI;
 
@@ -36,47 +34,31 @@ public class JMePageTreeModel extends DefaultTreeModel {
 		super(root);
 	}
 	
-	public void insertNodeInto(PageNode node, PageNode parent, int index) {
+	public void insertNodeInto(VarNode node, VarNode parent, int index) {
 		insertNodeInto(node, parent, index);
 	}
+	
+	public void insertNode(VarInfo[] varInfos, MutableTreeNode parent) {
+		boolean hasNode = false;
+		for (VarInfo info : varInfos) {
+			int childCount = parent.getChildCount();
+			for (int i = 0; i < childCount; i++) {
+				if(info.equals(parent.getChildAt(i).toString())) {
+					hasNode = true;
+					break;
+				}
+			}
+			if(!hasNode || childCount == 0) {
+				insertNodeInto(new VarNode(info), parent, childCount);
+			}
+		}
+	}
 
-	public void insertNode(FolderInfo[] folderInfos, MutableTreeNode parent) {
-		boolean hasNode = false;
-		for (FolderInfo info : folderInfos) {
-			int childCount = parent.getChildCount();
-			for (int i = 0; i < childCount; i++) {
-				if(info.equals(parent.getChildAt(i).toString())) {
-					hasNode = true;
-					break;
-				}
-			}
-			if(!hasNode || childCount == 0) {
-				insertNodeInto(new PageNode(info, PageType.Folder), parent, childCount);
-			}
-		}
-	}
-	
-	public void insertNode(VariableInfo[] variableInfos, MutableTreeNode parent) {
-		boolean hasNode = false;
-		for (VariableInfo info : variableInfos) {
-			int childCount = parent.getChildCount();
-			for (int i = 0; i < childCount; i++) {
-				if(info.equals(parent.getChildAt(i).toString())) {
-					hasNode = true;
-					break;
-				}
-			}
-			if(!hasNode || childCount == 0) {
-				insertNodeInto(new PageNode(info, PageType.Folder), parent, childCount);
-			}
-		}
-	}
-	
+	////////////////////////
 	public static void main(String[] args) {
-		
 		JMePageTreeModel model = new JMePageTreeModel();
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode("root");
-		String[] nodes = {"aaaa", "bbbb"};
+		//String[] nodes = {"aaaa", "bbbb"};
 		//model.insertNode(nodes, root);
 		
 		model.setRoot(root);

@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import cn.autosense.plug.psm.NetPageInfo;
+import plug.PSM.NetPageInfo;
+import cn.autosense.plug.psm.VarInfo;
 
 /**
  * 创建各种Info返回信息
@@ -25,7 +26,7 @@ public class CreateReturnInfo implements Serializable {
 	/*private VariableInfo varInfo;
 	private PageInfo pageInfo;
 	private FolderInfo folderInfo;*/
-	private NetPageInfo info;
+	private VarInfo info;
 	private ErrorType type;
 
 	public CreateReturnInfo(ErrorType type) {
@@ -47,7 +48,7 @@ public class CreateReturnInfo implements Serializable {
 		this.folderInfo = folderInfo;
 		this.type = ErrorType.OK;
 	}*/
-	public CreateReturnInfo(NetPageInfo info) {
+	public CreateReturnInfo(VarInfo info) {
 		super();
 		this.info = info;
 		this.type = ErrorType.OK;

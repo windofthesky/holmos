@@ -3,6 +3,7 @@ package cn.autosense.browser.exchange.impl.holmos;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import plug.PSM.PSMTool;
 import cn.autosense.browser.data.RuntimeDataBean;
 import cn.autosense.browser.exchange.IDataExchange;
 import cn.autosense.browser.exchange.util.CatalogDataType;
@@ -10,11 +11,10 @@ import cn.autosense.browser.exchange.util.CreateReturnInfo;
 import cn.autosense.browser.exchange.util.ErrorType;
 import cn.autosense.browser.exchange.util.PageData;
 import cn.autosense.browser.exchange.util.ReturnInfo;
-import cn.autosense.browser.gui.render.PageNode;
+import cn.autosense.browser.gui.render.VarNode;
 import cn.autosense.browser.util.PageType;
-import cn.autosense.plug.psm.PSMTool;
-import cn.autosense.plug.psm.container.PageInfo;
-import cn.autosense.plug.psm.folder.FolderInfo;
+import cn.autosense.plug.psm.impl.FolderInfo;
+import cn.autosense.plug.psm.impl.PageInfo;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -50,12 +50,12 @@ public class HolmosDataExchangeSupport implements IDataExchange {
 	}
 
 	@Override
-	public FolderInfo getRootFolderInfo() {
+	public FolderInfo root() {
 		return pageStore;
 	}
 	
 	@Override
-	public ReturnInfo loadInfo(PageNode selectNode) {
+	public ReturnInfo loadInfo(VarNode selectNode) {
 		PageType type = selectNode.getType();
 		switch (type) {
 		case Page:
