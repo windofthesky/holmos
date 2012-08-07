@@ -6,11 +6,11 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import cn.autosense.plug.psm.container.CollectionInfo;
-import cn.autosense.plug.psm.container.FrameInfo;
-import cn.autosense.plug.psm.container.PageInfo;
-import cn.autosense.plug.psm.container.SubPageInfo;
-import cn.autosense.plug.psm.folder.FolderInfo;
+import plug.PSM.container.FrameInfo;
+import cn.autosense.plug.psm.CollectionInfo;
+import cn.autosense.plug.psm.impl.FolderInfo;
+import cn.autosense.plug.psm.impl.PageInfo;
+import cn.autosense.plug.psm.impl.SubPageInfo;
 
 /**
  * 
