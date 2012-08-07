@@ -82,6 +82,7 @@ public class HolmosBaseTools {
 		try{
 			InputStream in = new BufferedInputStream (new FileInputStream(ConfigConstValue.HOLMOSCONFFILE));
 			properties.load(in);
+			in.close();
 			return HolmosPropertiesTool.getValue(properties, "screenShotDir");
 		}catch(IOException e){
 			throw new HolmosFailedError("holmos框架配置文件找不到!"); 
