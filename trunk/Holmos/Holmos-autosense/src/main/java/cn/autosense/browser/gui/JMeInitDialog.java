@@ -17,7 +17,7 @@ import cn.autosense.browser.data.InitDataBean;
 import com.breeze.core.util.UtilGUI;
 
 import craky.componentc.JCButton;
-import craky.componentc.JCFrame;
+import craky.componentc.JCDialog;
 import craky.componentc.JCLabel;
 import craky.componentc.JCTextField;
 
@@ -30,7 +30,7 @@ import craky.componentc.JCTextField;
  *          Remark:<br>
  * 
  */
-public class JMeInitFrame extends JCFrame implements ActionListener {
+public class JMeInitDialog extends JCDialog implements ActionListener {
 	/**
 	 * 
 	 */
@@ -54,7 +54,7 @@ public class JMeInitFrame extends JCFrame implements ActionListener {
 	@Getter
 	private JCButton cancelBtn;
 
-	public JMeInitFrame() {
+	public JMeInitDialog() {
 		UtilGUI.setScreenCenter(this);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setVisible(true);
@@ -131,6 +131,6 @@ public class JMeInitFrame extends JCFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
-		new JMeInitFrame();
+		new JMeInitDialog();
 	}
 }

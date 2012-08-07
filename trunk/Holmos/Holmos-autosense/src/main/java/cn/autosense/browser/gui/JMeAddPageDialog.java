@@ -11,7 +11,6 @@ import javax.swing.border.EmptyBorder;
 
 import lombok.Getter;
 import cn.autosense.browser.gui.componment.JMeAddPagePanel;
-import cn.autosense.browser.util.PageType;
 import cn.autosense.plug.psm.type.VarType;
 
 import com.breeze.core.util.Util;
