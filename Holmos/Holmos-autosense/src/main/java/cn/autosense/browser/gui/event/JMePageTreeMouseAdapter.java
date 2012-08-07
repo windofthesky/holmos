@@ -10,6 +10,7 @@ import javax.swing.tree.TreePath;
 import cn.autosense.browser.gui.componment.JMePageTree;
 import cn.autosense.browser.gui.render.VarNode;
 import cn.autosense.browser.util.CommonUtil;
+import cn.autosense.plug.psm.VarInfo;
 import craky.componentc.JCTree;
 
 /**
@@ -44,11 +45,9 @@ public class JMePageTreeMouseAdapter extends MouseAdapter {
 		}
 		
 		// 增加子节点
-		List<VarNode> children = CommonUtil.getChildNode(selectNode);
+		List<VarInfo> children = CommonUtil.getChildInfo(selectNode.getInfo());
 		if(null != children) {
-			for (VarNode node : children) {
-				selectNode.add(node);
-			}
+			selectNode.addAllInfo(children);
 		}
 		// 展开选择的节点
 		tree.expandPath(tree.getSelectionPath());

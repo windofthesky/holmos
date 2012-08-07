@@ -73,7 +73,7 @@ public class JMeMainFrame extends JFrame implements Const {
                     UtilGUI.getUI();
                     String rootPath = InitDataBean.getInstance().getRootPath();
                     if(Util.strIsNullOrEmpty(rootPath)) {
-                    	new JMeInitFrame();
+                    	new JMeInitDialog();
                     } else {
                     	new JMeMainFrame();
                     }

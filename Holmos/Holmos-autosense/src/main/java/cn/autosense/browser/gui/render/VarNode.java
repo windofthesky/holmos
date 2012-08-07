@@ -1,6 +1,7 @@
 package cn.autosense.browser.gui.render;
 
 import java.util.Enumeration;
+import java.util.List;
 
 import javax.swing.Icon;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -53,10 +54,18 @@ public class VarNode extends DefaultMutableTreeNode {
 			}
 		}
 	}
-	
-	/*public void add(VarNode newChild) {
-		super.add(newChild);
-	}*/
+
+	public void addAll(List<VarNode> children) {
+		for (VarNode node : children) {
+			add(node);
+		}
+	}
+
+	public void addAllInfo(List<VarInfo> infoList) {
+		for (VarInfo info : infoList) {
+			add(new VarNode(info));
+		}
+	}
 
 	@Override
 	@SuppressWarnings("unchecked")
