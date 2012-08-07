@@ -21,7 +21,7 @@ import org.nutz.lang.Files;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import cn.autosense.browser.gui.render.VarNode;
+import cn.autosense.plug.psm.VarInfo;
 
 /**
  * 
@@ -138,7 +138,8 @@ public class CommonUtil {
         }
     }
     
-    public static List<VarNode> getChildNode(VarNode node) {
+    public static List<VarInfo> getChildInfo(VarInfo info) {
+    	// TODO
     	return null;
     }
     

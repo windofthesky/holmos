@@ -15,10 +15,15 @@ import cn.autosense.plug.data.LocatorInfo;
 public interface ElementInfo extends VarInfo {
 
 	/**
-	 * 获得元素的信息
-	 * @param name
-	 * @param value
+	 * 获得元素的定位信息
+	 * @return
 	 */
-	LocatorInfo getLocatorInfo(String name);
+	LocatorInfo getLocatorInfo();
+
+	/**
+	 * 设置元素的定位信息
+	 * @param locatorInfo
+	 */
+	void setLocatorInfo(LocatorInfo locatorInfo);
 
 }

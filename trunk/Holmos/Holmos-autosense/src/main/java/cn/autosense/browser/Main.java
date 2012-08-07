@@ -4,7 +4,7 @@ import javax.swing.SwingUtilities;
 
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import cn.autosense.browser.data.InitDataBean;
-import cn.autosense.browser.gui.JMeInitFrame;
+import cn.autosense.browser.gui.JMeInitDialog;
 import cn.autosense.browser.gui.JMeMainFrame;
 
 import com.breeze.core.util.Util;
@@ -22,6 +22,19 @@ import com.breeze.core.util.UtilGUI;
 public class Main {
 
 	public static void main(String[] args) {
+		/*try {
+			javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (javax.swing.UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
+		JFrame.setDefaultLookAndFeelDecorated(true);*/
+		
         NativeInterface.open();
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -30,7 +43,7 @@ public class Main {
                     UtilGUI.getUI();
                     String rootPath = InitDataBean.getInstance().getRootPath();
                     if(Util.strIsNullOrEmpty(rootPath)) {
-                    	new JMeInitFrame(); // 初始化设置窗口
+                    	new JMeInitDialog(); // 初始化设置窗口
                     } else {
                     	new JMeMainFrame(); // 主窗口
                     }
