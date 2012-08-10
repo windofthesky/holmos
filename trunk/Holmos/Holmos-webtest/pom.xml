@@ -3,13 +3,23 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>Holmos</artifactId>
-		<groupId>Holmos</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<artifactId>holmos</artifactId>
+		<groupId>com.holmos</groupId>
+		<version>1.0.0</version>
 		<relativePath>..</relativePath>
 	</parent>
-	<artifactId>Holmos-webtest</artifactId>
+	<url>http://www.holmos.com</url>
+	<artifactId>holmos-webtest</artifactId>
 	<name>Holmos-webtest</name>
+
+	<licenses>
+	    <license>
+	      <name>The Apache Software License, Version 2.0</name>
+	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	      <distribution>repo</distribution>
+	    </license>
+    </licenses>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -40,6 +50,7 @@
 			</resource>
 		</resources>
 	</build>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>

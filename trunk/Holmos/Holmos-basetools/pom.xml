@@ -1,16 +1,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>Holmos</artifactId>
-    <groupId>Holmos</groupId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>holmos</artifactId>
+    <groupId>com.holmos</groupId>
+    <version>1.0.0</version>
     <relativePath>..</relativePath>
   </parent>
-  <name>Holmos-basetools</name>
-  <artifactId>Holmos-basetools</artifactId>
+  <name>holmos-basetools</name>
+  <artifactId>holmos-basetools</artifactId>
+  <url>http://www.holmos.com</url>
+
+	<licenses>
+	    <license>
+	      <name>The Apache Software License£¬ Version 2.0</name>
+	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	      <distribution>repo</distribution>
+	    </license>
+    </licenses>
 
   <dependencies>
-		
 	<dependency>
 			<groupId>Holmos</groupId>
 			<artifactId>Holmos-webtest</artifactId>
@@ -19,8 +27,8 @@
 	<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
-		</dependency>
-	</dependencies>
+	</dependency>
+  </dependencies>
 	
 
 </project>
