@@ -1,13 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-	  <artifactId>Holmos</artifactId>
-	  <groupId>Holmos</groupId>
-	  <version>0.0.1-SNAPSHOT</version>
+	  <artifactId>holmos</artifactId>
+	  <groupId>com.holmos</groupId>
+	  <version>1.0.0</version>
 	  <relativePath>..</relativePath>
 	</parent>
-	<artifactId>Holmos-autosense</artifactId>
-  
+	<artifactId>holmos-autosense</artifactId>
+	<name>Holmos-autosense</name>
+	<url>http://www.holmos.com</url>
+
+	<licenses>
+	    <license>
+	      <name>The Apache Software License， Version 2.0</name>
+	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	      <distribution>repo</distribution>
+	    </license>
+    </licenses>
+	
 	<dependencies>
 	    <dependency>
 			<groupId>org.apache.velocity</groupId>
@@ -17,7 +27,6 @@
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-tools</artifactId>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
