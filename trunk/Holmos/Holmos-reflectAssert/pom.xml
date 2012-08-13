@@ -2,8 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>holmos</artifactId>
 		<groupId>com.holmos</groupId>
+		<artifactId>holmos</artifactId>
 		<version>1.0.0</version>
 		<relativePath>..</relativePath>
 	</parent>
@@ -25,18 +25,28 @@
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
+			<version>2.4</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
+			<version>1.1</version>
+			<type>pom</type>
 		</dependency>
 		<dependency>
+<<<<<<< .mine
+			<groupId>Holmos</groupId>
+			<artifactId>Holmos-webtest</artifactId>
+			<version>1.0.0</version>
+=======
 			<groupId>com.holmos</groupId>
 			<artifactId>holmos-webtest</artifactId>
+>>>>>>> .r88
 		</dependency>
 	</dependencies>
 </project>
