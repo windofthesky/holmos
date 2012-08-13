@@ -7,13 +7,15 @@
 		<version>1.0.0</version>
 		<relativePath>..</relativePath>
 	</parent>
+	<groupId>com.holmos</groupId>
 	<artifactId>holmos-reflectAssert</artifactId>
 	<name>Holmos-reflectAssert</name>
 	<url>http://www.holmos.com</url>
+	<packaging>jar</packaging>
 
 	<licenses>
 	    <license>
-	      <name>The Apache Software License�� Version 2.0</name>
+	      <name>The Apache Software License, Version 2.0</name>
 	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 	      <distribution>repo</distribution>
 	    </license>
@@ -33,9 +35,8 @@
 			<artifactId>commons-logging</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>Holmos</groupId>
-			<artifactId>Holmos-webtest</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<groupId>com.holmos</groupId>
+			<artifactId>holmos-webtest</artifactId>
 		</dependency>
 	</dependencies>
 </project>
