@@ -51,5 +51,6 @@ public class ConfigConstValue {
 	public static final String ENABLED=".enable";
 	/**Holmos框架HolmosModule类实现的类路径*/
 	public static final String HOLMOS_MODULE_CLASS_PATH="Holmos.Holmos.testlistener.modules.imp.";
-
+	/**autoIt3x.dll文件地址*/
+	public static String AUTOITDLLPATH;
 }
