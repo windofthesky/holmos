@@ -54,6 +54,30 @@ public class HolmosWindow {
 			}
 		}
 	}
+	/**
+	 * 在当前窗口执行这段js，传入的参数为paras,只对webdriver类型的窗口生效
+	 * @param javascript 待执行的javascript脚本
+	 * @param paras 执行js时候传入的参数列表
+	 * */
+	public static void runJavaScript(String javascript,Object...paras){
+		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
+		if(currentWindow instanceof SeleniumBrowserWindow){
+			try{
+				((Selenium)currentWindow.getDriver().getEngine()).getEval(javascript);
+				logger.info(javascript+"执行成功!");
+			}catch(Exception e){
+				logger.error(javascript+"执行失败!");
+			}
+		}else if(currentWindow instanceof WebDriverBrowserWindow){
+			try{
+				JavascriptExecutor executor=(JavascriptExecutor)(WebDriver)currentWindow.getDriver().getEngine();
+				executor.executeScript(javascript,paras);
+				logger.info(javascript+"执行成功!");
+			}catch (Exception e) {
+				logger.error(javascript+"执行失败!");
+			}
+		}
+	}
 	/**移动当前窗口至(xLocation,xLocation)<br>
 	 * @param xLocation x坐标
 	 * @param yLocation y坐标

@@ -1019,4 +1019,19 @@ public class Element implements LocatorValue{
 		}
 		return null;
 	}
+	/**
+	 * 高亮显示此Element
+	 * */
+	public void highLight(){
+		if(isExist()){
+			BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
+			if(currentWindow instanceof SeleniumBrowserWindow){
+				Selenium selenium=(Selenium) currentWindow.getDriver().getEngine();
+				selenium.highlight(locatorCurrent);
+			}else if(currentWindow instanceof WebDriverBrowserWindow){
+				HolmosWindow.runJavaScript("arguments[0].style.border = \"5px solid yellow\"",element);
+			}
+			
+		}
+	}
 }
