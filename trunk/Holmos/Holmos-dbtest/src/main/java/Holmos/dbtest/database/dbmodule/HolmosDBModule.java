@@ -21,7 +21,6 @@ import org.dbunit.database.DatabaseConfig;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.datatype.IDataTypeFactory;
 
-import Holmos.basetools.HolmosAnnotationTool;
 import Holmos.dbtest.database.DBToolBoxFactory;
 import Holmos.dbtest.database.HolmosDataBaseTools;
 import Holmos.dbtest.database.annotation.HolmosDataSet;

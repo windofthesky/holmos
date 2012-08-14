@@ -5,9 +5,9 @@ import java.sql.DatabaseMetaData;
 import java.util.Properties;
 import java.util.Set;
 
-import Holmos.basetools.HolmosPropertiesTool;
 import Holmos.dbtest.database.operation.SQLOperation;
-import Holmos.exceptions.HolmosFailedError;
+import Holmos.webtest.basetools.HolmosPropertiesTool;
+import Holmos.webtest.exceptions.HolmosFailedError;
 
 /**
  * 数据库的工具方法支持类就是工具箱，提供了对数据库的一些常规的不针对特定表的操作,比如说获得这个连接的数据库的所有表名，所有列名<p>

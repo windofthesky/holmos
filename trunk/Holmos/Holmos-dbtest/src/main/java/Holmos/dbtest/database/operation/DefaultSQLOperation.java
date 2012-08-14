@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 import org.apache.log4j.Logger;
 
 import Holmos.dbtest.database.HolmosDataBaseTools;
-import Holmos.exceptions.HolmosFailedError;
+import Holmos.webtest.exceptions.HolmosFailedError;
 public class DefaultSQLOperation implements SQLOperation{
 	private static Logger logger=Logger.getLogger(DefaultSQLOperation.class);
 	

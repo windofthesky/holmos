@@ -6,7 +6,7 @@ import org.dbunit.dataset.IDataSet;
 import org.dbunit.operation.DatabaseOperation;
 
 import Holmos.dbtest.database.connecion.HolmosDataBaseConnection;
-import Holmos.exceptions.HolmosFailedError;
+import Holmos.webtest.exceptions.HolmosFailedError;
 
 /**数据库测试的时候，将数据源中的在指定连接的数据库表中存在的数据删掉
  * @author 吴银龙(1585714387)
