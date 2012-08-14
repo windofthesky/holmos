@@ -1,17 +1,17 @@
 package Holmos.webtest.log;
 public class MyLogger{
 	private String name;
-	private Class clazz;
+	private Class<?> clazz;
 	protected MyLogger(String name) {
 		this.name=name;
 	}
 	public static MyLogger getLogger(String name){
 		return new MyLogger(name);
 	}
-	public static MyLogger getLogger(Class clazz){
+	public static MyLogger getLogger(Class<?> clazz){
 		return new MyLogger(clazz);
 	}
-	private MyLogger(Class clazz){
+	private MyLogger(Class<?> clazz){
 		this.clazz=clazz;
 	}
 	public void error(Object message){
