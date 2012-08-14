@@ -21,8 +21,6 @@ import org.dbunit.database.DatabaseConfig;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.datatype.IDataTypeFactory;
 
-import Holmos.basetools.HolmosAnnotationTool;
-import Holmos.basetools.HolmosReflectionTool;
 import Holmos.dbtest.database.DBToolBoxFactory;
 import Holmos.dbtest.database.HolmosDataBaseTools;
 import Holmos.dbtest.database.annotation.HolmosDataSet;
@@ -40,6 +38,7 @@ import Holmos.testlistener.HolmosTestListener;
 import Holmos.testlistener.modules.HolmosModule;
 import Holmos.testlistener.modules.HolmosModuleTool;
 import Holmos.webtest.basetools.HolmosConfTool;
+import Holmos.webtest.basetools.HolmosReflectionTool;
 import Holmos.webtest.exceptions.HolmosFailedError;
 /**
  * 对DbUnit数据库单元测试框架提供支持,作为{@link HolmosDBUnitTestListener}的功能提供者

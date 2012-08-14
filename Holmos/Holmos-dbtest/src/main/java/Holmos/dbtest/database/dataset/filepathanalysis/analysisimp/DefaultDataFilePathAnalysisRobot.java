@@ -3,9 +3,9 @@ package Holmos.dbtest.database.dataset.filepathanalysis.analysisimp;
 import java.io.File;
 import java.util.Properties;
 
-import Holmos.basetools.HolmosPropertiesTool;
-import Holmos.constvalue.ConfigConstValue;
 import Holmos.dbtest.database.dataset.filepathanalysis.DataFilePathAnalysisRobot;
+import Holmos.webtest.basetools.HolmosPropertiesTool;
+import Holmos.webtest.constvalue.ConfigConstValue;
 /**
  * 框架默认的文件路径分析机器人:
  * 文件路径生成规则如下：(文件名字为file.extention,package路径为 packagePath,<br>

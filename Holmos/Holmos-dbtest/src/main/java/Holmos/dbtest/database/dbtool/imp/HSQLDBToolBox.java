@@ -3,7 +3,7 @@ package Holmos.dbtest.database.dbtool.imp;
 import java.util.Set;
 
 import Holmos.dbtest.database.dbtool.DBToolBox;
-import Holmos.exceptions.HolmosFailedError;
+import Holmos.webtest.exceptions.HolmosFailedError;
 
 public class HSQLDBToolBox extends DBToolBox{
 

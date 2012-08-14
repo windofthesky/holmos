@@ -7,7 +7,7 @@ import org.dbunit.dataset.IDataSet;
 import org.dbunit.operation.DatabaseOperation;
 
 import Holmos.dbtest.database.connecion.HolmosDataBaseConnection;
-import Holmos.exceptions.HolmosFailedError;
+import Holmos.webtest.exceptions.HolmosFailedError;
 /**只将DataSet里的记录插入,有可能违反主键约束
  * @author 吴银龙(15857164387)
  * */

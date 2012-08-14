@@ -5,7 +5,7 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.apache.log4j.Logger;
 
-import Holmos.basetools.HolmosBaseTools;
+import Holmos.webtest.basetools.HolmosBaseTools;
 
 /**管理数据源的抽象父类，Holmos框架对数据源的配置支持的很好，支持的配置文件类型<br>
  * <li>properties文件</li>
