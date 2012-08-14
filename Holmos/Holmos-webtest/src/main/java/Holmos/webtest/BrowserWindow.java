@@ -8,7 +8,9 @@ import Holmos.webtest.log.MyLogger;
  * @author 吴银龙(15857164387)
  * */
 public interface BrowserWindow {
+
 	static MyLogger logger=MyLogger.getLogger(BrowserWindow.class);
+
 	public String getHandle();
 	/**获得当前窗口当前页面的url<br>*/
 	public String getUrl();
