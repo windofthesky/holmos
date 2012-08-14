@@ -1,4 +1,4 @@
-package Holmos.Holmos.testlistener.modules.imp;
+package Holmos.dbtest.database.dbmodule;
 
 import static org.dbunit.database.DatabaseConfig.FEATURE_BATCHED_STATEMENTS;
 import static org.dbunit.database.DatabaseConfig.PROPERTY_DATATYPE_FACTORY;
@@ -21,28 +21,26 @@ import org.dbunit.database.DatabaseConfig;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.datatype.IDataTypeFactory;
 
-import Holmos.Holmos.Holmos;
-import Holmos.Holmos.assertVerify.HolmosDataBaseCheckTool;
-import Holmos.Holmos.data.database.DBToolBoxFactory;
-import Holmos.Holmos.data.database.HolmosDataBaseTools;
-import Holmos.Holmos.data.database.annotation.HolmosDataSet;
-import Holmos.Holmos.data.database.annotation.HolmosExpectedDataSet;
-import Holmos.Holmos.data.database.connecion.HolmosDataBaseConnection;
-import Holmos.Holmos.data.database.dataset.HolmosMultiDataSet;
-import Holmos.Holmos.data.database.dataset.filepathanalysis.DataFilePathAnalysisRobot;
-import Holmos.Holmos.data.database.dataset.filepathanalysis.analysisimp.DefaultDataFilePathAnalysisRobot;
-import Holmos.Holmos.data.database.datasetfactory.HolmosDataSetFactory;
-import Holmos.Holmos.data.database.datasetloadstrategy.HolmosDataSetLoadStrategy;
-import Holmos.Holmos.data.database.dbtool.DBToolBox;
-import Holmos.Holmos.data.database.operation.DefaultSQLOperation;
-import Holmos.Holmos.data.database.operation.SQLOperation;
-import Holmos.Holmos.exceptions.HolmosFailedError;
-import Holmos.Holmos.heart.HolmosConfTool;
-import Holmos.Holmos.testlistener.HolmosTestListener;
-import Holmos.Holmos.testlistener.modules.HolmosModule;
-import Holmos.Holmos.testlistener.modules.HolmosModuleTool;
-import Holmos.Holmos.tools.HolmosAnnotationTool;
-import Holmos.Holmos.tools.HolmosReflectionTool;
+import Holmos.basetools.HolmosAnnotationTool;
+import Holmos.dbtest.database.DBToolBoxFactory;
+import Holmos.dbtest.database.HolmosDataBaseTools;
+import Holmos.dbtest.database.annotation.HolmosDataSet;
+import Holmos.dbtest.database.annotation.HolmosExpectedDataSet;
+import Holmos.dbtest.database.connecion.HolmosDataBaseConnection;
+import Holmos.dbtest.database.dataset.HolmosMultiDataSet;
+import Holmos.dbtest.database.dataset.filepathanalysis.DataFilePathAnalysisRobot;
+import Holmos.dbtest.database.dataset.filepathanalysis.analysisimp.DefaultDataFilePathAnalysisRobot;
+import Holmos.dbtest.database.datasetfactory.HolmosDataSetFactory;
+import Holmos.dbtest.database.datasetloadstrategy.HolmosDataSetLoadStrategy;
+import Holmos.dbtest.database.dbtool.DBToolBox;
+import Holmos.dbtest.database.operation.DefaultSQLOperation;
+import Holmos.dbtest.database.operation.SQLOperation;
+import Holmos.testlistener.HolmosTestListener;
+import Holmos.testlistener.modules.HolmosModule;
+import Holmos.testlistener.modules.HolmosModuleTool;
+import Holmos.webtest.basetools.HolmosConfTool;
+import Holmos.webtest.basetools.HolmosReflectionTool;
+import Holmos.webtest.exceptions.HolmosFailedError;
 /**
  * 对DbUnit数据库单元测试框架提供支持,作为{@link HolmosDBUnitTestListener}的功能提供者
  * @author 吴银龙(15857164387)

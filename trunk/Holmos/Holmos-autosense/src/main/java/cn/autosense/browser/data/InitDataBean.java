@@ -4,9 +4,6 @@ import java.io.Serializable;
 import java.util.Properties;
 
 import lombok.Getter;
-
-import cn.autosense.browser.exchange.DataExchangeFactory;
-import cn.autosense.browser.exchange.IDataExchange;
 import cn.autosense.browser.util.CommonUtil;
 import cn.autosense.browser.util.Const;
 
@@ -31,9 +28,13 @@ public class InitDataBean implements Serializable {
     //private IDataExchange dataExchange;
     //@Getter
     //private String initNodeStr;
+    @Getter
+    private String rootPath;
 
     private InitDataBean() {
         initInfo = CommonUtil.loadProperties(Const.INIT_FILE);
+        rootPath = initInfo.getProperty("rootPath").trim();
+        rootPath = rootPath.replace("\\", "/").endsWith("/") ? rootPath : rootPath + "/";
         //dataExchange = DataExchangeFactory.build(getDataExchangeClassName());
         //initNodeStr = dataExchange.loadFolderPageInfo(getRootPath());
     }
@@ -43,11 +44,6 @@ public class InitDataBean implements Serializable {
             bean = new InitDataBean();
         }
         return bean;
-    }
-    
-    public String getRootPath() {
-    	String rootPath = initInfo.getProperty("rootPath").trim().replace("\\", "/");
-    	return rootPath.endsWith("/") ? rootPath : rootPath + "/";
     }
     
     public static void main(String[] args) {
@@ -65,7 +61,7 @@ public class InitDataBean implements Serializable {
     public String getDataExchangeClassName() {
     	return initInfo.getProperty("dateExchange").trim();
     }
-    
+
     public String getHomePage() {
     	return initInfo.getProperty("homePage").trim();
     }

@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import cn.autosense.plug.psm.GroupInfo;
 import cn.autosense.plug.psm.VarInfo;
 
 /**
@@ -23,7 +24,7 @@ import cn.autosense.plug.psm.VarInfo;
  */
 @NoArgsConstructor
 @AllArgsConstructor
-public class VarNode extends DefaultMutableTreeNode {
+public class VarNode extends DefaultMutableTreeNode implements Cloneable {
 	/**
 	 * 
 	 */
@@ -31,13 +32,13 @@ public class VarNode extends DefaultMutableTreeNode {
 	
 	@Getter
 	@Setter
-	private VarInfo info;
+	private GroupInfo info;
 	@Getter
 	@Setter
 	private Icon icon;
 	
-	public VarNode(VarInfo info) {
-		super();
+	public VarNode(GroupInfo info) {
+		super(info);
 		this.info = info;
 	}
 
@@ -61,8 +62,8 @@ public class VarNode extends DefaultMutableTreeNode {
 		}
 	}
 
-	public void addAllInfo(List<VarInfo> infoList) {
-		for (VarInfo info : infoList) {
+	public void addAllInfo(List<GroupInfo> infoList) {
+		for (GroupInfo info : infoList) {
 			add(new VarNode(info));
 		}
 	}
@@ -75,5 +76,10 @@ public class VarNode extends DefaultMutableTreeNode {
 	
 	public boolean hasChild() {
 		return getChildCount() > 0 ? true : false;
+	}
+	
+	@Override
+	public String toString() {
+		return getName();
 	}
 }

@@ -8,42 +8,26 @@
 		<version>1.0.0</version>
 		<relativePath>..</relativePath>
 	</parent>
-	<url>http://www.holmos.com</url>
-	<artifactId>holmos-webtest</artifactId>
 	<name>Holmos-webtest</name>
+	<url>http://www.holmos.com</url>
+	<groupId>com.holmos</groupId>
+	<artifactId>holmos-webtest</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
 
 	<licenses>
-	    <license>
-	      <name>The Apache Software License, Version 2.0</name>
-	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-	      <distribution>repo</distribution>
-	    </license>
-    </licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
-				<version>2.3</version>
-				<executions>
-					<execution>
-						<id>copy-dependencies</id>
-						<phase>package</phase>
-						<goals>
-							<goal>copy-dependencies</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${project.build.directory}/dependency</outputDirectory>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
-					<includes>
+				<includes>
 					<include>**/*.properties</include>
 					<include>**/*.xml</include>
 				</includes>
@@ -65,5 +49,5 @@
 			<artifactId>junit</artifactId>
 		</dependency>
 	</dependencies>
-	
+
 </project>

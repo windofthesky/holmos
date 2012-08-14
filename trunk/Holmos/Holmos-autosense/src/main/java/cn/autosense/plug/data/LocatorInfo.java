@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 
 /**
  * 
@@ -15,6 +18,8 @@ import java.util.Map.Entry;
  *          Remark:<br>
  * 
  */
+@NoArgsConstructor
+@AllArgsConstructor
 public class LocatorInfo implements Serializable, Cloneable {
 	/**
 	 * 
@@ -29,6 +34,16 @@ public class LocatorInfo implements Serializable, Cloneable {
 	 * 元素的属性列表
 	 */
 	private Map<String, String> attributes = new HashMap<String, String>();
+	
+	/**
+	 * 添加元素属性
+	 * @param attrs
+	 */
+	public void attr(Map<String, String> attrs) {
+		for (Entry<String, String> e : attrs.entrySet()) {
+			attr(e.getKey(), e.getValue());
+		}
+	}
 
 	/**
 	 * 添加元素属性
@@ -38,7 +53,7 @@ public class LocatorInfo implements Serializable, Cloneable {
 	public void attr(String name, String value) {
 		this.attributes.put(name, value);
 	}
-
+	
 	/**
 	 * 得到元素的属性
 	 * @param name
@@ -62,6 +77,18 @@ public class LocatorInfo implements Serializable, Cloneable {
 	 * @param type
 	 * @param value
 	 */
+	public void locator(Map<LocatorType, String> locators) {
+		for (Entry<LocatorType, String> e : locators.entrySet()) {
+			locator(e.getKey(), e.getValue());
+		}
+	}
+	
+	/**
+	 * 添加元素定位器
+	 * 
+	 * @param type
+	 * @param value
+	 */
 	public void locator(LocatorType type, String value) {
 		this.locators.put(type, value);
 	}
@@ -74,6 +101,16 @@ public class LocatorInfo implements Serializable, Cloneable {
 	 */
 	public String locator(LocatorType type) {
 		return this.locators.get(type);
+	}
+
+	/**
+	 * 得到元素的定位器
+	 * 
+	 * @param type
+	 * @return
+	 */
+	public String locator(String type) {
+		return locator(LocatorType.valueOf(type.toUpperCase()));
 	}
 
 	/**

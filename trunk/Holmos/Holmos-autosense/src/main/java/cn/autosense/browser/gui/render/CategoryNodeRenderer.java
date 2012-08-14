@@ -7,17 +7,18 @@ import javax.swing.JTree;
 import javax.swing.tree.DefaultTreeCellRenderer;
 
 public class CategoryNodeRenderer extends DefaultTreeCellRenderer {
+
 	private static final long		serialVersionUID	= 8532405600839140757L;
 
 	private static final ImageIcon	categoryLeafIcon	= new ImageIcon(
 																CategoryNodeRenderer.class
-																		.getResource("/categoryLeaf.gif"));
+																		.getResource("/images/001.gif"));
 	private static final ImageIcon	openFolderIcon		= new ImageIcon(
 																CategoryNodeRenderer.class
-																		.getResource("/openFolder.gif"));
+																		.getResource("/images/005.gif"));
 	private static final ImageIcon	closedFolderIcon	= new ImageIcon(
 																CategoryNodeRenderer.class
-																		.getResource("/closedFolder.gif"));
+																		.getResource("/images/001.gif"));
 
 	public Component getTreeCellRendererComponent(JTree tree, Object value,
 			boolean sel, boolean expanded, boolean leaf, int row,
@@ -36,4 +37,6 @@ public class CategoryNodeRenderer extends DefaultTreeCellRenderer {
 
 		return this;
 	}
+	
+	
 }
