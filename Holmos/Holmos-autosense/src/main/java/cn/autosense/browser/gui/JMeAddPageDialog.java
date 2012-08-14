@@ -36,7 +36,7 @@ public class JMeAddPageDialog extends JCDialog implements ActionListener {
 	private JPanel contentPanel;
 	@Getter
 	private JMeAddPagePanel addPagePanel;
-	
+
 	/**
 	 * Create the dialog.
 	 */
@@ -70,15 +70,15 @@ public class JMeAddPageDialog extends JCDialog implements ActionListener {
 	public String getPageName() {
 		return addPagePanel.getNameTxf().getText();
 	}
-	
+
 	public String getPageComment() {
 		return addPagePanel.getCommentTxf().getText();
 	}
-	
+
 	public VarType getPageType() {
 		return (VarType) addPagePanel.getTypeCmb().getSelectedItem();
 	}
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -111,7 +111,7 @@ public class JMeAddPageDialog extends JCDialog implements ActionListener {
 			
 		}
 	}
-	
+
 	/**
 	 * 重置按钮
 	 * @param e
@@ -121,7 +121,7 @@ public class JMeAddPageDialog extends JCDialog implements ActionListener {
 		addPagePanel.getNameTxf().setText("");
 		addPagePanel.getCommentTxf().setText("");
 	}
-	
+
 	/**
 	 * 取消按钮
 	 * @param e
@@ -129,7 +129,7 @@ public class JMeAddPageDialog extends JCDialog implements ActionListener {
 	protected void cancelBtn_actionPerformed(ActionEvent e) {
 		this.setVisible(false);
 	}
-	
+
 	/**
 	 * 验证Name值是否合法
 	 * @return

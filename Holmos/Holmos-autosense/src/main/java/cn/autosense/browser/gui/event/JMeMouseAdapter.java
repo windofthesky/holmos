@@ -27,6 +27,10 @@ import cn.autosense.browser.data.RuntimeDataBean;
 import cn.autosense.browser.data.SelectedFieldBean;
 import cn.autosense.browser.gui.componment.JMeWebBrowser;
 import cn.autosense.browser.util.CommonUtil;
+import cn.autosense.plug.data.LocatorInfo;
+import cn.autosense.plug.data.LocatorType;
+import cn.autosense.plug.psm.ElementInfo;
+import cn.autosense.plug.psm.impl.DefaultElementInfo;
 import cn.autosense.plug.psm.type.VarType;
 
 import com.breeze.core.util.Util;
@@ -71,6 +75,15 @@ public class JMeMouseAdapter extends MouseAdapter {
 	        		JOptionPane.showMessageDialog(null, "请先选择page!", "警告", JOptionPane.WARNING_MESSAGE);
 	        	}else {
 	        		putDataToSelectedFieldPanel(fieldBean);
+	        		
+	        		LocatorInfo lInfo = new LocatorInfo();
+	        		lInfo.attr(fieldBean.getFieldBean().getAttributes());
+	        		lInfo.locator(LocatorType.XPATH, fieldBean.getFieldBean().getXpath());
+	        		lInfo.locator(LocatorType.SELECTOR, fieldBean.getFieldBean().getSelector());
+	        		lInfo.locator(LocatorType.TEXT, fieldBean.getFieldBean().getText());
+	        		ElementInfo info = new DefaultElementInfo(fieldBean.getName(), fieldBean.getComment(), fieldBean.getType(), lInfo);
+	        		
+	        		//RuntimeDataBean.getInstance().getSelectNode().getInfo().
 	        		// TODO
 	        		//InitDataBean.getInstance().getDataExchange().addElement(selectPagePath, data);
 	        	}

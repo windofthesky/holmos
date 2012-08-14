@@ -1,13 +1,13 @@
 package cn.autosense.browser.gui.render;
 
 import javax.swing.JPanel;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.event.TreeModelListener;
 import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.MutableTreeNode;
-import javax.swing.tree.TreeNode;
 
-import cn.autosense.plug.psm.VarInfo;
+import cn.autosense.browser.gui.componment.JMePageTree;
+import cn.autosense.plug.psm.GroupInfo;
+import cn.autosense.plug.psm.impl.FolderInfo;
 
 import com.breeze.core.util.UtilGUI;
 
@@ -30,17 +30,24 @@ public class JMePageTreeModel extends DefaultTreeModel {
 		this(null);
 	}
 	
-	public JMePageTreeModel(TreeNode root) {
+	public JMePageTreeModel(VarNode root) {
 		super(root);
+	}
+
+	@Override
+	public void addTreeModelListener(TreeModelListener l) {
+		// TODO Auto-generated method stub
+		super.addTreeModelListener(l);
+		System.out.println("--------------------");
 	}
 	
 	public void insertNodeInto(VarNode node, VarNode parent, int index) {
 		insertNodeInto(node, parent, index);
 	}
 	
-	public void insertNode(VarInfo[] varInfos, MutableTreeNode parent) {
+	public void insertNode(GroupInfo[] groupInfos, MutableTreeNode parent) {
 		boolean hasNode = false;
-		for (VarInfo info : varInfos) {
+		for (GroupInfo info : groupInfos) {
 			int childCount = parent.getChildCount();
 			for (int i = 0; i < childCount; i++) {
 				if(info.equals(parent.getChildAt(i).toString())) {
@@ -57,13 +64,15 @@ public class JMePageTreeModel extends DefaultTreeModel {
 	////////////////////////
 	public static void main(String[] args) {
 		JMePageTreeModel model = new JMePageTreeModel();
-		DefaultMutableTreeNode root = new DefaultMutableTreeNode("root");
-		//String[] nodes = {"aaaa", "bbbb"};
-		//model.insertNode(nodes, root);
+		String rootPath = "aaaaaaaaaaa";
+    	System.out.println(rootPath + "------------------------");
+    	
+    	FolderInfo info = new FolderInfo(rootPath, "root");
+    	VarNode root = new VarNode(info);
 		
 		model.setRoot(root);
 		
-		JTree tree = new JTree();
+		JMePageTree tree = new JMePageTree();
 		tree.setModel(model);
 		tree.setBounds(5, 5, 200, 300);
 		

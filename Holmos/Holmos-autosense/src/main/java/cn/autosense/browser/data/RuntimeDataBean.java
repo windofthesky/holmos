@@ -6,6 +6,7 @@ import java.util.Map;
 
 import lombok.Getter;
 import lombok.Setter;
+import cn.autosense.browser.gui.render.VarNode;
 
 /**
  * 
@@ -25,6 +26,10 @@ public class RuntimeDataBean implements Serializable {
 	private static RuntimeDataBean bean;
 	@Getter
     private Map<String, SelectedFieldBean> selectedData;
+	
+	@Getter
+	@Setter
+	private VarNode selectNode;
 //	@Getter
 //	@Setter
 //	private String selectPagePath;

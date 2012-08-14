@@ -34,13 +34,13 @@ public abstract class CollectionInfoAdapter implements CollectionInfo {
 
 	@Getter
 	@Setter
-	private String name;
+	protected String name;
 	@Getter
 	@Setter
-	private String comment;
+	protected String comment;
 	@Getter
 	@Setter
-	private VarType type;
+	protected VarType type;
 
 	@Override
 	public boolean add(ElementInfo info) {

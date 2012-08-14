@@ -7,11 +7,12 @@ import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultTreeModel;
 
 import cn.autosense.browser.data.ComponentBean;
+import cn.autosense.browser.data.RuntimeDataBean;
 import cn.autosense.browser.gui.JMeAddPageDialog;
 import cn.autosense.browser.gui.componment.JMePageTree;
 import cn.autosense.browser.gui.render.VarNode;
 import cn.autosense.plug.VarFactory;
-import cn.autosense.plug.psm.VarInfo;
+import cn.autosense.plug.psm.GroupInfo;
 
 import com.breeze.core.util.Util;
 
@@ -65,17 +66,23 @@ public class JMePageTreeActionAdapter implements ActionListener {
         if (isRemove == JOptionPane.YES_OPTION) {
         	// 
         	JCTextField pagePathTxf = ComponentBean.getInstance().getPageTreePanel().getPageSelectTextField().getTextField();
-        	String pagePathOld = pagePathTxf.getText();
-        	if(Util.strIsNullOrEmpty(pagePathOld)) {
+        	VarNode selectNodeOld = RuntimeDataBean.getInstance().getSelectNode();
+        	if(Util.isNull(selectNodeOld)) {
         		pagePathTxf.setText(selectPagePath);
+        		RuntimeDataBean.getInstance().setSelectNode(selectNode);
         		//设置选择路径
     			//RuntimeDataBean.getInstance().setSelectPagePath(selectPagePath);
+        		// TODO
+        		// 设置xxInfo的数据到界面上
         	} else {
         		int isSelect = JOptionPane.showConfirmDialog(null, "你选择的Page是: \n" + selectPagePath + "\n之前的Page是: \n" + "你确定要修改", "温馨提示", JOptionPane.YES_NO_OPTION);
         		if(isSelect == JOptionPane.YES_OPTION) {
         			pagePathTxf.setText(selectPagePath);
+        			RuntimeDataBean.getInstance().setSelectNode(selectNode);
         			//设置选择路径
         			//RuntimeDataBean.getInstance().setSelectPagePath(selectPagePath);
+        			// TODO
+            		// 设置xxInfo的数据到界面上
         		} else {
         			return;
         		}
@@ -95,14 +102,11 @@ public class JMePageTreeActionAdapter implements ActionListener {
 		JMeAddPageDialog dialog = new JMeAddPageDialog();
 		if(!dialog.isShowing()) {
 			// TODO 添加的是不是合法, 比如: page add page
-			if(!dialog.getPageType().name().equalsIgnoreCase("page")) {
-				JOptionPane.showMessageDialog(null, "非常抱歉, 功能正在完善! 敬请期待");
-			}else {
-				VarInfo info = VarFactory.create(dialog.getPageName(), dialog.getPageComment(), dialog.getPageType());
-				// TODO 验证info是否可以添加
-				selectNode.add(new VarNode(info));
-				tree.expandPath(tree.getSelectionPath());
-			}
+			GroupInfo info = VarFactory.create(dialog.getPageName(), dialog.getPageComment(), dialog.getPageType());
+			// TODO 验证info是否可以添加
+			selectNode.add(new VarNode(info));
+			//tree.repaint();
+			tree.expandPath(tree.getSelectionPath());
 		}
 	}
 
@@ -120,6 +124,9 @@ public class JMePageTreeActionAdapter implements ActionListener {
 		int isRemove = JOptionPane.showConfirmDialog(null, "是否要删除?", "温馨提示", JOptionPane.YES_NO_OPTION);
         if (isRemove == JOptionPane.YES_OPTION) {
             ((DefaultTreeModel) tree.getModel()).removeNodeFromParent(node);
+            
+            // TODO是否要物理删除
+            
             // name
             /*JsonCreater creater = new JsonCreater();
 			creater.put("name", node.toString());
@@ -138,6 +145,7 @@ public class JMePageTreeActionAdapter implements ActionListener {
 	 * @param e
 	 */
 	private void editItem_click(JCTree tree, ActionEvent e) {
+		// TODO
 		tree.startEditingAtPath(tree.getSelectionPath());
 	}
 

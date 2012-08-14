@@ -7,10 +7,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
+import java.util.Random;
 
 import javax.swing.JTable;
 import javax.swing.JTree;
@@ -21,7 +23,8 @@ import org.nutz.lang.Files;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import cn.autosense.plug.psm.VarInfo;
+import cn.autosense.plug.psm.GroupInfo;
+import cn.autosense.plug.psm.impl.PageInfo;
 
 /**
  * 
@@ -138,9 +141,11 @@ public class CommonUtil {
         }
     }
     
-    public static List<VarInfo> getChildInfo(VarInfo info) {
+    public static List<GroupInfo> getChildInfo(GroupInfo info) {
+    	GroupInfo infos = new PageInfo("TaobaoPage" + new Random().nextInt(), "淘宝测试页面");
+    	GroupInfo infos2 = new PageInfo("TaobaoPage" + new Random().nextInt(), "淘宝测试页面");
     	// TODO
-    	return null;
+    	return Arrays.asList(infos, infos2);
     }
     
 

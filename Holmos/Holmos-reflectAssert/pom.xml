@@ -7,46 +7,36 @@
 		<version>1.0.0</version>
 		<relativePath>..</relativePath>
 	</parent>
-	<groupId>com.holmos</groupId>
-	<artifactId>holmos-reflectAssert</artifactId>
 	<name>Holmos-reflectAssert</name>
 	<url>http://www.holmos.com</url>
+	<groupId>com.holmos</groupId>
+	<artifactId>holmos-reflectAssert</artifactId>
 	<packaging>jar</packaging>
 
 	<licenses>
-	    <license>
-	      <name>The Apache Software License, Version 2.0</name>
-	      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-	      <distribution>repo</distribution>
-	    </license>
-    </licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
 
 	<dependencies>
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
-			<version>2.4</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-logging</groupId>
 			<artifactId>commons-logging</artifactId>
-			<version>1.1</version>
-			<type>pom</type>
 		</dependency>
 		<dependency>
-<<<<<<< .mine
-			<groupId>Holmos</groupId>
-			<artifactId>Holmos-webtest</artifactId>
-			<version>1.0.0</version>
-=======
 			<groupId>com.holmos</groupId>
 			<artifactId>holmos-webtest</artifactId>
->>>>>>> .r88
 		</dependency>
 	</dependencies>
 </project>

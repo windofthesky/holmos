@@ -13,7 +13,7 @@ import lombok.Getter;
  */
 public enum LocatorType {
 
-	CSS("css"),
+	SELECTOR("selector"),
 	XPATH("xpath"),
 	TEXT("text");
 

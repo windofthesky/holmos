@@ -1,6 +1,6 @@
 package Holmos.dbtest.database.structmodule;
 
-import Holmos.webtest.tools.HolmosWindow;
+import Holmos.webtest.basetools.HolmosWindow;
 
 /**属性名字不合法的类
  * @author 吴银龙(15857164387)
