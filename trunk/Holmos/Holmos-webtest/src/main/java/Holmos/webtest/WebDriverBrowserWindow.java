@@ -5,7 +5,9 @@ import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
@@ -135,8 +137,7 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 		StringBuilder message=new StringBuilder("移动窗口位置");
 		if(xLocation>=0&&yLocation>=0){
 			message.append("x:"+xLocation+"  y:"+yLocation);
-			String script="window.moveTo("+xLocation+","+yLocation+")";
-			HolmosWindow.runJavaScript(script);
+			((WebDriver)driver.getEngine()).manage().window().setPosition(new Point(xLocation, yLocation));
 			logger.info(message);
 		}else{
 			message.append("窗口位置设置错误！");
@@ -150,8 +151,7 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 		StringBuilder message=new StringBuilder("窗口重新设置大小");
 		if(horizonSize>=0&&verticalSize>=0){
 			message.append("宽度:"+horizonSize+"  高度:"+verticalSize);
-			String script="window.resizeTo("+horizonSize+","+verticalSize+")";
-			HolmosWindow.runJavaScript(script);
+			((WebDriver)driver.getEngine()).manage().window().setSize(new Dimension(horizonSize, verticalSize));
 			logger.info(message);
 		}else{
 			message.append("窗口大小设置错误！");
