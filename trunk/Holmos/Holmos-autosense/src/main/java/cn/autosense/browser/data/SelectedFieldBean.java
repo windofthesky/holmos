@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import cn.autosense.plug.data.LocatorInfo;
 import cn.autosense.plug.psm.type.VarType;
 
 /**
@@ -20,7 +21,6 @@ import cn.autosense.plug.psm.type.VarType;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class SelectedFieldBean implements Serializable {
 
     /**
@@ -32,6 +32,20 @@ public class SelectedFieldBean implements Serializable {
     private String name;
     private String comment;
     private VarType type;
-    private HtmlFiledBean fieldBean;
+    private String tagName;
+    private String html;
+    private LocatorInfo locatorInfo;
+
+	public SelectedFieldBean(String id, String name, String comment, String tagName, String html, LocatorInfo locatorInfo) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.comment = comment;
+		this.type = VarType.getInfoType(tagName);
+		this.tagName = tagName;
+		this.html = html;
+		this.locatorInfo = locatorInfo;
+	}
+    
     
 }

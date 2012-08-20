@@ -2,7 +2,6 @@ package cn.autosense.browser.gui.componment;
 
 import java.awt.event.MouseEvent;
 
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreeSelectionModel;
 
 import lombok.Getter;

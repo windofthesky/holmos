@@ -5,24 +5,24 @@
 	<url>http://www.holmos.com</url>
 	<groupId>com.holmos</groupId>
 	<artifactId>holmos</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 	<packaging>pom</packaging>
 	<description>An automated testing framework for web testing,interface testing,database testing;also contains regression testing and the management for testcase</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.jdk>1.6</project.build.jdk>
-		<holmos.version>1.0.0</holmos.version>
+		<holmos.version>1.0.1</holmos.version>
 	</properties>
 
 	<modules>
-		<!-- <module>Holmos-autosense</module> -->
+		<!-- <module>Holmos-autosense</module>
 		<module>Holmos-basetools</module>
-		<!-- <module>Holmos-dbtest</module> -->
+		<module>Holmos-dbtest</module>
 		<module>Holmos-integration</module>
 		<module>Holmos-managePlatform</module>
+		<module>Holmos-regression</module> -->
 		<module>Holmos-reflectAssert</module>
-		<module>Holmos-regression</module>
 		<module>Holmos-webtest</module>
 	</modules>
 
@@ -43,14 +43,14 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- <dependency> <groupId>com.holmos</groupId> <artifactId>holmos-autosense</artifactId> 
-				<version>${holmos.version}</version> </dependency> -->
+				<version>${holmos.version}</version> </dependency>
 			<dependency>
 				<groupId>com.holmos</groupId>
 				<artifactId>holmos-basetools</artifactId>
 				<version>${holmos.version}</version>
 			</dependency>
-			<!-- <dependency> <groupId>com.holmos</groupId> <artifactId>holmos-dbtest</artifactId> 
-				<version>${holmos.version}</version> </dependency> -->
+			<dependency> <groupId>com.holmos</groupId> <artifactId>holmos-dbtest</artifactId> 
+				<version>${holmos.version}</version> </dependency>
 			<dependency>
 				<groupId>com.holmos</groupId>
 				<artifactId>holmos-integration</artifactId>
@@ -63,12 +63,12 @@
 			</dependency>
 			<dependency>
 				<groupId>com.holmos</groupId>
-				<artifactId>holmos-reflectAssert</artifactId>
+				<artifactId>holmos-regression</artifactId>
 				<version>${holmos.version}</version>
-			</dependency>
+			</dependency> -->
 			<dependency>
 				<groupId>com.holmos</groupId>
-				<artifactId>holmos-regression</artifactId>
+				<artifactId>holmos-reflectAssert</artifactId>
 				<version>${holmos.version}</version>
 			</dependency>
 			<dependency>

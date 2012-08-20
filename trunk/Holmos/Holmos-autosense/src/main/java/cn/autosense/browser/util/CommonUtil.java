@@ -24,6 +24,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import cn.autosense.plug.psm.GroupInfo;
+import cn.autosense.plug.psm.VarInfo;
 import cn.autosense.plug.psm.impl.PageInfo;
 
 /**
@@ -141,7 +142,7 @@ public class CommonUtil {
         }
     }
     
-    public static List<GroupInfo> getChildInfo(GroupInfo info) {
+    public static List<GroupInfo> getChildInfo(VarInfo info) {
     	GroupInfo infos = new PageInfo("TaobaoPage" + new Random().nextInt(), "淘宝测试页面");
     	GroupInfo infos2 = new PageInfo("TaobaoPage" + new Random().nextInt(), "淘宝测试页面");
     	// TODO

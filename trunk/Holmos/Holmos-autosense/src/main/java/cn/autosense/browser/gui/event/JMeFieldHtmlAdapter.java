@@ -8,7 +8,6 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import cn.autosense.browser.data.ComponentBean;
-import cn.autosense.browser.data.InitDataBean;
 import cn.autosense.browser.gui.componment.JMeFieldCollectionPanel;
 import cn.autosense.browser.util.CommonUtil;
 
@@ -24,7 +23,7 @@ import com.breeze.core.util.Util;
  * 
  */
 public class JMeFieldHtmlAdapter implements ActionListener {
-	
+
 	private JMeFieldCollectionPanel fieldHtmlPanel;
 	
 	public JMeFieldHtmlAdapter(JMeFieldCollectionPanel fieldHtmlPanel) {
