@@ -4,13 +4,14 @@
 	<parent>
 		<groupId>com.holmos</groupId>
 		<artifactId>holmos</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<name>Holmos-regression</name>
 	<url>http://www.holmos.com</url>
 	<groupId>com.holmos</groupId>
 	<artifactId>holmos-regression</artifactId>
+	<version>1.0.1</version>
 	<packaging>jar</packaging>
 
 	<licenses>

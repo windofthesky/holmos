@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import cn.autosense.plug.psm.GroupInfo;
 import cn.autosense.plug.psm.VarInfo;
+import cn.autosense.plug.psm.type.VarType;
 
 /**
  * 
@@ -32,16 +33,20 @@ public class VarNode extends DefaultMutableTreeNode implements Cloneable {
 	
 	@Getter
 	@Setter
-	private GroupInfo info;
+	private VarInfo info;
 	@Getter
 	@Setter
 	private Icon icon;
 	
-	public VarNode(GroupInfo info) {
+	public VarNode(VarInfo info) {
 		super(info);
 		this.info = info;
 	}
 
+	public VarType getType() {
+		return this.info.getType();
+	}
+	
 	public String getName() {
 		if (info != null) {
 			return info.getName();
@@ -68,6 +73,11 @@ public class VarNode extends DefaultMutableTreeNode implements Cloneable {
 		}
 	}
 
+	public boolean isFolder() {
+		return getType() == VarType.FOLDER ? true : false;
+	}
+	
+	
 	@Override
 	@SuppressWarnings("unchecked")
 	public Enumeration<VarInfo> children() {

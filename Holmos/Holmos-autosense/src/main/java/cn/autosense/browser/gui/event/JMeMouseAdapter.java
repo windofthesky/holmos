@@ -22,16 +22,16 @@ import org.jsoup.nodes.Document;
 
 import cn.autosense.browser.data.ComponentBean;
 import cn.autosense.browser.data.HtmlFiledBean;
-import cn.autosense.browser.data.InitDataBean;
 import cn.autosense.browser.data.RuntimeDataBean;
 import cn.autosense.browser.data.SelectedFieldBean;
 import cn.autosense.browser.gui.componment.JMeWebBrowser;
+import cn.autosense.browser.gui.render.VarNode;
 import cn.autosense.browser.util.CommonUtil;
 import cn.autosense.plug.data.LocatorInfo;
 import cn.autosense.plug.data.LocatorType;
+import cn.autosense.plug.psm.CollectionInfo;
 import cn.autosense.plug.psm.ElementInfo;
 import cn.autosense.plug.psm.impl.DefaultElementInfo;
-import cn.autosense.plug.psm.type.VarType;
 
 import com.breeze.core.util.Util;
 import com.breeze.core.util.UtilGUI;
@@ -66,28 +66,33 @@ public class JMeMouseAdapter extends MouseAdapter {
         	selectedBean = getSelectedBeanFromJS(browser, selectData);
         	// 页面展现选择的元素的信息
         	SelectedFieldBean fieldBean = createSelectedFieldBean(selectedBean);
-        	if(null != fieldBean) {
-	        	RuntimeDataBean.getInstance().putSelectedFieldBean(fieldBean);
-	        	String data = new Gson().toJson(fieldBean, new TypeToken<SelectedFieldBean>() {}.getType());
-	        	
-	        	String selectPagePath = ComponentBean.getInstance().getPageTreePanel().getSelectNodePath();
-	        	if(Util.strIsNullOrEmpty(selectPagePath)) {
-	        		JOptionPane.showMessageDialog(null, "请先选择page!", "警告", JOptionPane.WARNING_MESSAGE);
-	        	}else {
-	        		putDataToSelectedFieldPanel(fieldBean);
-	        		
-	        		LocatorInfo lInfo = new LocatorInfo();
-	        		lInfo.attr(fieldBean.getFieldBean().getAttributes());
-	        		lInfo.locator(LocatorType.XPATH, fieldBean.getFieldBean().getXpath());
-	        		lInfo.locator(LocatorType.SELECTOR, fieldBean.getFieldBean().getSelector());
-	        		lInfo.locator(LocatorType.TEXT, fieldBean.getFieldBean().getText());
-	        		ElementInfo info = new DefaultElementInfo(fieldBean.getName(), fieldBean.getComment(), fieldBean.getType(), lInfo);
-	        		
-	        		//RuntimeDataBean.getInstance().getSelectNode().getInfo().
-	        		// TODO
-	        		//InitDataBean.getInstance().getDataExchange().addElement(selectPagePath, data);
-	        	}
-	        }
+        	if(null == fieldBean) {
+        		JOptionPane.showMessageDialog(null, "选择的元素为空", "警告", JOptionPane.WARNING_MESSAGE);
+        		return;
+        	}
+        	RuntimeDataBean.getInstance().putSelectedFieldBean(fieldBean);
+        	
+        	VarNode selectNode = RuntimeDataBean.getInstance().getSelectNode();
+        	if(Util.isNull(selectNode)) {
+        		JOptionPane.showMessageDialog(null, "请先选择page!", "警告", JOptionPane.WARNING_MESSAGE);
+        		return;
+        	}
+    		putDataToSelectedFieldPanel(fieldBean);
+    		
+    		ElementInfo element = new DefaultElementInfo(fieldBean.getName(), fieldBean.getComment(), fieldBean.getType(), fieldBean.getLocatorInfo());
+    		
+    		if(selectNode.isFolder()) {
+    			JOptionPane.showMessageDialog(null, "请先选择page, 而不是Folder!", "警告", JOptionPane.WARNING_MESSAGE);
+    			return;
+    		}
+    		
+    		if(selectNode.getInfo() instanceof CollectionInfo) {
+    			CollectionInfo cInfo = (CollectionInfo) selectNode.getInfo();
+    			cInfo.add(element);
+    		} else {
+    			JOptionPane.showMessageDialog(null, "请先选择page, 未知类型!", "警告", JOptionPane.WARNING_MESSAGE);
+    			return;
+    		}
         } else {
             browser.executeJavascript(SELECTOR_DIV_HIDE);
         }
@@ -99,16 +104,16 @@ public class JMeMouseAdapter extends MouseAdapter {
      */
     private void putDataToSelectedFieldPanel(SelectedFieldBean fieldBean) {
     	// xpath
-    	bean.getSelectHtmlPanel().getXpathTxa().setText(fieldBean.getFieldBean().getXpath());
+    	bean.getSelectHtmlPanel().getXpathTxa().setText(fieldBean.getLocatorInfo().locator(LocatorType.XPATH));
     	// CSS xpath
-    	bean.getSelectHtmlPanel().getCssPathTxa().setText(fieldBean.getFieldBean().getSelector());
+    	bean.getSelectHtmlPanel().getCssPathTxa().setText(fieldBean.getLocatorInfo().locator(LocatorType.SELECTOR));
     	// html
-    	bean.getSelectHtmlPanel().getHtmlCodeTxa().setText(fieldBean.getFieldBean().getHtml());
+    	bean.getSelectHtmlPanel().getHtmlCodeTxa().setText(fieldBean.getHtml());
     	// attributes
-    	CommonUtil.setAttrsForTable(bean.getSelectHtmlPanel().getAttrsTable(), fieldBean.getFieldBean().getAttributes());
+    	CommonUtil.setAttrsForTable(bean.getSelectHtmlPanel().getAttrsTable(), fieldBean.getLocatorInfo().attr());
     	//
-    	if (!Util.strIsNullOrEmpty(fieldBean.getFieldBean().getHtml())) {
-    		Document selectHtmlDoc = Jsoup.parse(fieldBean.getFieldBean().getHtml());
+    	if (!Util.strIsNullOrEmpty(fieldBean.getHtml())) {
+    		Document selectHtmlDoc = Jsoup.parse(fieldBean.getHtml());
     		
     		// selected html tree
     		DefaultMutableTreeNode rootNode = UtilGUI.xmlToTreeNode(selectHtmlDoc);
@@ -133,18 +138,33 @@ public class JMeMouseAdapter extends MouseAdapter {
 
     	if (!Util.strIsNullOrEmpty(selectedBean.getHtml())) {
     		String uuid = UUID.randomUUID().toString().replaceAll("-", "");
-    		fieldBean = new SelectedFieldBean(uuid, createElementName(selectedBean, uuid), "", VarType.getInfoType(selectedBean.getTagName()), selectedBean);
+    		
+    		LocatorInfo info = new LocatorInfo();
+    		info.attr(selectedBean.getAttrs());
+    		info.locator(LocatorType.XPATH, selectedBean.getXpath());
+    		info.locator(LocatorType.SELECTOR, selectedBean.getSelector());
+    		info.locator(LocatorType.TEXT, selectedBean.getText());
+    		// TODO 此处的comment设置为空
+    		fieldBean = new SelectedFieldBean(uuid, createElementName(selectedBean, uuid), "", 
+    				selectedBean.getTagName(), selectedBean.getHtml(), info);
     	}
     	return fieldBean;
     }
 
+    /**
+     * 得到Element的name, 此方法有待优化
+     * @param selectedBean
+     * @param uuid
+     * @return
+     */
     private String createElementName(HtmlFiledBean selectedBean, String uuid) {
-    	String id = selectedBean.getAttributes().get("id");
+    	// TODO
+    	String id = selectedBean.getAttrs().get("id");
     	if(Util.strNotIsNullOrEmpty(id)) {
     		return id;
     	}
 
-    	String name = selectedBean.getAttributes().get("name");
+    	String name = selectedBean.getAttrs().get("name");
     	if(Util.strNotIsNullOrEmpty(id)) {
     		return name;
     	}
@@ -171,7 +191,7 @@ public class JMeMouseAdapter extends MouseAdapter {
      * @param bean
      */
     private void addSelectedRowForTable(JTable table, SelectedFieldBean bean) {
-    	Object[] data = {bean.getName(), CommonUtil.firstUpper(bean.getType().name()), bean.getFieldBean().getXpath(), bean.getFieldBean().getSelector(), bean.getId() };
+    	Object[] data = {bean.getName(), CommonUtil.firstUpper(bean.getType().name()), bean.getLocatorInfo().locator(LocatorType.XPATH), bean.getLocatorInfo().locator(LocatorType.SELECTOR), bean.getId() };
         if (null != table) {
             ((DefaultTableModel) table.getModel()).addRow(data);
             table.updateUI();

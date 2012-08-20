@@ -25,7 +25,7 @@ public class HtmlFiledBean implements Serializable {
 	private String tagName;
 	private String xpath;
 	private String selector;
-	private Map<String, String> attributes;
+	private Map<String, String> attrs;
 	private String text;
 	private String html;
 

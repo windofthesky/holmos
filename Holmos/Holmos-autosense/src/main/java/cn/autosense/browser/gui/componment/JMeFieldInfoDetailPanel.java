@@ -15,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 import cn.autosense.browser.data.SelectedFieldBean;
 import cn.autosense.browser.util.CommonUtil;
+import cn.autosense.plug.data.LocatorType;
 
 import com.breeze.core.util.Util;
 import com.breeze.core.util.UtilGUI;
@@ -245,12 +246,12 @@ public class JMeFieldInfoDetailPanel extends JPanel {
 	private void putDate() {
 		if(!Util.isNull(bean)) {
 			nameTxf.setText(bean.getName());
-			tagTxf.setText(bean.getFieldBean().getTagName());
+			tagTxf.setText(bean.getTagName());
 			eleComment.setText(bean.getComment());
 			typeCmb.setSelectedItem(CommonUtil.firstUpper(bean.getType().name()));
-			xpathTxa.setText(bean.getFieldBean().getXpath());
-			cssPathTxa.setText(bean.getFieldBean().getSelector());
-            CommonUtil.setAttrsForTable(attrsTable, bean.getFieldBean().getAttributes());
+			xpathTxa.setText(bean.getLocatorInfo().locator(LocatorType.XPATH));
+			cssPathTxa.setText(bean.getLocatorInfo().locator(LocatorType.XPATH));
+            CommonUtil.setAttrsForTable(attrsTable, bean.getLocatorInfo().attr());
 		}
 	}
 

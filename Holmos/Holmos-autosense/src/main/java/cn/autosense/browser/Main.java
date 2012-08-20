@@ -22,19 +22,6 @@ import com.breeze.core.util.UtilGUI;
 public class Main {
 
 	public static void main(String[] args) {
-		/*try {
-			javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (javax.swing.UnsupportedLookAndFeelException e) {
-			e.printStackTrace();
-		}
-		JFrame.setDefaultLookAndFeelDecorated(true);*/
-		
         NativeInterface.open();
         SwingUtilities.invokeLater(new Runnable() {
             @Override
