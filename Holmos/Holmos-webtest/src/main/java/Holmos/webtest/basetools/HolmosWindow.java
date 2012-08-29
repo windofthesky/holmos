@@ -245,13 +245,13 @@ public class HolmosWindow {
 		}
 	}
 	/**按下某个键*/
-	public static void KeyDown(KeyEvent key){
+	public static void KeyDown(Keys key){
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
-			((Selenium)currentWindow.getDriver().getEngine()).keyPressNative(Character.toString(key.getKeyChar()));
+			((Selenium)currentWindow.getDriver().getEngine()).keyPressNative(String.valueOf(key.toString()));
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyDown(Keys.valueOf(Character.toString(key.getKeyChar())));
+			action.keyDown(key);
 		}
 	}
 	/**松开某个键*/
@@ -286,7 +286,7 @@ public class HolmosWindow {
 		StringBuilder message=new StringBuilder(localFilePath+"文件上传");
 		try {
 			String scriptPath=ConstValue.CURRENDIR+"\\autoItScripts\\upload.exe";
-			String filePath=ConstValue.TESTCASESTOREDIR+"\\"+localFilePath;
+			String filePath=localFilePath;
 			if(!new File(scriptPath).exists()){
 				message.append(":提供上传功能的脚本不存在!请联系黄庭同学！");
 				logger.error(message);
@@ -312,7 +312,7 @@ public class HolmosWindow {
 		StringBuilder message=new StringBuilder(localFilePath+"文件上传");
 		try {
 			String scriptPath=ConstValue.CURRENDIR+"\\autoItScripts\\upload.exe";
-			String filePath=ConstValue.TESTCASESTOREDIR+"\\"+localFilePath;
+			String filePath=localFilePath;
 			if(!new File(scriptPath).exists()){
 				message.append(":提供上传功能的脚本不存在!请联系黄庭同学！");
 				logger.error(message);
@@ -336,7 +336,7 @@ public class HolmosWindow {
 		StringBuilder message=new StringBuilder(localFilePath+"文件下载");
 		try {
 			String scriptPath=ConstValue.CURRENDIR+"\\autoItScripts\\download.exe";
-			String filePath=ConstValue.TESTCASESTOREDIR+"\\"+localFilePath;
+			String filePath=localFilePath;
 			if(!new File(scriptPath).exists()){
 				message.append(":提供上传功能的脚本不存在!请联系黄庭同学！");
 				logger.error(message);
@@ -358,7 +358,7 @@ public class HolmosWindow {
 		StringBuilder message=new StringBuilder(localFilePath+"文件下载");
 		try {
 			String scriptPath=ConstValue.CURRENDIR+"\\autoItScripts\\download.exe";
-			String filePath=ConstValue.TESTCASESTOREDIR+"\\"+localFilePath;
+			String filePath=localFilePath;
 			if(!new File(scriptPath).exists()){
 				message.append(":提供上传功能的脚本不存在!请联系黄庭同学！");
 				logger.error(message);

@@ -191,6 +191,7 @@ public class SeleniumDriver {
 		case WebDriverFirefox:
 		case WebDriverIE:
 		case WebDriverIphone:
+		case WebDriverSafari:
 		case HtmlUnit:
 			return createWebDriverEngine(enginetype);
 		default:

@@ -4,12 +4,14 @@ import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 
 import Holmos.webtest.basetools.HolmosPropertiesTool;
+import Holmos.webtest.log.MyLogger;
 
 /**
  * Holmos框架配置文件用到的常量
  * @author 吴银龙(15857164387)
  * */
 public class ConfigConstValue {
+	private MyLogger logger=MyLogger.getLogger(ConfigConstValue.class);
 	/**holmos配置文件*/
 	public static String HOLMOSCONFFILE=ClassLoader.getSystemResource("holmosConf.properties").getPath();
 	/**日志文件配置地址*/
