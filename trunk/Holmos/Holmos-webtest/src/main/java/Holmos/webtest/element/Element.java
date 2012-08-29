@@ -88,7 +88,6 @@ public class Element implements LocatorValue{
 	public Element(String comment){
 		this.comment=comment;
 		this.locator=new Locator();
-		this.infoChain=new LocatorChain();
 	}
 	public void addIDLocator(String id){
 		this.locator.addIdLocator(id);

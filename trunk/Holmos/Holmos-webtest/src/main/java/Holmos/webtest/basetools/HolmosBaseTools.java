@@ -51,8 +51,12 @@ public class HolmosBaseTools {
 			InputStream in = new BufferedInputStream (new FileInputStream(ConfigConstValue.HOLMOSCONFFILE));
 			properties.load(in);
 			return HolmosPropertiesTool.getValue(properties, "logdir");
-		}catch(IOException e){
-			throw new HolmosFailedError("holmos框架配置文件找不到!"); 
+		}catch(ExceptionInInitializerError e){
+			System.out.println("配置文件没有加载成功，检查配置文件，并将其放入test下面的resources目录下面,log文件的默认位置在C:\\holmos\\logs");
+			return "C:\\holmos\\logs";
+		} catch (IOException e) {
+			System.out.println("配置文件没有加载成功，检查配置文件，并将其放入test下面的resources目录下面,log文件的默认位置在C:\\holmos\\logs");
+			return "C:\\holmos\\logs";
 		}
 	}
 	/**

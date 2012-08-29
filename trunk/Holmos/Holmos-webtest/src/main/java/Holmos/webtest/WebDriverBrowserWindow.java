@@ -1,5 +1,6 @@
 package Holmos.webtest;
 
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 
@@ -125,10 +126,11 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 
 	public void maxSizeWindow() {
 		// TODO Auto-generated method stub
-		String MAXIMIZE_BROWSER_WINDOW = "if (window.screen) {window.moveTo(0, 0);" +
-				"window.resizeTo(window.screen.availWidth,window.screen.availHeight);};";
+		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
+		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
 		focus();
-		HolmosWindow.runJavaScript(MAXIMIZE_BROWSER_WINDOW);
+		moveWindowTo(0, 0);
+		resizeTo(width, height);
 	}
 
 	public void moveWindowTo(int xLocation, int yLocation) {
