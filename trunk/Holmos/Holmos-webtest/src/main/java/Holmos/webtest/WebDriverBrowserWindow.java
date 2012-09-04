@@ -99,7 +99,7 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 		// TODO Auto-generated method stub
 		focus();
 		MyGetThread getThread=new MyGetThread((WebDriver) driver.getEngine(), url);
-		getThread.run();
+		getThread.start();
 		int count=0;
 		while(count++<ConfigConstValue.defaultWaitCount){
 			if(getThread.isGetSucceed)
