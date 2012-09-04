@@ -1,4 +1,6 @@
-package Holmos.dbtest.database.operation;
+package holmos.dbtest.database.operation;
+
+import holmos.dbtest.database.HolmosDataBaseTools;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -11,7 +13,6 @@ import javax.sql.DataSource;
 
 import org.apache.log4j.Logger;
 
-import Holmos.dbtest.database.HolmosDataBaseTools;
 import Holmos.webtest.exceptions.HolmosFailedError;
 public class DefaultSQLOperation implements SQLOperation{
 	private static Logger logger=Logger.getLogger(DefaultSQLOperation.class);

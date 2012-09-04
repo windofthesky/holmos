@@ -1,12 +1,13 @@
-package Holmos.dbtest.database;
+package holmos.dbtest.database;
+
+import holmos.dbtest.database.dbtool.DBToolBox;
+import holmos.dbtest.database.operation.SQLOperation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
-import Holmos.dbtest.database.dbtool.DBToolBox;
-import Holmos.dbtest.database.operation.SQLOperation;
 import Holmos.webtest.basetools.HolmosConfTool;
 import Holmos.webtest.basetools.HolmosPropertiesTool;
 

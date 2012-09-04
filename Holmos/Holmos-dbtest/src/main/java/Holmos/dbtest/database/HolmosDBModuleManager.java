@@ -1,12 +1,13 @@
-package Holmos.dbtest.database;
+package holmos.dbtest.database;
+
+import holmos.testlistener.HolmosTestListener;
+import holmos.testlistener.modules.HolmosModule;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import Holmos.testlistener.HolmosTestListener;
-import Holmos.testlistener.modules.HolmosModule;
 import Holmos.webtest.basetools.HolmosReflectionTool;
 import Holmos.webtest.exceptions.HolmosFailedError;
 

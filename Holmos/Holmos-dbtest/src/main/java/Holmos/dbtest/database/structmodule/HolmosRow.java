@@ -1,10 +1,11 @@
-package Holmos.dbtest.database.structmodule;
+package holmos.dbtest.database.structmodule;
+
+import holmos.dbtest.database.datadifference.HolmosColumnDifference;
+import holmos.dbtest.database.datadifference.HolmosRowDifference;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Holmos.dbtest.database.datadifference.HolmosColumnDifference;
-import Holmos.dbtest.database.datadifference.HolmosRowDifference;
 
 /**数据库的数据行结构
  * @author 吴银龙(15857164387)

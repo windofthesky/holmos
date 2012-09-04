@@ -1,4 +1,7 @@
-package Holmos.dbtest.database.datadifference;
+package holmos.dbtest.database.datadifference;
+
+import holmos.dbtest.database.structmodule.HolmosRow;
+import holmos.dbtest.database.structmodule.HolmosTable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -6,8 +9,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import Holmos.dbtest.database.structmodule.HolmosRow;
-import Holmos.dbtest.database.structmodule.HolmosTable;
 
 /**表示两个数据库表的差异信息
  * @author 吴银龙(15857164387)

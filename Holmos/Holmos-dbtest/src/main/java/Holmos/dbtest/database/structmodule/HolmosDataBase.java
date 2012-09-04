@@ -1,4 +1,4 @@
-package Holmos.dbtest.database.structmodule;
+package holmos.dbtest.database.structmodule;
 
 public class HolmosDataBase {
 

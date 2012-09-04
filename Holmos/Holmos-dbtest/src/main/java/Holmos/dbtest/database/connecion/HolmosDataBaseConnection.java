@@ -1,4 +1,6 @@
-package Holmos.dbtest.database.connecion;
+package holmos.dbtest.database.connecion;
+
+import holmos.dbtest.database.HolmosDataBaseTools;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -9,7 +11,6 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.dbunit.database.AbstractDatabaseConnection;
 
-import Holmos.dbtest.database.HolmosDataBaseTools;
 /**Holmos框架的数据库连接，继承了Dbunit数据库单元测试框架的{@link AbstractDatabaseConnection}，这个数据库连接从{@link BasicDataSource}构造而来<br>
  * */
 public class HolmosDataBaseConnection extends AbstractDatabaseConnection{

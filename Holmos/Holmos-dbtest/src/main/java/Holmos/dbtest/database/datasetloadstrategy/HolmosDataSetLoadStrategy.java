@@ -1,8 +1,8 @@
-package Holmos.dbtest.database.datasetloadstrategy;
+package holmos.dbtest.database.datasetloadstrategy;
+
+import holmos.dbtest.database.connecion.HolmosDataBaseConnection;
 
 import org.dbunit.dataset.IDataSet;
-
-import Holmos.dbtest.database.connecion.HolmosDataBaseConnection;
 
 /**进行数据库初始化的时候的初始化操作策略;操作的时候，调用的是Dbunit的 <code>DatabaseOperation</code>操作的对象是一个给定的HolmosDataSet对象;
  * <br>然后根据特定的操作策略与数据库完成交互;分为以下七种操作策略:

@@ -1,8 +1,26 @@
-package Holmos.dbtest.database.dbmodule;
+package holmos.dbtest.database.dbmodule;
 
 import static org.dbunit.database.DatabaseConfig.FEATURE_BATCHED_STATEMENTS;
 import static org.dbunit.database.DatabaseConfig.PROPERTY_DATATYPE_FACTORY;
 import static org.dbunit.database.DatabaseConfig.PROPERTY_ESCAPE_PATTERN;
+import holmos.core.Holmos;
+import holmos.dbtest.database.DBToolBoxFactory;
+import holmos.dbtest.database.HolmosDataBaseTools;
+import holmos.dbtest.database.annotation.HolmosDataSet;
+import holmos.dbtest.database.annotation.HolmosExpectedDataSet;
+import holmos.dbtest.database.connecion.HolmosDataBaseConnection;
+import holmos.dbtest.database.dataset.HolmosMultiDataSet;
+import holmos.dbtest.database.dataset.filepathanalysis.DataFilePathAnalysisRobot;
+import holmos.dbtest.database.dataset.filepathanalysis.analysisimp.DefaultDataFilePathAnalysisRobot;
+import holmos.dbtest.database.datasetfactory.HolmosDataSetFactory;
+import holmos.dbtest.database.datasetloadstrategy.HolmosDataSetLoadStrategy;
+import holmos.dbtest.database.dbassert.HolmosDataBaseCheckTool;
+import holmos.dbtest.database.dbtool.DBToolBox;
+import holmos.dbtest.database.operation.DefaultSQLOperation;
+import holmos.dbtest.database.operation.SQLOperation;
+import holmos.testlistener.HolmosTestListener;
+import holmos.testlistener.modules.HolmosModule;
+import holmos.testlistener.modules.HolmosModuleTool;
 
 import java.io.File;
 import java.lang.annotation.Annotation;
@@ -21,22 +39,7 @@ import org.dbunit.database.DatabaseConfig;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.datatype.IDataTypeFactory;
 
-import Holmos.dbtest.database.DBToolBoxFactory;
-import Holmos.dbtest.database.HolmosDataBaseTools;
-import Holmos.dbtest.database.annotation.HolmosDataSet;
-import Holmos.dbtest.database.annotation.HolmosExpectedDataSet;
-import Holmos.dbtest.database.connecion.HolmosDataBaseConnection;
-import Holmos.dbtest.database.dataset.HolmosMultiDataSet;
-import Holmos.dbtest.database.dataset.filepathanalysis.DataFilePathAnalysisRobot;
-import Holmos.dbtest.database.dataset.filepathanalysis.analysisimp.DefaultDataFilePathAnalysisRobot;
-import Holmos.dbtest.database.datasetfactory.HolmosDataSetFactory;
-import Holmos.dbtest.database.datasetloadstrategy.HolmosDataSetLoadStrategy;
-import Holmos.dbtest.database.dbtool.DBToolBox;
-import Holmos.dbtest.database.operation.DefaultSQLOperation;
-import Holmos.dbtest.database.operation.SQLOperation;
-import Holmos.testlistener.HolmosTestListener;
-import Holmos.testlistener.modules.HolmosModule;
-import Holmos.testlistener.modules.HolmosModuleTool;
+import Holmos.webtest.basetools.HolmosAnnotationTool;
 import Holmos.webtest.basetools.HolmosConfTool;
 import Holmos.webtest.basetools.HolmosReflectionTool;
 import Holmos.webtest.exceptions.HolmosFailedError;
@@ -248,7 +251,7 @@ public class HolmosDBUnitModule implements HolmosModule{
 	 * 获取默认的数据加载策略
 	 * */
 	private HolmosDataSetLoadStrategy getDefaultDataSetLoadStrategy() {
-		Class<? extends HolmosDataSetLoadStrategy>dataSetLoadStrategyClass=HolmosReflectionTool.getClassWithName(
+		Class<? extends HolmosDataSetLoadStrategy>dataSetLoadStrategyClass=(Class<? extends HolmosDataSetLoadStrategy>) HolmosReflectionTool.getClassWithName(
 				HolmosModuleTool.getDefaultAnnotationProperty(HolmosDBUnitModule.class, HolmosDataSet.class, "loadstrategy", properties));
 		return HolmosReflectionTool.createInstanceAsType(dataSetLoadStrategyClass, false);
 	}
@@ -265,7 +268,7 @@ public class HolmosDBUnitModule implements HolmosModule{
 	 * 从Holmos框架的配置文件里面获取数据加载器
 	 * */
 	private HolmosDataSetFactory getDefaultDataSetFactory() {
-		Class<? extends HolmosDataSetFactory>dataSetFactoryClass=HolmosReflectionTool.getClassWithName(
+		Class<? extends HolmosDataSetFactory>dataSetFactoryClass=(Class<? extends HolmosDataSetFactory>) HolmosReflectionTool.getClassWithName(
 				HolmosModuleTool.getDefaultAnnotationProperty(HolmosDBUnitModule.class, HolmosDataSet.class, "factory", properties));
 		HolmosDataSetFactory dataSetFactory=HolmosReflectionTool.createInstanceAsType(dataSetFactoryClass, false);
 		dataSetFactory.init(properties,getDefaultDBToolBox().getSchemaName());

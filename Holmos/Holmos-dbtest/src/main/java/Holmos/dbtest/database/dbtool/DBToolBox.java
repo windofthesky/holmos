@@ -1,11 +1,12 @@
-package Holmos.dbtest.database.dbtool;
+package holmos.dbtest.database.dbtool;
+
+import holmos.dbtest.database.operation.SQLOperation;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.util.Properties;
 import java.util.Set;
 
-import Holmos.dbtest.database.operation.SQLOperation;
 import Holmos.webtest.basetools.HolmosPropertiesTool;
 import Holmos.webtest.exceptions.HolmosFailedError;
 

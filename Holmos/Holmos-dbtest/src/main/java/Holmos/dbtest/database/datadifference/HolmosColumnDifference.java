@@ -1,6 +1,6 @@
-package Holmos.dbtest.database.datadifference;
+package holmos.dbtest.database.datadifference;
 
-import Holmos.dbtest.database.structmodule.HolmosColumn;
+import holmos.dbtest.database.structmodule.HolmosColumn;
 
 /**存储两个列的不同，在数据库一列数据的比较的时候会用到
  * @author 吴银龙(15857164387)

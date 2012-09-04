@@ -1,8 +1,26 @@
-package Holmos.dbtest.database.dbmodule;
+package holmos.dbtest.database.dbmodule;
 
 import static org.dbunit.database.DatabaseConfig.FEATURE_BATCHED_STATEMENTS;
 import static org.dbunit.database.DatabaseConfig.PROPERTY_DATATYPE_FACTORY;
 import static org.dbunit.database.DatabaseConfig.PROPERTY_ESCAPE_PATTERN;
+import holmos.core.Holmos;
+import holmos.dbtest.database.DBToolBoxFactory;
+import holmos.dbtest.database.HolmosDataBaseTools;
+import holmos.dbtest.database.annotation.HolmosDataSet;
+import holmos.dbtest.database.annotation.HolmosExpectedDataSet;
+import holmos.dbtest.database.connecion.HolmosDataBaseConnection;
+import holmos.dbtest.database.dataset.HolmosMultiDataSet;
+import holmos.dbtest.database.dataset.filepathanalysis.DataFilePathAnalysisRobot;
+import holmos.dbtest.database.dataset.filepathanalysis.analysisimp.DefaultDataFilePathAnalysisRobot;
+import holmos.dbtest.database.datasetfactory.HolmosDataSetFactory;
+import holmos.dbtest.database.datasetloadstrategy.HolmosDataSetLoadStrategy;
+import holmos.dbtest.database.dbassert.HolmosDataBaseCheckTool;
+import holmos.dbtest.database.dbtool.DBToolBox;
+import holmos.dbtest.database.operation.DefaultSQLOperation;
+import holmos.dbtest.database.operation.SQLOperation;
+import holmos.testlistener.HolmosTestListener;
+import holmos.testlistener.modules.HolmosModule;
+import holmos.testlistener.modules.HolmosModuleTool;
 
 import java.io.File;
 import java.lang.annotation.Annotation;
@@ -21,22 +39,7 @@ import org.dbunit.database.DatabaseConfig;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.datatype.IDataTypeFactory;
 
-import Holmos.dbtest.database.DBToolBoxFactory;
-import Holmos.dbtest.database.HolmosDataBaseTools;
-import Holmos.dbtest.database.annotation.HolmosDataSet;
-import Holmos.dbtest.database.annotation.HolmosExpectedDataSet;
-import Holmos.dbtest.database.connecion.HolmosDataBaseConnection;
-import Holmos.dbtest.database.dataset.HolmosMultiDataSet;
-import Holmos.dbtest.database.dataset.filepathanalysis.DataFilePathAnalysisRobot;
-import Holmos.dbtest.database.dataset.filepathanalysis.analysisimp.DefaultDataFilePathAnalysisRobot;
-import Holmos.dbtest.database.datasetfactory.HolmosDataSetFactory;
-import Holmos.dbtest.database.datasetloadstrategy.HolmosDataSetLoadStrategy;
-import Holmos.dbtest.database.dbtool.DBToolBox;
-import Holmos.dbtest.database.operation.DefaultSQLOperation;
-import Holmos.dbtest.database.operation.SQLOperation;
-import Holmos.testlistener.HolmosTestListener;
-import Holmos.testlistener.modules.HolmosModule;
-import Holmos.testlistener.modules.HolmosModuleTool;
+import Holmos.webtest.basetools.HolmosAnnotationTool;
 import Holmos.webtest.basetools.HolmosConfTool;
 import Holmos.webtest.basetools.HolmosReflectionTool;
 import Holmos.webtest.exceptions.HolmosFailedError;
@@ -44,9 +47,9 @@ import Holmos.webtest.exceptions.HolmosFailedError;
  * 对DbUnit数据库单元测试框架提供支持,作为{@link HolmosDBUnitTestListener}的功能提供者
  * @author 吴银龙(15857164387)
  * */
-public class HolmosDBUnitModule implements HolmosModule{
+public class HolmosDBModule implements HolmosModule{
 	/**该类的日志工具*/
-	private static Logger logger=Logger.getLogger(HolmosDBUnitModule.class);
+	private static Logger logger=Logger.getLogger(HolmosDBModule.class);
 	/**数据库测试的配置信息*/
 	private Properties properties;
 	/**
@@ -56,7 +59,8 @@ public class HolmosDBUnitModule implements HolmosModule{
 	 * <li>xxxx 暂时只有1，为了以后扩展</li>
 	 * */
 	private Map<Class<? extends Annotation>,Map<String,String>> defaultAnnotationValues;
-	
+	/***/
+	protected boolean updateDatabaseSchemaEnabled;
 	/**
 	 * properties配置文件里面配置的数据库连接，这个是一个连接池，每一次调用{@link HolmosDataBaseConnection #close()}方法的时候，并没有将此连接<br>
 	 * 关闭，而是将此连接回收入连接池，再次需要此数据库的连接的时候，直接从这个连接池里面连接就行了，利用Schema的Name作为key索引，由于底层Dbunit<br>
@@ -69,14 +73,15 @@ public class HolmosDBUnitModule implements HolmosModule{
 	@Override
 	public void init(Properties properties) {
 		this.properties=properties;
-		defaultAnnotationValues=HolmosDataBaseTools.getDefaultAnnotationValues(HolmosDBUnitModule.class,properties,HolmosDataSet.class,HolmosExpectedDataSet.class);
+		defaultAnnotationValues=HolmosDataBaseTools.getDefaultAnnotationValues(HolmosDBModule.class,properties,HolmosDataSet.class,HolmosExpectedDataSet.class);
 	}
 
 	@Override
 	public HolmosTestListener createListener() {
 		return new HolmosDBUnitTestListener();
 	}
-	/**根据SchemaName来获得{@link HolmosDataBaseConnection},获取过程，先从数据库连接池 connections里面获取，如果没有的话，创建一个新的连接，并将此创建的连接加入连接池
+	/**根据SchemaName来获得{@link HolmosDataBaseConnection},获取过程，先从数据库连接池 connections
+	 * <br>里面获取，如果没有的话，创建一个新的连接，并将此创建的连接加入连接池
 	 * @param schemaName 数据库连接池的schemaName索引
 	 * @return 得到的与SchemaName匹配的connection
 	 * */
@@ -248,8 +253,9 @@ public class HolmosDBUnitModule implements HolmosModule{
 	 * 获取默认的数据加载策略
 	 * */
 	private HolmosDataSetLoadStrategy getDefaultDataSetLoadStrategy() {
-		Class<? extends HolmosDataSetLoadStrategy>dataSetLoadStrategyClass=HolmosReflectionTool.getClassWithName(
-				HolmosModuleTool.getDefaultAnnotationProperty(HolmosDBUnitModule.class, HolmosDataSet.class, "loadstrategy", properties));
+		@SuppressWarnings("unchecked")
+		Class<? extends HolmosDataSetLoadStrategy>dataSetLoadStrategyClass=(Class<? extends HolmosDataSetLoadStrategy>) HolmosReflectionTool.getClassWithName(
+				HolmosModuleTool.getDefaultAnnotationProperty(HolmosDBModule.class, HolmosDataSet.class, "loadstrategy", properties));
 		return HolmosReflectionTool.createInstanceAsType(dataSetLoadStrategyClass, false);
 	}
 
@@ -265,8 +271,9 @@ public class HolmosDBUnitModule implements HolmosModule{
 	 * 从Holmos框架的配置文件里面获取数据加载器
 	 * */
 	private HolmosDataSetFactory getDefaultDataSetFactory() {
-		Class<? extends HolmosDataSetFactory>dataSetFactoryClass=HolmosReflectionTool.getClassWithName(
-				HolmosModuleTool.getDefaultAnnotationProperty(HolmosDBUnitModule.class, HolmosDataSet.class, "factory", properties));
+		@SuppressWarnings("unchecked")
+		Class<? extends HolmosDataSetFactory>dataSetFactoryClass=(Class<? extends HolmosDataSetFactory>) HolmosReflectionTool.getClassWithName(
+				HolmosModuleTool.getDefaultAnnotationProperty(HolmosDBModule.class, HolmosDataSet.class, "factory", properties));
 		HolmosDataSetFactory dataSetFactory=HolmosReflectionTool.createInstanceAsType(dataSetFactoryClass, false);
 		dataSetFactory.init(properties,getDefaultDBToolBox().getSchemaName());
 		return dataSetFactory;
@@ -433,6 +440,18 @@ public class HolmosDBUnitModule implements HolmosModule{
 		// TODO Auto-generated method stub
 		// do nothing here now~ if needs someday,please just add the function you needed~~
 		// if you don't know how to do this work,please connect me(吴银龙)
+	}
+
+	public DataSource getDataSource() {
+		DataSourceFactory dataSourceFactory = ConfigUtils.getConfiguredInstanceOf(DataSourceFactory.class, configuration);
+        dataSourceFactory.init(configuration);
+        DataSource dataSource = dataSourceFactory.createDataSource();
+
+        // Call the database maintainer if enabled
+        if (updateDatabaseSchemaEnabled) {
+            updateDatabase(new DefaultSQLHandler(dataSource));
+        }
+        return dataSource;
 	}
 
 }

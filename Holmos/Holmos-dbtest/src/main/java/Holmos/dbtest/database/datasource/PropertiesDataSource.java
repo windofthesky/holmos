@@ -1,8 +1,9 @@
-package Holmos.dbtest.database.datasource;
+package holmos.dbtest.database.datasource;
+
+import holmos.dbtest.database.HolmosDataBaseTools;
 
 import java.util.Properties;
 
-import Holmos.dbtest.database.HolmosDataBaseTools;
 
 /**properties文件配置的数据源
  * @author 吴银龙(15857164387)

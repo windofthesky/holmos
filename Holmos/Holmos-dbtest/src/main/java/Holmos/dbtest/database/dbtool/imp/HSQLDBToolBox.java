@@ -1,8 +1,9 @@
-package Holmos.dbtest.database.dbtool.imp;
+package holmos.dbtest.database.dbtool.imp;
+
+import holmos.dbtest.database.dbtool.DBToolBox;
 
 import java.util.Set;
 
-import Holmos.dbtest.database.dbtool.DBToolBox;
 import Holmos.webtest.exceptions.HolmosFailedError;
 
 public class HSQLDBToolBox extends DBToolBox{

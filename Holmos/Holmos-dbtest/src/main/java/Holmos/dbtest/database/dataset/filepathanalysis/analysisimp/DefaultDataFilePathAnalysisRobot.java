@@ -1,9 +1,10 @@
-package Holmos.dbtest.database.dataset.filepathanalysis.analysisimp;
+package holmos.dbtest.database.dataset.filepathanalysis.analysisimp;
+
+import holmos.dbtest.database.dataset.filepathanalysis.DataFilePathAnalysisRobot;
 
 import java.io.File;
 import java.util.Properties;
 
-import Holmos.dbtest.database.dataset.filepathanalysis.DataFilePathAnalysisRobot;
 import Holmos.webtest.basetools.HolmosPropertiesTool;
 import Holmos.webtest.constvalue.ConfigConstValue;
 /**

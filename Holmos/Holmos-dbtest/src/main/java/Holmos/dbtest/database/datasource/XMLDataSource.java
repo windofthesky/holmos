@@ -1,8 +1,9 @@
-package Holmos.dbtest.database.datasource;
+package holmos.dbtest.database.datasource;
+
+import holmos.dbtest.database.HolmosDataBaseTools;
 
 import org.dom4j.Document;
 
-import Holmos.dbtest.database.HolmosDataBaseTools;
 
 /**XML文件配置的数据源
  * @author 吴银龙(15857164387)

@@ -1,4 +1,4 @@
-package Holmos.dbtest.database.datasource;
+package holmos.dbtest.database.datasource;
 
 /**普通文本文件配置的数据源
  * @author 吴银龙(15857164387)
