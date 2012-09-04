@@ -124,9 +124,10 @@ public class SeleniumDriver {
 		return driver;
 	}
 	/**新建WebDriver IE引擎，主页为url
+	 * 采用FF3.6版本的DOM结构处理
 	 * @param url 引擎打开的主页*/
 	public static SeleniumDriver createWebDriverHtmlUnitEngine(){
-		SeleniumDriver driver=new SeleniumDriver(new HtmlUnitDriver());
+		SeleniumDriver driver=new SeleniumDriver(new HtmlUnitDriver(true));
 		driver.type=EngineType.HtmlUnit;
 		return driver;
 	}
