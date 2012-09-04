@@ -1,7 +1,7 @@
-package Holmos.dbtest.database.annotation;
+package holmos.dbtest.database.annotation;
 
-import Holmos.dbtest.database.datasetfactory.HolmosDataSetFactory;
-import Holmos.dbtest.database.datasetloadstrategy.HolmosDataSetLoadStrategy;
+import holmos.dbtest.database.datasetfactory.HolmosDataSetFactory;
+import holmos.dbtest.database.datasetloadstrategy.HolmosDataSetLoadStrategy;
 
 /**加上此注解，将会启动数据库测试
  * @author 吴银龙(15857164387)

@@ -1,4 +1,4 @@
-package Holmos.dbtest.database.datasource;
+package holmos.dbtest.database.datasource;
 
 import javax.sql.DataSource;
 

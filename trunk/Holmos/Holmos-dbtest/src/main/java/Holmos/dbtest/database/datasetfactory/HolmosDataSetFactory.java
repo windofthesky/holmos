@@ -1,9 +1,10 @@
-package Holmos.dbtest.database.datasetfactory;
+package holmos.dbtest.database.datasetfactory;
+
+import holmos.dbtest.database.dataset.HolmosMultiDataSet;
 
 import java.io.File;
 import java.util.Properties;
 
-import Holmos.dbtest.database.dataset.HolmosMultiDataSet;
 
 /**采用工厂模式，生成Dbunit的DataSet对象
  * @author 吴银龙(15857164387)

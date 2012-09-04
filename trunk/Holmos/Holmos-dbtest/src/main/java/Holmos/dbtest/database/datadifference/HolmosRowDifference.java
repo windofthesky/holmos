@@ -1,10 +1,11 @@
-package Holmos.dbtest.database.datadifference;
+package holmos.dbtest.database.datadifference;
+
+import holmos.dbtest.database.structmodule.HolmosColumn;
+import holmos.dbtest.database.structmodule.HolmosRow;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Holmos.dbtest.database.structmodule.HolmosColumn;
-import Holmos.dbtest.database.structmodule.HolmosRow;
 
 /**一行的差异对象，数据库校验的时候会用到
  * @author 吴银龙(15857164387)

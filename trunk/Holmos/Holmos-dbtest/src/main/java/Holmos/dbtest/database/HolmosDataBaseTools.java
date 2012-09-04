@@ -1,4 +1,6 @@
-package Holmos.dbtest.database;
+package holmos.dbtest.database;
+
+import holmos.testlistener.modules.HolmosModule;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -16,7 +18,6 @@ import org.apache.commons.lang.ClassUtils;
 import org.dom4j.Document;
 import org.springframework.jdbc.datasource.DataSourceUtils;
 
-import Holmos.testlistener.modules.HolmosModule;
 import Holmos.webtest.basetools.HolmosPropertiesTool;
 import Holmos.webtest.exceptions.HolmosFailedError;
 

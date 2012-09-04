@@ -1,4 +1,6 @@
-package Holmos.dbtest.database.structmodule;
+package holmos.dbtest.database.structmodule;
+
+import holmos.dbtest.database.datadifference.HolmosColumnDifference;
 
 import java.sql.Types;
 
@@ -18,7 +20,6 @@ import org.dbunit.dataset.datatype.TimestampDataType;
 import org.dbunit.dataset.datatype.TypeCastException;
 import org.dbunit.dataset.datatype.UnknownDataType;
 
-import Holmos.dbtest.database.datadifference.HolmosColumnDifference;
 
 /**数据表的一列
  * @author 吴银龙(15857164387)

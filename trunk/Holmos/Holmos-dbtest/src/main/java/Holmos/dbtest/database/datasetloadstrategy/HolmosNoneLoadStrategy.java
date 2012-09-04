@@ -1,4 +1,6 @@
-package Holmos.dbtest.database.datasetloadstrategy;
+package holmos.dbtest.database.datasetloadstrategy;
+
+import holmos.dbtest.database.connecion.HolmosDataBaseConnection;
 
 import java.sql.SQLException;
 
@@ -6,7 +8,6 @@ import org.dbunit.DatabaseUnitException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.operation.DatabaseOperation;
 
-import Holmos.dbtest.database.connecion.HolmosDataBaseConnection;
 import Holmos.webtest.exceptions.HolmosFailedError;
 /**数据库测试的时候不对数据源做任何操作
  * @author 吴银龙(15857164387)

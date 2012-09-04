@@ -1,10 +1,11 @@
-package Holmos.dbtest.database.datadifference;
+package holmos.dbtest.database.datadifference;
+
+import holmos.dbtest.database.structmodule.HolmosSchema;
+import holmos.dbtest.database.structmodule.HolmosTable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Holmos.dbtest.database.structmodule.HolmosSchema;
-import Holmos.dbtest.database.structmodule.HolmosTable;
 /**两个Schema相异点的类
  * @author 吴银龙(15857164387)
  * */

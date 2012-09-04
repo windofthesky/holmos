@@ -1,4 +1,4 @@
-package Holmos.dbtest.database.dataset.filepathanalysis;
+package holmos.dbtest.database.dataset.filepathanalysis;
 
 import java.io.File;
 

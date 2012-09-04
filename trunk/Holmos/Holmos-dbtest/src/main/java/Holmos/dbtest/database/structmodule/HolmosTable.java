@@ -1,11 +1,12 @@
-package Holmos.dbtest.database.structmodule;
+package holmos.dbtest.database.structmodule;
+
+import holmos.dbtest.database.datadifference.HolmosRowDifference;
+import holmos.dbtest.database.datadifference.HolmosTableDifference;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import Holmos.dbtest.database.datadifference.HolmosRowDifference;
-import Holmos.dbtest.database.datadifference.HolmosTableDifference;
 /**对应数据库里面的一个表，有数据行组成*/
 public class HolmosTable {
 	public HolmosTable(){

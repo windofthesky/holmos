@@ -1,4 +1,4 @@
-package Holmos.dbtest.database;
+package holmos.dbtest.database;
 
 import java.util.Properties;
 
