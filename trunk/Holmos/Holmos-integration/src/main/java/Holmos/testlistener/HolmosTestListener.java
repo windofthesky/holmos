@@ -1,4 +1,4 @@
-package Holmos.testlistener;
+package holmos.testlistener;
 
 import java.lang.reflect.Method;
 

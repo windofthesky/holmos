@@ -1,4 +1,4 @@
-package Holmos.testlistener.modules;
+package holmos.testlistener.modules;
 import java.lang.annotation.Annotation;
 import java.util.Map;
 import java.util.Properties;
