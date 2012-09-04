@@ -1,8 +1,9 @@
-package Holmos.testlistener.modules;
+package holmos.testlistener.modules;
+
+import holmos.testlistener.HolmosTestListener;
 
 import java.util.Properties;
 
-import Holmos.testlistener.HolmosTestListener;
 
 /**
  * 监听器{@link HolmosTestListener}定义了Holmos框架执行的各个阶段，监听器的实现说明了在各个阶段的执行序列<br>

@@ -1,10 +1,11 @@
-package Holmos.testlistener;
+package holmos.testlistener;
+
+import holmos.testlistener.modules.HolmosModule;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import Holmos.testlistener.modules.HolmosModule;
 import Holmos.webtest.basetools.HolmosReflectionTool;
 import Holmos.webtest.exceptions.HolmosFailedError;
 

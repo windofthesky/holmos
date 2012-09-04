@@ -1,9 +1,9 @@
-package Holmos.testlistener;
+package holmos.testlistener;
 
 import java.lang.reflect.Method;
 
 /**
- * Holmos框架上下文类，这个类里面存储当前运行case的详细信息，并且它知道当前case运行的阶段
+ * Holmos这个类里面存储当前运行case的详细信息，并且它知道当前case运行的阶段
  * 
  * @author 吴银龙(15857164387)
  * */
