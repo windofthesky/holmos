@@ -188,6 +188,9 @@ public class SubPage implements LocatorValue{
 	public void addAttributeLocator(String attributeName, String attributeValue) {
 		this.locator.addAttributeLocator(attributeName, attributeValue);
 	}
+	public void addTagNameLocator(String tagName){
+		this.locator.addTagNameLocator(tagName);
+	}
 	/**判断这个SubPage在上层容器中是否存在<br>
 	 * 必须保证当前的subpage所在的是当前活动窗口<br>
 	 * @return true 存在<br>
