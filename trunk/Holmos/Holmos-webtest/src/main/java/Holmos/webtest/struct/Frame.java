@@ -73,6 +73,9 @@ public class Frame extends Page{
 	public void addAttributeLocator(String attributeName, String attributeValue) {
 		this.locator.addAttributeLocator(attributeName, attributeValue);
 	}
+	public void addTagNameLocator(String tagName){
+		this.locator.addTagNameLocator(tagName);
+	}
 	/**Frame里面所包含的链信息<br>
 	 * 用来保存这个节点所用到的comment和locator信息<br>*/
 	private LocatorChain infoChain=new LocatorChain();
@@ -120,11 +123,14 @@ public class Frame extends Page{
 						((WebDriver)currentWindow.getDriver().getEngine()).switchTo().frame(element);
 					}
 					message.append("定位Frame成功!现在的控制权交予这个Frame!");
+					logger.info(message);
 				}catch (Exception e) {
 					message.append("定位Frame失败，没有找到这个Frame!");
 					logger.error(message);
 				}
 			}
+		}else{
+			logger.error("该frame不存在");
 		}
 	}
 	/**
