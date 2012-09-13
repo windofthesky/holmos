@@ -76,6 +76,9 @@ public class Frame extends Page{
 	public void addTagNameLocator(String tagName){
 		this.locator.addTagNameLocator(tagName);
 	}
+	public void addClassLocator(String className){
+		this.locator.addClassLocator(className);
+	}
 	/**Frame里面所包含的链信息<br>
 	 * 用来保存这个节点所用到的comment和locator信息<br>*/
 	private LocatorChain infoChain=new LocatorChain();
