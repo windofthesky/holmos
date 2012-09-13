@@ -113,6 +113,9 @@ public class Element implements LocatorValue{
 	public void addTagNameLocator(String tagName){
 		this.locator.addTagNameLocator(tagName);
 	}
+	public void addClassLocator(String className){
+		this.locator.addClassLocator(className);
+	}
 	/**
 	 * 查看元素是否存在，等待加载waitCount次
 	 * */

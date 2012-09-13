@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import Holmos.webtest.Allocator;
+import Holmos.webtest.element.ListElement;
 import Holmos.webtest.element.locator.Locator;
 import Holmos.webtest.element.locator.LocatorFinder;
 import Holmos.webtest.element.locator.LocatorValue;
@@ -15,10 +16,14 @@ import Holmos.webtest.struct.Page;
  * @author 吴银龙(15857164387)
  * */
 public class WebDriverElementExist extends WebElementExist{
-	
+	/**
+	 * 元素的判断采用策略模式实现，此为WebDriver类型的数据判断
+	 * @param webElement 待判断的元素
+	 * */
 	public WebDriverElementExist(LocatorValue webElement){
 		super(webElement);
 	}
+	
 	@Override
 	public boolean isElementExist(int waitCount){
 		initComment();
@@ -65,7 +70,7 @@ public class WebDriverElementExist extends WebElementExist{
 		}
 		return false;
 	}
-	/**判断多层元素是否存在*/
+	/**判断单层元素是否存在*/
 	private boolean findOneLevelElement(int waitCount) {
 		LocatorFinder finder=new LocatorFinder(Allocator.getInstance().currentWindow.getDriver().getEngine());
 		WebElement elementTemp;
@@ -84,34 +89,152 @@ public class WebDriverElementExist extends WebElementExist{
 		Locator locator=webElement.getLocator();
 		if(webElement instanceof Collection){
 			int index=((Collection)webElement).getIndex();
-			element=findCollectionById(finder,locator.getLocatorById(),index);
-			if(element==null)
-				element=findCollectionByName(finder,locator.getLocatorByName(),index);
-			if(element==null)
-				element=findCollectionByXpath(finder,locator.getLocatorByXpath(),index);
-			if(element==null)
-				element=findCollectionByCss(finder,locator.getLocatorByCSS(),index);
-			if(element==null)
-				element=findCollectionByLinkText(finder,locator.getLocatorByLinkText(),index);
-			if(element==null)
-				element=findCollectionByPartLinkText(finder,locator.getLocatorByPartialLinkText(),index);
-			if(element==null)
-				element=findCollectionByTagName(finder,locator.getLocatorByTagName(),index);
+			element=findCollection(finder, webElement, index);
+		}else if(webElement instanceof ListElement){
+			int index=((ListElement)webElement).getIndex();
+			element=findListElement(finder, webElement, index);
 		}else{
-			element=findElementById(finder,locator.getLocatorById());
-			if(element==null)
-				element=findElementByName(finder,locator.getLocatorByName());
-			if(element==null)
-				element=findElementByXpath(finder,locator.getLocatorByXpath());
-			if(element==null)
-				element=findElementByCss(finder,locator.getLocatorByCSS());
-			if(element==null)
-				element=findElementByLinkText(finder,locator.getLocatorByLinkText());
-			if(element==null)
-				element=findElementByPartLinkText(finder,locator.getLocatorByPartialLinkText());
-			if(element==null)
-				element=findElementByTagName(finder,locator.getLocatorByTagName());
+			element=findElementOnly(finder, webElement);
 		}
+		return element;
+	}
+	private WebElement findListElement(LocatorFinder finder,LocatorValue webElement,int index){
+		WebElement element=findListElementById(finder,locator.getLocatorById(),index);
+		if(element==null)
+			element=findListElementByName(finder,locator.getLocatorByName(),index);
+		if(element==null)
+			element=findListElementByClass(finder, locator.getLocatorByClass(), index);
+		if(element==null)
+			element=findListElementByXpath(finder,locator.getLocatorByXpath(),index);
+		if(element==null)
+			element=findListElementByCss(finder,locator.getLocatorByCSS(),index);
+		if(element==null)
+			element=findListElementByLinkText(finder,locator.getLocatorByLinkText(),index);
+		if(element==null)
+			element=findListElementByPartLinkText(finder,locator.getLocatorByPartialLinkText(),index);
+		if(element==null)
+			element=findListElementByTagName(finder,locator.getLocatorByTagName(),index);
+		return element;
+	}
+	private WebElement findListElementById(LocatorFinder finder,String id,int index){
+		if(null==id||"".equalsIgnoreCase(id))
+			return null;
+		try{
+			return finder.findElements(By.id(id)).get(index);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	private WebElement findListElementByName(LocatorFinder finder,String name,int index){
+		if(null==name||"".equalsIgnoreCase(name))
+			return null;
+		try{
+			return finder.findElements(By.name(name)).get(index);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	private WebElement findListElementByXpath(LocatorFinder finder,String xpath,int index){
+		if(null==xpath||"".equalsIgnoreCase(xpath))
+			return null;
+		try{
+			return finder.findElements(By.xpath(xpath)).get(index);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	private WebElement findListElementByCss(LocatorFinder finder,String css,int index){
+		if(null==css||"".equalsIgnoreCase(css))
+			return null;
+		try{
+			return finder.findElements(By.cssSelector(css)).get(index);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	private WebElement findListElementByLinkText(LocatorFinder finder,String linkText,int index){
+		if(null==linkText||"".equalsIgnoreCase(linkText))
+			return null;
+		try{
+			return finder.findElements(By.linkText(linkText)).get(index);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	private WebElement findListElementByPartLinkText(LocatorFinder finder,String partLinkText,int index){
+		if(null==partLinkText||"".equalsIgnoreCase(partLinkText))
+			return null;
+		try{
+			return finder.findElements(By.partialLinkText(partLinkText)).get(index);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	private WebElement findListElementByTagName(LocatorFinder finder,String tagName,int index){
+		if(null==tagName||"".equalsIgnoreCase(tagName))
+			return null;
+		try{
+			return finder.findElements(By.tagName(tagName)).get(index);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	private WebElement findListElementByClass(LocatorFinder finder,String className,int index){
+		if(null==className||"".equalsIgnoreCase(className))
+			return null;
+		try{
+			return finder.findElements(By.className(className)).get(index);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	/**
+	 * 定位普通Element类型
+	 * @param finder 定位引擎
+	 * @param webElement 待定位的元素
+	 * @return 定位到普通Element元素，并返回此元素
+	 * */
+	private WebElement findElementOnly(LocatorFinder finder,LocatorValue webElement){
+		WebElement element=findElementById(finder,locator.getLocatorById());
+		if(element==null)
+			element=findElementByName(finder,locator.getLocatorByName());
+		if(element==null)
+			element=findElementByClass(finder, locator.getLocatorByClass());
+		if(element==null)
+			element=findElementByXpath(finder,locator.getLocatorByXpath());
+		if(element==null)
+			element=findElementByCss(finder,locator.getLocatorByCSS());
+		if(element==null)
+			element=findElementByLinkText(finder,locator.getLocatorByLinkText());
+		if(element==null)
+			element=findElementByPartLinkText(finder,locator.getLocatorByPartialLinkText());
+		if(element==null)
+			element=findElementByTagName(finder,locator.getLocatorByTagName());
+		return element;
+	}
+	/**
+	 * 定位Collection类型的元素
+	 * @param finder 定位引擎
+	 * @param webElement 待定位的元素
+	 * @param index Collection类型元素的索引，定位到这个索引上
+	 * @return 定位到的指定索引指代的Collection类型元素，并返回此元素
+	 * */
+	private WebElement findCollection(LocatorFinder finder,LocatorValue webElement,int index){
+		WebElement element=findCollectionById(finder,locator.getLocatorById(),index);
+		if(element==null)
+			element=findCollectionByName(finder,locator.getLocatorByName(),index);
+		if(element==null)
+			element=findCollectionByClass(finder, locator.getLocatorByClass(), index);
+		if(element==null)
+			element=findCollectionByXpath(finder,locator.getLocatorByXpath(),index);
+		if(element==null)
+			element=findCollectionByCss(finder,locator.getLocatorByCSS(),index);
+		if(element==null)
+			element=findCollectionByLinkText(finder,locator.getLocatorByLinkText(),index);
+		if(element==null)
+			element=findCollectionByPartLinkText(finder,locator.getLocatorByPartialLinkText(),index);
+		if(element==null)
+			element=findCollectionByTagName(finder,locator.getLocatorByTagName(),index);
 		return element;
 	}
 	private WebElement findElementByTagName(LocatorFinder finder,
@@ -183,7 +306,15 @@ public class WebDriverElementExist extends WebElementExist{
 			return null;
 		}
 	}
-	
+	private WebElement findElementByClass(LocatorFinder finder, String className) {
+		if(className==null||"".equalsIgnoreCase(className))
+			return null;
+		try{
+			return finder.findElement(By.className(className));
+		}catch (Exception e) {
+			return null;
+		}
+	}
 	
 	
 	private WebElement findCollectionByTagName(LocatorFinder finder,
@@ -251,6 +382,15 @@ public class WebDriverElementExist extends WebElementExist{
 			return null;
 		try{
 			return finder.findElements(By.id(Id)).get(index);
+		}catch (Exception e) {
+			return null;
+		}
+	}
+	private WebElement findCollectionByClass(LocatorFinder finder, String className,int index){
+		if(className==null||"".equalsIgnoreCase(className))
+			return null;
+		try{
+			return finder.findElements(By.className(className)).get(index);
 		}catch (Exception e) {
 			return null;
 		}

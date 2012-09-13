@@ -46,6 +46,9 @@ public class Locator {
 	public void addRegularLocator(String regular){
 		locators.put("regular",regular);
 	}
+	public void addClassLocator(String className){
+		locators.put("class", className);
+	}
 	public void addAttributeLocator(String attributeName,String attributeValue){
 		locators.put(attributeName, attributeValue);
 	}
@@ -77,6 +80,9 @@ public class Locator {
 	public String getLocatorByTagName(){
 		return locators.get("tagname");
 	}
+	public String getLocatorByClass(){
+		return locators.get("class");
+	}
 	public String getXpathFromTagName(){
 		if(locators.get("tagname")!=null)
 			return ".//"+locators.get("tagname");
@@ -90,6 +96,11 @@ public class Locator {
 	public String getXpathFromName(){
 		if(locators.get("name")!=null)
 			return ".//*[@name=\'"+locators.get("name")+"\']";
+		return null;
+	}
+	public String getXpathFromClass(){
+		if(locators.get("class")!=null)
+			return ".//*[@class=\'"+locators.get("class")+"\']";
 		return null;
 	}
 	public String getXpathFromLinkText(){

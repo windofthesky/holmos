@@ -42,7 +42,7 @@ public class Collection implements LocatorValue{
 	/**Collection的注释说明*/
 	public String comment;
 	/**用来保存当前用到的是collection里面的第几个元素*/
-	private int index;
+	private int index=1;
 	public int getIndex() {
 		return index;
 	}
@@ -156,7 +156,9 @@ public class Collection implements LocatorValue{
 	public void addTagNameLocator(String tagName){
 		this.locator.addTagNameLocator(tagName);
 	}
-	
+	public void addClassLocator(String className){
+		this.locator.addClassLocator(className);
+	}
 	/**
 	 * 查看Collection是否存在，等待加载waitCount次
 	 * */
