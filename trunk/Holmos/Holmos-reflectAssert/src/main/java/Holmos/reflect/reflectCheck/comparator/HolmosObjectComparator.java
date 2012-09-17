@@ -1,13 +1,13 @@
-package Holmos.reflect.reflectCheck.comparator;
+package holmos.reflect.reflectCheck.comparator;
+
+import holmos.reflect.reflectCheck.HolmosReflectionComparator;
+import holmos.reflect.reflectCheck.difference.HolmosClassDifference;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-
-import Holmos.reflect.reflectCheck.HolmosReflectionComparator;
-import Holmos.reflect.reflectCheck.difference.HolmosClassDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
 /**两个对象进行比较，可以按照java本身的Object比较，和比较里面元素的值进行比较两中方式<br>
  * 默认比较全部的字段，但是可以指定比较其中部分字段<br>
  * @author 吴银龙(15857164387)

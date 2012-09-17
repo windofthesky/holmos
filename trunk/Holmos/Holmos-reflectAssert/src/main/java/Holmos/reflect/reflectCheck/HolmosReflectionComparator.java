@@ -1,11 +1,11 @@
-package Holmos.reflect.reflectCheck;
+package holmos.reflect.reflectCheck;
+
+import holmos.reflect.reflectCheck.comparator.HolmosComparator;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
-
-import Holmos.reflect.reflectCheck.comparator.HolmosComparator;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 /**比较两个对象实例的反射比较器
  * @author 吴银龙(15857164387)

@@ -1,18 +1,17 @@
-package Holmos.reflect.reflectCheck.report;
+package holmos.reflect.reflectCheck.report;
 
 import static org.apache.commons.lang.ClassUtils.getShortClassName;
+import holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
+import holmos.reflect.reflectCheck.difference.HolmosClassDifference;
+import holmos.reflect.reflectCheck.difference.HolmosCollectionDifference;
+import holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.difference.HolmosMapDifference;
+import holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
+import holmos.reflect.tool.HolmosObjectFormatter;
 
 import java.util.List;
 import java.util.Map;
-
-import Holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
-import Holmos.reflect.reflectCheck.difference.HolmosClassDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosCollectionDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosMapDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
-import Holmos.reflect.tool.HolmosObjectFormatter;
 /**根据已知的Difference来新建一个报表，如果如果difference是一个简单的类型的difference，那么就直接调用<br>
  * {@link HolmosSimpleDifferenceView}来新建一个简单的报表，如果是一个对象，那么仍需调用{@linkplain HolmosDefalutDifferenceView}<br>
  * 给出差异树<br>

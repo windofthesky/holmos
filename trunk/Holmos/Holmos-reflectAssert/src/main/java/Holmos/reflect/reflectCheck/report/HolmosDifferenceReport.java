@@ -1,6 +1,6 @@
-package Holmos.reflect.reflectCheck.report;
+package holmos.reflect.reflectCheck.report;
 
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 /**为给定的Difference建立一个Report报表，是反射校验的日志形式
  * @author 吴银龙(15857164387)

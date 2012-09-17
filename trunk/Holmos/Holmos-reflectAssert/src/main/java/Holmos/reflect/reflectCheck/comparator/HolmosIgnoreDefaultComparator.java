@@ -1,7 +1,7 @@
-package Holmos.reflect.reflectCheck.comparator;
+package holmos.reflect.reflectCheck.comparator;
 
-import Holmos.reflect.reflectCheck.HolmosReflectionComparator;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.HolmosReflectionComparator;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 /**处理java默认值的比较器，如果遇到null,false,0,0.0的情况，则此类型的反射比较一致
  * @author 吴银龙(15857164387)

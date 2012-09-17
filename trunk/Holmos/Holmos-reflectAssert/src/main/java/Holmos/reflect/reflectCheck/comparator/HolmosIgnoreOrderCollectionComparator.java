@@ -1,14 +1,14 @@
-package Holmos.reflect.reflectCheck.comparator;
+package holmos.reflect.reflectCheck.comparator;
+
+import holmos.reflect.basetool.HolmosCollectionTool;
+import holmos.reflect.reflectCheck.HolmosMatchingScoreCalculator;
+import holmos.reflect.reflectCheck.HolmosReflectionComparator;
+import holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-
-import Holmos.reflect.basetool.HolmosCollectionTool;
-import Holmos.reflect.reflectCheck.HolmosMatchingScoreCalculator;
-import Holmos.reflect.reflectCheck.HolmosReflectionComparator;
-import Holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
 /**两个Collection对象的比较器，对Collection立面的元素的顺序没有要求
  * @author 吴银龙(15857164387)
  * */

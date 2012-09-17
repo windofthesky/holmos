@@ -1,9 +1,9 @@
-package Holmos.reflect.reflectCheck.difference;
+package holmos.reflect.reflectCheck.difference;
+
+import holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import Holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
 
 /**记录Object实例的不同信息的类
  * @author 吴银龙(15857164387)

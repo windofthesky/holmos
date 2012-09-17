@@ -1,6 +1,6 @@
-package Holmos.reflect.reflectCheck.report;
+package holmos.reflect.reflectCheck.report;
 
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 /**根据给定的difference生成报表，这个类会是第一个用{@link HolmosDifferenceView}来输出<br>
  * 比较结果，根据difference的类型，如果不是一个简单的Difference，那么就需要调用{@link HolmosTreeDifferenceView}<br>

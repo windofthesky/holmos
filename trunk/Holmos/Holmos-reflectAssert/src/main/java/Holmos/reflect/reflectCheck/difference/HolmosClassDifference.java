@@ -1,6 +1,6 @@
-package Holmos.reflect.reflectCheck.difference;
+package holmos.reflect.reflectCheck.difference;
 
-import Holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
+import holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
 
 /**类的类型区别类
  * @author 吴银龙(15857164387)

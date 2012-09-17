@@ -1,10 +1,10 @@
-package Holmos.reflect;
+package holmos.reflect;
 import static junit.framework.Assert.assertNotNull;
-import Holmos.reflect.reflectCheck.HolmosRefectionComparatorMode;
-import Holmos.reflect.reflectCheck.HolmosReflectionComparator;
-import Holmos.reflect.reflectCheck.comparator.HolmosComparatorFactory;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
-import Holmos.reflect.reflectCheck.report.HolmosDefaultDifferentReport;
+import holmos.reflect.reflectCheck.HolmosRefectionComparatorMode;
+import holmos.reflect.reflectCheck.HolmosReflectionComparator;
+import holmos.reflect.reflectCheck.comparator.HolmosComparatorFactory;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.report.HolmosDefaultDifferentReport;
 import Holmos.webtest.basetools.HolmosReflectionTool;
 import Holmos.webtest.exceptions.HolmosFailedError;
 

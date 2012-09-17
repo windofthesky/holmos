@@ -1,8 +1,8 @@
-package Holmos.reflect.reflectCheck.report;
+package holmos.reflect.reflectCheck.report;
 
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.tool.HolmosObjectFormatter;
 import junit.framework.AssertionFailedError;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
-import Holmos.reflect.tool.HolmosObjectFormatter;
 
 /**建立简单类型的报表<br>
  * @author 吴银龙(15857164387)

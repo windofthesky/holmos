@@ -1,7 +1,7 @@
-package Holmos.reflect.reflectCheck.comparator;
+package holmos.reflect.reflectCheck.comparator;
 
-import Holmos.reflect.reflectCheck.HolmosReflectionComparator;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.HolmosReflectionComparator;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 /**高级比较的比较器：比较Collection,Array,Map,Set,Object等除了基本元素以外的比较器
  * @author 吴银龙(15857164387)
