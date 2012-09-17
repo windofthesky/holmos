@@ -1,4 +1,16 @@
-package Holmos.webtest.struct;
+package holmos.webtest.struct;
+
+import holmos.webtest.Allocator;
+import holmos.webtest.BrowserWindow;
+import holmos.webtest.SeleniumBrowserWindow;
+import holmos.webtest.WebDriverBrowserWindow;
+import holmos.webtest.basetools.HolmosBaseTools;
+import holmos.webtest.constvalue.ConstValue;
+import holmos.webtest.element.Element;
+import holmos.webtest.element.locator.Locator;
+import holmos.webtest.element.locator.LocatorChain;
+import holmos.webtest.element.locator.LocatorValue;
+import holmos.webtest.log.MyLogger;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -9,18 +21,6 @@ import java.util.Set;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import Holmos.webtest.Allocator;
-import Holmos.webtest.BrowserWindow;
-import Holmos.webtest.SeleniumBrowserWindow;
-import Holmos.webtest.WebDriverBrowserWindow;
-import Holmos.webtest.basetools.HolmosBaseTools;
-import Holmos.webtest.constvalue.ConstValue;
-import Holmos.webtest.element.Element;
-import Holmos.webtest.element.locator.Locator;
-import Holmos.webtest.element.locator.LocatorChain;
-import Holmos.webtest.element.locator.LocatorValue;
-import Holmos.webtest.log.MyLogger;
 
 import com.thoughtworks.selenium.Selenium;
 

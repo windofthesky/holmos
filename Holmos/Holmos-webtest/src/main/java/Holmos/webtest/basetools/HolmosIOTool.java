@@ -1,4 +1,4 @@
-package Holmos.webtest.basetools;
+package holmos.webtest.basetools;
 
 import java.io.InputStream;
 

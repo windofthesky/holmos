@@ -1,4 +1,7 @@
-package Holmos.webtest;
+package holmos.webtest;
+
+import holmos.webtest.basetools.HolmosBaseTools;
+import holmos.webtest.constvalue.ConfigConstValue;
 
 import java.awt.Toolkit;
 import java.io.File;
@@ -11,10 +14,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-
-import Holmos.webtest.basetools.HolmosBaseTools;
-import Holmos.webtest.basetools.HolmosWindow;
-import Holmos.webtest.constvalue.ConfigConstValue;
 /**
  * @author 吴银龙(15857164387)
  * */

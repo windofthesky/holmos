@@ -1,4 +1,4 @@
-package Holmos.webtest.constvalue;
+package holmos.webtest.constvalue;
 
 
 /**常数仓库，用来集中管理Holmos系统用到的常数

@@ -1,7 +1,7 @@
-package Holmos.webtest;
+package holmos.webtest;
 
-import Holmos.webtest.basetools.HolmosBaseTools;
-import Holmos.webtest.basetools.HolmosWindow;
+import holmos.webtest.basetools.HolmosBaseTools;
+import holmos.webtest.basetools.HolmosWindow;
 
 import com.thoughtworks.selenium.Selenium;
 /**

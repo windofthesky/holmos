@@ -1,4 +1,4 @@
-package Holmos.webtest.element.property;
+package holmos.webtest.element.property;
 /**此元素的大小，根据CSS的盒模型，一个模型的大小
  * @author 吴银龙(15857164387)
  * */

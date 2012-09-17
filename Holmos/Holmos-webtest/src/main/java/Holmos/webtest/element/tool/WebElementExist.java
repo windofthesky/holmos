@@ -1,9 +1,9 @@
-package Holmos.webtest.element.tool;
+package holmos.webtest.element.tool;
 
-import Holmos.webtest.element.locator.Locator;
-import Holmos.webtest.element.locator.LocatorChain;
-import Holmos.webtest.element.locator.LocatorValue;
-import Holmos.webtest.struct.Collection;
+import holmos.webtest.element.locator.Locator;
+import holmos.webtest.element.locator.LocatorChain;
+import holmos.webtest.element.locator.LocatorValue;
+import holmos.webtest.struct.Collection;
 
 /**用来判断数据结构是否存在的工具类*/
 public class WebElementExist {

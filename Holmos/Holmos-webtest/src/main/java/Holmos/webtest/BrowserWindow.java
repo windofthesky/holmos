@@ -1,6 +1,6 @@
-package Holmos.webtest;
+package holmos.webtest;
 
-import Holmos.webtest.log.MyLogger;
+import holmos.webtest.log.MyLogger;
 
 /**浏览器窗口的基本单位<br>
  * 窗口句柄，句柄在整个框架里面唯一，当为webdriver的时候，由底层<br>

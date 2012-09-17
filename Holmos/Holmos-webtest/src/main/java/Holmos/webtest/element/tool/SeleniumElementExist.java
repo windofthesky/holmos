@@ -1,13 +1,13 @@
-package Holmos.webtest.element.tool;
+package holmos.webtest.element.tool;
+
+import holmos.webtest.Allocator;
+import holmos.webtest.element.locator.Locator;
+import holmos.webtest.element.locator.LocatorValue;
+import holmos.webtest.struct.Collection;
+import holmos.webtest.struct.Frame;
+import holmos.webtest.struct.Page;
 
 import java.util.ArrayList;
-
-import Holmos.webtest.Allocator;
-import Holmos.webtest.element.locator.Locator;
-import Holmos.webtest.element.locator.LocatorValue;
-import Holmos.webtest.struct.Collection;
-import Holmos.webtest.struct.Frame;
-import Holmos.webtest.struct.Page;
 
 import com.thoughtworks.selenium.Selenium;
 

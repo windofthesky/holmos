@@ -1,16 +1,17 @@
-package Holmos.webtest.element.tool;
+package holmos.webtest.element.tool;
+
+import holmos.webtest.Allocator;
+import holmos.webtest.element.ListElement;
+import holmos.webtest.element.locator.Locator;
+import holmos.webtest.element.locator.LocatorFinder;
+import holmos.webtest.element.locator.LocatorValue;
+import holmos.webtest.struct.Collection;
+import holmos.webtest.struct.Frame;
+import holmos.webtest.struct.Page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import Holmos.webtest.Allocator;
-import Holmos.webtest.element.ListElement;
-import Holmos.webtest.element.locator.Locator;
-import Holmos.webtest.element.locator.LocatorFinder;
-import Holmos.webtest.element.locator.LocatorValue;
-import Holmos.webtest.struct.Collection;
-import Holmos.webtest.struct.Frame;
-import Holmos.webtest.struct.Page;
 /**
  * 用来判断webdriver web元素是否存在的类，采用的是策略模式
  * @author 吴银龙(15857164387)

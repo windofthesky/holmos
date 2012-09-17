@@ -1,4 +1,4 @@
-package Holmos.webtest;
+package holmos.webtest;
 /**selenium窗口handle生产类，由于Selenium1对多窗口的支持有问题<br>
  * 所以这些问题交予holmos框架解决，采用单件模式，每次产生一个唯一的不同<br>
  * 的Handle，实际上只是一个整数转化的字符窜，并且是线程安全的<br>

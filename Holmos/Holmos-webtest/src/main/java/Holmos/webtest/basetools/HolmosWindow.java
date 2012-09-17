@@ -1,4 +1,13 @@
-package Holmos.webtest.basetools;
+package holmos.webtest.basetools;
+
+import holmos.webtest.Allocator;
+import holmos.webtest.BrowserWindow;
+import holmos.webtest.EngineType;
+import holmos.webtest.SeleniumBrowserWindow;
+import holmos.webtest.SeleniumDriver;
+import holmos.webtest.WebDriverBrowserWindow;
+import holmos.webtest.constvalue.ConstValue;
+import holmos.webtest.log.MyLogger;
 
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -8,15 +17,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
-
-import Holmos.webtest.Allocator;
-import Holmos.webtest.BrowserWindow;
-import Holmos.webtest.EngineType;
-import Holmos.webtest.SeleniumBrowserWindow;
-import Holmos.webtest.SeleniumDriver;
-import Holmos.webtest.WebDriverBrowserWindow;
-import Holmos.webtest.constvalue.ConstValue;
-import Holmos.webtest.log.MyLogger;
 
 import com.thoughtworks.selenium.Selenium;
 /**

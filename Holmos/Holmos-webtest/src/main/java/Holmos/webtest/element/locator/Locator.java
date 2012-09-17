@@ -1,4 +1,4 @@
-package Holmos.webtest.element.locator;
+package holmos.webtest.element.locator;
 
 import java.util.HashMap;
 import java.util.Map;

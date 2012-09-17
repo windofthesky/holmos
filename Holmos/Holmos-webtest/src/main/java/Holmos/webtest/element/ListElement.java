@@ -1,4 +1,4 @@
-package Holmos.webtest.element;
+package holmos.webtest.element;
 /**
  * 对于Collection结构但是每个元素不是容器的类型的元素
  * @author 吴银龙(307087558)

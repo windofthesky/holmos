@@ -1,15 +1,16 @@
-package Holmos.webtest.element;
+package holmos.webtest.element;
+
+import holmos.webtest.Allocator;
+import holmos.webtest.BrowserWindow;
+import holmos.webtest.SeleniumBrowserWindow;
+import holmos.webtest.WebDriverBrowserWindow;
+import holmos.webtest.element.property.Location;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import Holmos.webtest.Allocator;
-import Holmos.webtest.BrowserWindow;
-import Holmos.webtest.SeleniumBrowserWindow;
-import Holmos.webtest.WebDriverBrowserWindow;
-import Holmos.webtest.element.property.Location;
 
 import com.thoughtworks.selenium.Selenium;
 import com.thoughtworks.selenium.SeleniumException;
