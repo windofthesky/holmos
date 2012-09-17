@@ -1,6 +1,8 @@
 package holmos.dbtest.database;
 
 import holmos.testlistener.modules.HolmosModule;
+import holmos.webtest.basetools.HolmosPropertiesTool;
+import holmos.webtest.exceptions.HolmosFailedError;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
@@ -17,9 +19,6 @@ import javax.sql.DataSource;
 import org.apache.commons.lang.ClassUtils;
 import org.dom4j.Document;
 import org.springframework.jdbc.datasource.DataSourceUtils;
-
-import Holmos.webtest.basetools.HolmosPropertiesTool;
-import Holmos.webtest.exceptions.HolmosFailedError;
 
 /**Holmos框架数据库支持的工具类
  * @author 吴银龙(15857164387)
