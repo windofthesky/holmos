@@ -1,4 +1,12 @@
-package Holmos.webtest.css;
+package holmos.webtest.css;
+
+import holmos.webtest.asserttool.HolmosSimpleCheckTool;
+import holmos.webtest.basetools.HolmosBaseTools;
+import holmos.webtest.basetools.HolmosPropertiesTool;
+import holmos.webtest.constvalue.ConstValue;
+import holmos.webtest.element.*;
+import holmos.webtest.exceptions.HolmosFailedError;
+import holmos.webtest.log.MyLogger;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -6,15 +14,6 @@ import java.util.Properties;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
-
-import Holmos.webtest.asserttool.HolmosSimpleCheckTool;
-import Holmos.webtest.basetools.HolmosBaseTools;
-import Holmos.webtest.basetools.HolmosPropertiesTool;
-import Holmos.webtest.constvalue.ConstValue;
-import Holmos.webtest.element.Element;
-import Holmos.webtest.element.Image;
-import Holmos.webtest.exceptions.HolmosFailedError;
-import Holmos.webtest.log.MyLogger;
 /**页面样式校验工具*/
 public class HolmosCSSTool {
 	private static MyLogger logger=MyLogger.getLogger(HolmosBaseTools.class);

@@ -1,13 +1,13 @@
-package Holmos.webtest.element;
+package holmos.webtest.element;
+import holmos.webtest.Allocator;
+import holmos.webtest.BrowserWindow;
+import holmos.webtest.SeleniumBrowserWindow;
+import holmos.webtest.WebDriverBrowserWindow;
+
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import Holmos.webtest.Allocator;
-import Holmos.webtest.BrowserWindow;
-import Holmos.webtest.SeleniumBrowserWindow;
-import Holmos.webtest.WebDriverBrowserWindow;
 
 import com.thoughtworks.selenium.Selenium;
 /**

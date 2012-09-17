@@ -1,4 +1,8 @@
-package Holmos.webtest.basetools;
+package holmos.webtest.basetools;
+import holmos.webtest.basetools.file.MyFile;
+import holmos.webtest.exceptions.HolmosFailedError;
+import holmos.webtest.log.MyLogger;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -8,10 +12,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-
-import Holmos.webtest.basetools.file.MyFile;
-import Holmos.webtest.exceptions.HolmosFailedError;
-import Holmos.webtest.log.MyLogger;
 
 /**操作Properties文件的工具类
  * @author 吴银龙(15857164387)

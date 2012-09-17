@@ -1,4 +1,14 @@
-package Holmos.webtest.basetools;
+package holmos.webtest.basetools;
+
+import holmos.webtest.Allocator;
+import holmos.webtest.constvalue.ConfigConstValue;
+import holmos.webtest.constvalue.ConstValue;
+import holmos.webtest.element.Element;
+import holmos.webtest.exceptions.HolmosFailedError;
+import holmos.webtest.struct.Collection;
+import holmos.webtest.struct.Frame;
+import holmos.webtest.struct.Page;
+import holmos.webtest.struct.SubPage;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -9,16 +19,6 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.log4j.PropertyConfigurator;
-
-import Holmos.webtest.Allocator;
-import Holmos.webtest.constvalue.ConfigConstValue;
-import Holmos.webtest.constvalue.ConstValue;
-import Holmos.webtest.element.Element;
-import Holmos.webtest.exceptions.HolmosFailedError;
-import Holmos.webtest.struct.Collection;
-import Holmos.webtest.struct.Frame;
-import Holmos.webtest.struct.Page;
-import Holmos.webtest.struct.SubPage;
 /**
  * @author 吴银龙(15857164387)
  * */

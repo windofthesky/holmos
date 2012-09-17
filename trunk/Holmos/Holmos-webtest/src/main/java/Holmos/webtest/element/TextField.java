@@ -1,9 +1,9 @@
-package Holmos.webtest.element;
+package holmos.webtest.element;
 
-import Holmos.webtest.Allocator;
-import Holmos.webtest.BrowserWindow;
-import Holmos.webtest.SeleniumBrowserWindow;
-import Holmos.webtest.WebDriverBrowserWindow;
+import holmos.webtest.Allocator;
+import holmos.webtest.BrowserWindow;
+import holmos.webtest.SeleniumBrowserWindow;
+import holmos.webtest.WebDriverBrowserWindow;
 
 import com.thoughtworks.selenium.Selenium;
 /**

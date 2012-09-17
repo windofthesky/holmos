@@ -1,9 +1,9 @@
-package Holmos.webtest.basetools;
+package holmos.webtest.basetools;
+
+import holmos.webtest.exceptions.HolmosFailedError;
+import holmos.webtest.log.MyLogger;
 
 import java.util.Properties;
-
-import Holmos.webtest.exceptions.HolmosFailedError;
-import Holmos.webtest.log.MyLogger;
 
 /**
  * Holmos 框架处理配置文件的工具类

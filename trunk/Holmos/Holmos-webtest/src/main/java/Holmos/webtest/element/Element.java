@@ -1,6 +1,22 @@
-package Holmos.webtest.element;
+package holmos.webtest.element;
 
 import static org.junit.Assert.fail;
+import holmos.webtest.Allocator;
+import holmos.webtest.BrowserWindow;
+import holmos.webtest.EngineType;
+import holmos.webtest.SeleniumBrowserWindow;
+import holmos.webtest.WebDriverBrowserWindow;
+import holmos.webtest.basetools.HolmosBaseTools;
+import holmos.webtest.basetools.HolmosWindow;
+import holmos.webtest.constvalue.ConfigConstValue;
+import holmos.webtest.element.locator.Locator;
+import holmos.webtest.element.locator.LocatorChain;
+import holmos.webtest.element.locator.LocatorValue;
+import holmos.webtest.element.property.Location;
+import holmos.webtest.element.tool.SeleniumElementExist;
+import holmos.webtest.element.tool.WebDriverElementExist;
+import holmos.webtest.element.tool.WebElementExist;
+import holmos.webtest.log.MyLogger;
 
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
@@ -12,22 +28,6 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import Holmos.webtest.Allocator;
-import Holmos.webtest.BrowserWindow;
-import Holmos.webtest.EngineType;
-import Holmos.webtest.SeleniumBrowserWindow;
-import Holmos.webtest.WebDriverBrowserWindow;
-import Holmos.webtest.basetools.HolmosBaseTools;
-import Holmos.webtest.basetools.HolmosWindow;
-import Holmos.webtest.constvalue.ConfigConstValue;
-import Holmos.webtest.element.locator.Locator;
-import Holmos.webtest.element.locator.LocatorChain;
-import Holmos.webtest.element.locator.LocatorValue;
-import Holmos.webtest.element.property.Location;
-import Holmos.webtest.element.tool.SeleniumElementExist;
-import Holmos.webtest.element.tool.WebDriverElementExist;
-import Holmos.webtest.element.tool.WebElementExist;
-import Holmos.webtest.log.MyLogger;
 
 import com.thoughtworks.selenium.Selenium;
 /**元素的基础类，对应页面的一个确定元素，具有很多的基于元素的方法和元素具有的属性
@@ -73,7 +73,7 @@ public class Element implements LocatorValue{
 	/**这个元素当前用到的locator*/
 	protected String locatorCurrent="";
 	/**在webdriver的时候的封装元素*/
-	WebElement element=null;
+	protected WebElement element=null;
 	public void setElement(WebElement element) {
 		this.element = element;
 	}

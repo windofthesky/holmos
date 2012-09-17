@@ -1,4 +1,4 @@
-package Holmos.webtest.log;
+package holmos.webtest.log;
 public class MyLogger{
 	private String name;
 	private Class<?> clazz;

@@ -1,4 +1,4 @@
-package Holmos.webtest.basetools.file;
+package holmos.webtest.basetools.file;
 /**分析文件的时候对String的分析功能
  * @author 吴银龙(15857164387)
  * 

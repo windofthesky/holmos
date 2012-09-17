@@ -1,4 +1,4 @@
-package Holmos.webtest.element.property;
+package holmos.webtest.element.property;
 /**只是元素的在页面上的位置，此元素的左上角相对与页面的左上角的位置
  * @author 吴银龙(15857164387)
  * */

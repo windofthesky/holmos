@@ -1,13 +1,12 @@
-package Holmos.webtest.element;
+package holmos.webtest.element;
 
 import static org.junit.Assert.fail;
-
-import Holmos.webtest.Allocator;
-import Holmos.webtest.BrowserWindow;
-import Holmos.webtest.SeleniumBrowserWindow;
-import Holmos.webtest.WebDriverBrowserWindow;
-import Holmos.webtest.basetools.HolmosWindow;
-import Holmos.webtest.constvalue.ConfigConstValue;
+import holmos.webtest.Allocator;
+import holmos.webtest.BrowserWindow;
+import holmos.webtest.SeleniumBrowserWindow;
+import holmos.webtest.WebDriverBrowserWindow;
+import holmos.webtest.basetools.HolmosWindow;
+import holmos.webtest.constvalue.ConfigConstValue;
 
 import com.thoughtworks.selenium.Selenium;
 /**

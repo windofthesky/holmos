@@ -1,9 +1,9 @@
-package Holmos.webtest.asserttool;
-import java.util.regex.Pattern;
+package holmos.webtest.asserttool;
+import holmos.webtest.basetools.HolmosBaseTools;
+import holmos.webtest.exceptions.HolmosFailedError;
+import holmos.webtest.log.MyLogger;
 
-import Holmos.webtest.basetools.HolmosBaseTools;
-import Holmos.webtest.exceptions.HolmosFailedError;
-import Holmos.webtest.log.MyLogger;
+import java.util.regex.Pattern;
 /**
  * @author 吴银龙(15857164387)
  * */

@@ -1,4 +1,4 @@
-package Holmos.webtest.element;
+package holmos.webtest.element;
 
 public class Image extends Element{
 

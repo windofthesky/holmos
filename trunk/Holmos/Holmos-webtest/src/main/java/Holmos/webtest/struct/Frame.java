@@ -1,19 +1,19 @@
-package Holmos.webtest.struct;
+package holmos.webtest.struct;
+
+import holmos.webtest.Allocator;
+import holmos.webtest.BrowserWindow;
+import holmos.webtest.SeleniumBrowserWindow;
+import holmos.webtest.WebDriverBrowserWindow;
+import holmos.webtest.constvalue.ConfigConstValue;
+import holmos.webtest.element.locator.Locator;
+import holmos.webtest.element.locator.LocatorChain;
+import holmos.webtest.element.tool.SeleniumElementExist;
+import holmos.webtest.element.tool.WebDriverElementExist;
+import holmos.webtest.element.tool.WebElementExist;
+import holmos.webtest.log.MyLogger;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
-import Holmos.webtest.Allocator;
-import Holmos.webtest.BrowserWindow;
-import Holmos.webtest.SeleniumBrowserWindow;
-import Holmos.webtest.WebDriverBrowserWindow;
-import Holmos.webtest.constvalue.ConfigConstValue;
-import Holmos.webtest.element.locator.Locator;
-import Holmos.webtest.element.locator.LocatorChain;
-import Holmos.webtest.element.tool.SeleniumElementExist;
-import Holmos.webtest.element.tool.WebDriverElementExist;
-import Holmos.webtest.element.tool.WebElementExist;
-import Holmos.webtest.log.MyLogger;
 
 import com.thoughtworks.selenium.Selenium;
 

@@ -1,4 +1,4 @@
-package Holmos.webtest;
+package holmos.webtest;
 
 import org.openqa.selenium.android.AndroidDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
