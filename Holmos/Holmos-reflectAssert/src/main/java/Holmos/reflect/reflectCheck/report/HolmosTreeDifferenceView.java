@@ -1,15 +1,15 @@
-package Holmos.reflect.reflectCheck.report;
+package holmos.reflect.reflectCheck.report;
+
+import holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
+import holmos.reflect.reflectCheck.difference.HolmosClassDifference;
+import holmos.reflect.reflectCheck.difference.HolmosCollectionDifference;
+import holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.difference.HolmosMapDifference;
+import holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
+import holmos.reflect.tool.HolmosObjectFormatter;
 
 import java.util.Map;
-
-import Holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
-import Holmos.reflect.reflectCheck.difference.HolmosClassDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosCollectionDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosMapDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
-import Holmos.reflect.tool.HolmosObjectFormatter;
 /**这个将构造一个对象的差异树的全部信息，对于一个无序的数组或者集合，会将其最佳匹配项作为最后的比较结果<br>
  * @author 吴银龙(15857164387)
  * */

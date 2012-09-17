@@ -1,4 +1,4 @@
-package Holmos.reflect.tool;
+package holmos.reflect.tool;
 
 import static java.lang.reflect.Modifier.isStatic;
 import static java.lang.reflect.Modifier.isTransient;

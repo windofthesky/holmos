@@ -1,4 +1,7 @@
-package Holmos.reflect.reflectCheck;
+package holmos.reflect.reflectCheck;
+
+import holmos.reflect.reflectCheck.comparator.HolmosDateComparator;
+import holmos.reflect.reflectCheck.comparator.HolmosIgnoreDefaultComparator;
 
 /**宽松式反射比较器的类别
  * @author 吴银龙(15857164387)

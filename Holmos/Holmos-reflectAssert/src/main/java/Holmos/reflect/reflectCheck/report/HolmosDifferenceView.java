@@ -1,6 +1,6 @@
-package Holmos.reflect.reflectCheck.report;
+package holmos.reflect.reflectCheck.report;
 
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 /**为给定的difference 构建差异的视图结构
  * @author 吴银龙(15857164387)

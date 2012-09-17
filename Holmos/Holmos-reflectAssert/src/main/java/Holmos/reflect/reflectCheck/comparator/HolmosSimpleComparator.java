@@ -1,10 +1,10 @@
-package Holmos.reflect.reflectCheck.comparator;
+package holmos.reflect.reflectCheck.comparator;
+
+import holmos.reflect.reflectCheck.HolmosReflectionComparator;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 import java.util.Calendar;
 import java.util.Date;
-
-import Holmos.reflect.reflectCheck.HolmosReflectionComparator;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
 /**比较简单的形式的比较，如果比较的内容或者要求比较简单，那么这个比较会加速<br>
  * <li>leftValue和rightValue是一个对象</li>
  * <li>leftValue和rightValue都是null</li>

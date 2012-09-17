@@ -1,6 +1,6 @@
-package Holmos.reflect.reflectCheck.difference;
+package holmos.reflect.reflectCheck.difference;
 
-import Holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
+import holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
 
 /**Holmos框架高级（反射比较）器的比较结果类
  * @author 吴银龙(15857164387)

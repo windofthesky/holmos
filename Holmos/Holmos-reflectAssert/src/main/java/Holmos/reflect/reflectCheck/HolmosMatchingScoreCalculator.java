@@ -1,14 +1,14 @@
-package Holmos.reflect.reflectCheck;
+package holmos.reflect.reflectCheck;
+
+import holmos.reflect.reflectCheck.difference.HolmosClassDifference;
+import holmos.reflect.reflectCheck.difference.HolmosCollectionDifference;
+import holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.difference.HolmosMapDifference;
+import holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
-
-import Holmos.reflect.reflectCheck.difference.HolmosClassDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosCollectionDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosMapDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
 /**用来处理无序集合和数组的最佳匹配的类，这个类可以计算出一个无序集合和数组的最佳匹配<br>
  * 衡量方法是，对于difference里面的属性，对于不同的属性，予以的权值不一样，那么可以<br>
  * 设定一个整形的score值来判断difference里面两个元素的不同差异程度，越小那么差异越小<br>

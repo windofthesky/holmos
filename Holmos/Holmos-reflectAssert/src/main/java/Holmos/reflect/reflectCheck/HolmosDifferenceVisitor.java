@@ -1,11 +1,11 @@
-package Holmos.reflect.reflectCheck;
+package holmos.reflect.reflectCheck;
 
-import Holmos.reflect.reflectCheck.difference.HolmosClassDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosCollectionDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosMapDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
+import holmos.reflect.reflectCheck.difference.HolmosClassDifference;
+import holmos.reflect.reflectCheck.difference.HolmosCollectionDifference;
+import holmos.reflect.reflectCheck.difference.HolmosCollectionIgnoreOrderDifference;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.difference.HolmosMapDifference;
+import holmos.reflect.reflectCheck.difference.HolmosObjectDifference;
 
 /**
  * @author 吴银龙(15857164387)

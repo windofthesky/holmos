@@ -1,12 +1,12 @@
-package Holmos.reflect.reflectCheck.comparator;
+package holmos.reflect.reflectCheck.comparator;
+
+import holmos.reflect.basetool.HolmosCollectionTool;
+import holmos.reflect.reflectCheck.HolmosRefectionComparatorMode;
+import holmos.reflect.reflectCheck.HolmosReflectionComparator;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
-import Holmos.reflect.basetool.HolmosCollectionTool;
-import Holmos.reflect.reflectCheck.HolmosRefectionComparatorMode;
-import Holmos.reflect.reflectCheck.HolmosReflectionComparator;
 
 /**比较器产生的工厂，采用工厂模式，并且在编译期间已经将比较器生成完毕<br>
  * @author 吴银龙(15857164387)

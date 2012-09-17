@@ -1,12 +1,12 @@
-package Holmos.reflect.reflectCheck.comparator;
+package holmos.reflect.reflectCheck.comparator;
+
+import holmos.reflect.reflectCheck.HolmosReflectionComparator;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
+import holmos.reflect.reflectCheck.difference.HolmosMapDifference;
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import Holmos.reflect.reflectCheck.HolmosReflectionComparator;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
-import Holmos.reflect.reflectCheck.difference.HolmosMapDifference;
 /**map和set对象比较器，根据特定的key来比较value
  * @author 吴银龙(15857164387)
  * */

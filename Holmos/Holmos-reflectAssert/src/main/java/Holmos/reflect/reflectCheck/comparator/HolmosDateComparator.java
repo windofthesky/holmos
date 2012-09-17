@@ -1,9 +1,9 @@
-package Holmos.reflect.reflectCheck.comparator;
+package holmos.reflect.reflectCheck.comparator;
+
+import holmos.reflect.reflectCheck.HolmosReflectionComparator;
+import holmos.reflect.reflectCheck.difference.HolmosDifference;
 
 import java.util.Date;
-
-import Holmos.reflect.reflectCheck.HolmosReflectionComparator;
-import Holmos.reflect.reflectCheck.difference.HolmosDifference;
 /**日期的比较器，可以分为按格式比较和不按照格式比较<br>
  * <li>比较两个Date的时间是否为null或者是否都不为null，不比较实际的时间值</li>
  * @author 吴银龙(15857164387)

@@ -1,10 +1,10 @@
-package Holmos.reflect.reflectCheck.difference;
+package holmos.reflect.reflectCheck.difference;
+
+import holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import Holmos.reflect.reflectCheck.HolmosDifferenceVisitor;
 
 /**存储无序集合或者数组变量比较的不同的结果的类
  * @author 吴银龙(15857164387)
