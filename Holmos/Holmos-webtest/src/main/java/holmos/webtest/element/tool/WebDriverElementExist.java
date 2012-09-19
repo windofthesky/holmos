@@ -87,7 +87,6 @@ public class WebDriverElementExist extends WebElementExist{
 	/**查找多级别web层元素，判断其是否存在*/
 	private WebElement findElement(LocatorFinder finder,LocatorValue webElement){
 		WebElement element = null;
-		Locator locator=webElement.getLocator();
 		if(webElement instanceof Collection){
 			int index=((Collection)webElement).getIndex();
 			element=findCollection(finder, webElement, index);
@@ -100,6 +99,7 @@ public class WebDriverElementExist extends WebElementExist{
 		return element;
 	}
 	private WebElement findListElement(LocatorFinder finder,LocatorValue webElement,int index){
+		Locator locator=webElement.getLocator();
 		WebElement element=findListElementById(finder,locator.getLocatorById(),index);
 		if(element==null)
 			element=findListElementByName(finder,locator.getLocatorByName(),index);
@@ -196,6 +196,7 @@ public class WebDriverElementExist extends WebElementExist{
 	 * @return 定位到普通Element元素，并返回此元素
 	 * */
 	private WebElement findElementOnly(LocatorFinder finder,LocatorValue webElement){
+		Locator locator=webElement.getLocator();
 		WebElement element=findElementById(finder,locator.getLocatorById());
 		if(element==null)
 			element=findElementByName(finder,locator.getLocatorByName());
@@ -221,6 +222,7 @@ public class WebDriverElementExist extends WebElementExist{
 	 * @return 定位到的指定索引指代的Collection类型元素，并返回此元素
 	 * */
 	private WebElement findCollection(LocatorFinder finder,LocatorValue webElement,int index){
+		Locator locator=webElement.getLocator();
 		WebElement element=findCollectionById(finder,locator.getLocatorById(),index);
 		if(element==null)
 			element=findCollectionByName(finder,locator.getLocatorByName(),index);
@@ -363,7 +365,7 @@ public class WebDriverElementExist extends WebElementExist{
 		if(Xpath==null||"".equalsIgnoreCase(Xpath))
 			return null;
 		try{
-			return finder.findElement(By.xpath(Xpath+"["+index+"]"));
+			return finder.findElements(By.xpath(Xpath)).get(index);
 		}catch (Exception e) {
 			return null;
 		}

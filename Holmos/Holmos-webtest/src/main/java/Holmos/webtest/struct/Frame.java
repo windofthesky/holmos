@@ -7,6 +7,7 @@ import holmos.webtest.WebDriverBrowserWindow;
 import holmos.webtest.constvalue.ConfigConstValue;
 import holmos.webtest.element.locator.Locator;
 import holmos.webtest.element.locator.LocatorChain;
+import holmos.webtest.element.locator.LocatorValue;
 import holmos.webtest.element.tool.SeleniumElementExist;
 import holmos.webtest.element.tool.WebDriverElementExist;
 import holmos.webtest.element.tool.WebElementExist;
@@ -23,9 +24,15 @@ import com.thoughtworks.selenium.Selenium;
 public class Frame extends Page{
 	private WebElementExist exist;
 	/**用来指示当前的Frame对象是否被选中*/
-	private boolean selected;//先定在这，接下来再想确切的解决方案
+	
 	/**此元素的全名，在css校验的时候，为了给css本地文件取名设置的变量信息*/
 	protected String fullName="";
+	/**此Frame的父容器*/
+	protected Page parent;
+	
+	public void setParent(Page parent) {
+		this.parent = parent;
+	}
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
@@ -48,7 +55,7 @@ public class Frame extends Page{
 	}
 	public Frame(String comment){
 		super();
-		this.selected=false;
+		this.setSelected(false);
 		this.comment=comment;
 		this.init();
 	}
@@ -109,13 +116,14 @@ public class Frame extends Page{
 	}
 	/**选中当前的Frame，如果有多级Frame，需要按照层级<br>
 	 * 级级递进的顺序，步步选择<br>*/
-	public void select(){
+	private void selectFrame(){
 		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
 			message.append(this.comment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).selectFrame(locator.getSeleniumCurrentLocator());
+				setSelected(true);parent.setSelected(false);
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
 				try{
 					if(locator.getLocatorById()!=null)
@@ -127,13 +135,26 @@ public class Frame extends Page{
 					}
 					message.append("定位Frame成功!现在的控制权交予这个Frame!");
 					logger.info(message);
+					setSelected(true);
+					parent.setSelected(false);
 				}catch (Exception e) {
+					setSelected(false);
 					message.append("定位Frame失败，没有找到这个Frame!");
 					logger.error(message);
 				}
 			}
 		}else{
 			logger.error("该frame不存在");
+			setSelected(false);
+		}
+	}
+	public void select(){
+		if(!isSelected()){
+			selectTopPage();//将控制权交予主页面
+			for(int i=1;i<infoChain.getInfoNodes().size();i++){
+				((Frame)infoChain.getInfoNodes().get(i)).selectFrame();
+			}
+			selectFrame();
 		}
 	}
 	/**
@@ -177,5 +198,6 @@ public class Frame extends Page{
 				return;
 		}
 	}
+	
 	
 }
