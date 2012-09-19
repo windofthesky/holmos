@@ -34,7 +34,7 @@ public class ConfigConstValue {
 	public static int waitCount=600;
 	/**默认等待页面加载时间,默认10s*/
 	public static int waitPageLoadTime=10000;
-	{
+	static{
 		Properties properties=HolmosPropertiesTool.getPropertyInfo(HOLMOSCONFFILE);
 		defaulwaitMiliSeconds=HolmosPropertiesTool.getInt(properties, "defaulwaitMiliSeconds");
 		defaultWaitCount=HolmosPropertiesTool.getInt(properties, "defaultWaitCount");

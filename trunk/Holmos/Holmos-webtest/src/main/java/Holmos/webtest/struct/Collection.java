@@ -39,7 +39,7 @@ public class Collection implements LocatorValue{
 		this.fullName = fullName;
 	}
 	/**Collection的注释说明*/
-	public String comment;
+	protected String comment;
 	/**用来保存当前用到的是collection里面的第几个元素*/
 	private int index=1;
 	public int getIndex() {

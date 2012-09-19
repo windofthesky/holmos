@@ -37,6 +37,7 @@ import com.thoughtworks.selenium.Selenium;
 public class Page implements LocatorValue{
 	/**这个页面的url*/
 	protected String url;
+	private boolean selected;//先定在这，接下来再想确切的解决方案
 	/**这个页面的注释说明*/
 	protected String comment;
 	public String getComment() {
@@ -57,6 +58,7 @@ public class Page implements LocatorValue{
 	protected List<Collection> collections=new ArrayList<Collection>();
 	public Page(){
 		HolmosBaseTools.configLogProperties();
+		this.selected=true;
 	}
 	
 	/**收集页面元素，这是一个简单的观察者模式的应用<br>
@@ -91,6 +93,7 @@ public class Page implements LocatorValue{
 					((Frame)o).getInfoChain().addNode(this);
 					((Frame)o).setFullName(getClass().getName().substring(getClass().getName().lastIndexOf('.')+1)+field.getName());
 					this.frames.add((Frame)o);
+					((Frame)o).setParent(this);
 					((Frame)o).init();
 				}
 			}
@@ -221,5 +224,11 @@ public class Page implements LocatorValue{
 	public LocatorChain getInfoChain() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public boolean isSelected() {
+		return selected;
+	}
+	public void setSelected(boolean selected) {
+		this.selected = selected;
 	}
 }
