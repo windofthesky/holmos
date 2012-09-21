@@ -1,4 +1,4 @@
-package Holmos.basetools.file;
+package holmos.basetools.file;
 
 import java.io.BufferedReader;
 import java.io.File;
