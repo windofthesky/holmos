@@ -1,4 +1,6 @@
-package Holmos.basetools;
+package holmos.basetools;
+
+import holmos.exceptions.HolmosFailedError;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -6,8 +8,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-
-import Holmos.exceptions.HolmosFailedError;
 
 /**反射的工具类,提供常见的get和set字段value,执行方法,构造对象
  * @author 吴银龙(15857164387)
@@ -89,6 +89,7 @@ public class HolmosReflectionTool {
 	 * @param fieldName 字段名字
 	 * @return 获取的字段的值
 	 *  */
+	@SuppressWarnings("unchecked")
 	public static <T> T getFieldValue(Object object,String fieldName){
 		try {
 			Field field=object.getClass().getDeclaredField(fieldName);
@@ -193,6 +194,7 @@ public class HolmosReflectionTool {
 			return true;
 		}return false;
 	}
+	@SuppressWarnings("unchecked")
 	public static <T>Class<T> getClassWithName(String valueAsString) {
 		try {
 			return (Class<T>) Class.forName(valueAsString);
