@@ -5,23 +5,37 @@
 	<url>http://www.holmos.com</url>
 	<groupId>com.holmos</groupId>
 	<artifactId>holmos</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2u1</version>
 	<packaging>pom</packaging>
 	<description>An automated testing framework for web testing,interface testing,database testing;also contains regression testing and the management for testcase</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.jdk>1.6</project.build.jdk>
-		<holmos.version>1.0.1</holmos.version>
+		<holmos.version>1.0.2u1</holmos.version>
 	</properties>
 
+	<developers>
+		<developer>
+			<id>holmos</id>
+			<name>singleMan</name>
+			<email>sunshine307087558@gmail.com</email>
+			<url>http://www.holmos.com</url>
+		</developer>
+		<developer>
+			<id>autosense</id>
+			<name>Kevin Dong</name>
+			<email>mashupeye@gmail.com</email>
+			<url>http://www.autosense.cn</url>
+		</developer>
+	</developers>
+
 	<modules>
-		<!-- <module>Holmos-autosense</module>
 		<module>Holmos-basetools</module>
 		<module>Holmos-dbtest</module>
 		<module>Holmos-integration</module>
 		<module>Holmos-managePlatform</module>
-		<module>Holmos-regression</module> -->
+		<module>Holmos-regression</module>
 		<module>Holmos-reflectAssert</module>
 		<module>Holmos-webtest</module>
 	</modules>
@@ -42,15 +56,16 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<!-- <dependency> <groupId>com.holmos</groupId> <artifactId>holmos-autosense</artifactId> 
-				<version>${holmos.version}</version> </dependency>
 			<dependency>
 				<groupId>com.holmos</groupId>
 				<artifactId>holmos-basetools</artifactId>
 				<version>${holmos.version}</version>
 			</dependency>
-			<dependency> <groupId>com.holmos</groupId> <artifactId>holmos-dbtest</artifactId> 
-				<version>${holmos.version}</version> </dependency>
+			<dependency>
+			<groupId>com.holmos</groupId>
+				<artifactId>holmos-dbtest</artifactId> 
+				<version>${holmos.version}</version>
+			</dependency>
 			<dependency>
 				<groupId>com.holmos</groupId>
 				<artifactId>holmos-integration</artifactId>
@@ -65,7 +80,7 @@
 				<groupId>com.holmos</groupId>
 				<artifactId>holmos-regression</artifactId>
 				<version>${holmos.version}</version>
-			</dependency> -->
+			</dependency>
 			<dependency>
 				<groupId>com.holmos</groupId>
 				<artifactId>holmos-reflectAssert</artifactId>
@@ -110,6 +125,11 @@
 				<groupId>org.jsoup</groupId>
 				<artifactId>jsoup</artifactId>
 				<version>1.6.2</version>
+			</dependency>
+			<dependency>
+			    <groupId>org.mozilla</groupId>
+			    <artifactId>rhino</artifactId>
+			    <version>1.7R4</version>
 			</dependency>
 			<dependency>
 				<groupId>com.google.code.gson</groupId>
