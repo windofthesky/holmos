@@ -4,14 +4,14 @@
 	<parent>
 		<groupId>com.holmos</groupId>
 		<artifactId>holmos</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.2</version>
 		<relativePath>..</relativePath>
 	</parent>
 	<name>Holmos-autosense</name>
 	<url>http://www.holmos.com</url>
 	<groupId>com.holmos</groupId>
 	<artifactId>holmos-autosense</artifactId>
-	<version>1.0.1</version>
+	<version>1.0.2</version>
 	<packaging>jar</packaging>
 
 	<licenses>
@@ -42,6 +42,10 @@
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.mozilla</groupId>
+		    <artifactId>rhino</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
