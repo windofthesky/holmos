@@ -1,9 +1,9 @@
-package Holmos.constvalue;
+package holmos.constvalue;
+
+import holmos.basetools.HolmosPropertiesTool;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
-
-import Holmos.basetools.HolmosPropertiesTool;
 
 /**
  * Holmos框架配置文件用到的常量
