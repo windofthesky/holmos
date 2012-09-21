@@ -1,14 +1,13 @@
 package holmos.dbtest.database.datasetloadstrategy;
 
 import holmos.dbtest.database.connecion.HolmosDataBaseConnection;
+import holmos.webtest.exceptions.HolmosFailedError;
 
 import java.sql.SQLException;
 
 import org.dbunit.DatabaseUnitException;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.operation.DatabaseOperation;
-
-import Holmos.webtest.exceptions.HolmosFailedError;
 
 /**在数据库测试的时候，加载数据的时候删掉指定连接的数据库表中的所有数据
  * @author 吴银龙(15857164387)

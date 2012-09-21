@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import Holmos.webtest.basetools.HolmosReflectionTool;
-import Holmos.webtest.exceptions.HolmosFailedError;
+import holmos.webtest.basetools.HolmosReflectionTool;
+import holmos.webtest.exceptions.HolmosFailedError;
 
 /**
  * Holmos 框架的Module仓库

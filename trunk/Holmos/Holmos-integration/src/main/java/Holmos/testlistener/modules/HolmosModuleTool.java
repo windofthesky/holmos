@@ -5,9 +5,9 @@ import java.util.Properties;
 
 import org.apache.commons.lang.ClassUtils;
 
-import Holmos.webtest.basetools.HolmosPropertiesTool;
-import Holmos.webtest.basetools.HolmosReflectionTool;
-import Holmos.webtest.exceptions.HolmosFailedError;
+import holmos.webtest.basetools.HolmosPropertiesTool;
+import holmos.webtest.basetools.HolmosReflectionTool;
+import holmos.webtest.exceptions.HolmosFailedError;
 /**
  * HolmosModule的工具方法类
  * @author 吴银龙(15857164387)

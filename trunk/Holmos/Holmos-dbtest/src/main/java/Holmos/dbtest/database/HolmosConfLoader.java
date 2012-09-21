@@ -1,13 +1,13 @@
 package holmos.dbtest.database;
 
+import holmos.webtest.basetools.HolmosPropertiesTool;
+import holmos.webtest.constvalue.ConstValue;
+import holmos.webtest.exceptions.HolmosFailedError;
+
 import java.util.Properties;
 
 import org.apache.commons.lang.text.StrSubstitutor;
 import org.apache.log4j.Logger;
-
-import Holmos.webtest.basetools.HolmosPropertiesTool;
-import Holmos.webtest.constvalue.ConstValue;
-import Holmos.webtest.exceptions.HolmosFailedError;
 /**Holmos框架配置加载器<p>
  * Holmos框架会从以下三个地方读取配置文件<p>
  * <li><b>Holmos框架默认的地址:/conf/holmos_default_conf.properties</b>

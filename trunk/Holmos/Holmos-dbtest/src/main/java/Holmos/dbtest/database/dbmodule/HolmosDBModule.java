@@ -3,7 +3,6 @@ package holmos.dbtest.database.dbmodule;
 import static org.dbunit.database.DatabaseConfig.FEATURE_BATCHED_STATEMENTS;
 import static org.dbunit.database.DatabaseConfig.PROPERTY_DATATYPE_FACTORY;
 import static org.dbunit.database.DatabaseConfig.PROPERTY_ESCAPE_PATTERN;
-import holmos.core.Holmos;
 import holmos.dbtest.database.DBToolBoxFactory;
 import holmos.dbtest.database.HolmosDataBaseTools;
 import holmos.dbtest.database.annotation.HolmosDataSet;
@@ -21,6 +20,10 @@ import holmos.dbtest.database.operation.SQLOperation;
 import holmos.testlistener.HolmosTestListener;
 import holmos.testlistener.modules.HolmosModule;
 import holmos.testlistener.modules.HolmosModuleTool;
+import holmos.webtest.basetools.HolmosAnnotationTool;
+import holmos.webtest.basetools.HolmosConfTool;
+import holmos.webtest.basetools.HolmosReflectionTool;
+import holmos.webtest.exceptions.HolmosFailedError;
 
 import java.io.File;
 import java.lang.annotation.Annotation;
@@ -38,11 +41,6 @@ import org.apache.log4j.Logger;
 import org.dbunit.database.DatabaseConfig;
 import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.datatype.IDataTypeFactory;
-
-import Holmos.webtest.basetools.HolmosAnnotationTool;
-import Holmos.webtest.basetools.HolmosConfTool;
-import Holmos.webtest.basetools.HolmosReflectionTool;
-import Holmos.webtest.exceptions.HolmosFailedError;
 /**
  * 对DbUnit数据库单元测试框架提供支持,作为{@link HolmosDBUnitTestListener}的功能提供者
  * @author 吴银龙(15857164387)
