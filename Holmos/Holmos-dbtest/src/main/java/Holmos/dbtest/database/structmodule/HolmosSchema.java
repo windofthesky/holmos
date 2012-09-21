@@ -2,11 +2,10 @@ package holmos.dbtest.database.structmodule;
 
 import holmos.dbtest.database.datadifference.HolmosSchemaDifference;
 import holmos.dbtest.database.datadifference.HolmosTableDifference;
+import holmos.webtest.exceptions.HolmosFailedError;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import Holmos.webtest.exceptions.HolmosFailedError;
 /**为了支持多数据源，采用了Schema，一个Schema里面配置多个数据源，即多个Table
  * @author 吴银龙(15857164387)
  * */

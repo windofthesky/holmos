@@ -5,8 +5,8 @@ import holmos.reflect.reflectCheck.HolmosReflectionComparator;
 import holmos.reflect.reflectCheck.comparator.HolmosComparatorFactory;
 import holmos.reflect.reflectCheck.difference.HolmosDifference;
 import holmos.reflect.reflectCheck.report.HolmosDefaultDifferentReport;
-import Holmos.webtest.basetools.HolmosReflectionTool;
-import Holmos.webtest.exceptions.HolmosFailedError;
+import holmos.webtest.basetools.HolmosReflectionTool;
+import holmos.webtest.exceptions.HolmosFailedError;
 
 /**反射校验的工具类，会调用这个类里面的工具方法来进行反射校验<br>
  * 校验两个Object或者两个集合，数组，map，无序集合是否相同<p>

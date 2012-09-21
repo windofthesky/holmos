@@ -9,10 +9,10 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 
-import Holmos.webtest.basetools.HolmosPropertiesTool;
-import Holmos.webtest.basetools.HolmosReflectionTool;
-import Holmos.webtest.constvalue.ConfigConstValue;
-import Holmos.webtest.exceptions.HolmosFailedError;
+import holmos.webtest.basetools.HolmosPropertiesTool;
+import holmos.webtest.basetools.HolmosReflectionTool;
+import holmos.webtest.constvalue.ConfigConstValue;
+import holmos.webtest.exceptions.HolmosFailedError;
 
 /**
  * Holmos 框架Module读取器

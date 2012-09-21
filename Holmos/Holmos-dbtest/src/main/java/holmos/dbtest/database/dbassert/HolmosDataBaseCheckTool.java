@@ -9,15 +9,14 @@ import holmos.dbtest.database.structmodule.HolmosDBStructFactory;
 import holmos.dbtest.database.structmodule.HolmosRow;
 import holmos.dbtest.database.structmodule.HolmosSchema;
 import holmos.dbtest.database.structmodule.HolmosTable;
+import holmos.webtest.asserttool.HolmosSimpleCheckTool;
+import holmos.webtest.basetools.HolmosBaseTools;
+import holmos.webtest.exceptions.HolmosFailedError;
 
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.dbunit.dataset.IDataSet;
-
-import Holmos.webtest.asserttool.HolmosSimpleCheckTool;
-import Holmos.webtest.basetools.HolmosBaseTools;
-import Holmos.webtest.exceptions.HolmosFailedError;
 
 /**数据库的校验类,提供数据库列，行，表的校验
  * @author 吴银龙(15857164387)
