@@ -1,4 +1,8 @@
-package Holmos.basetools;
+package holmos.basetools;
+
+import holmos.basetools.file.MyFile;
+import holmos.exceptions.HolmosFailedError;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,8 +15,7 @@ import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
-import Holmos.basetools.file.MyFile;
-import Holmos.exceptions.HolmosFailedError;
+import holmos.webtest.basetools.HolmosBaseTools;
 
 /**操作Properties文件的工具类
  * @author 吴银龙(15857164387)

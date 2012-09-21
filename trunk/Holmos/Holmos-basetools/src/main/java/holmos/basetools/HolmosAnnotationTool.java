@@ -1,4 +1,6 @@
-package Holmos.basetools;
+package holmos.basetools;
+
+import holmos.exceptions.HolmosFailedError;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
@@ -9,8 +11,6 @@ import java.lang.reflect.Modifier;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-
-import Holmos.exceptions.HolmosFailedError;
 
 /**操作注解的工具类
  * @author 吴银龙(15857164387)
@@ -144,6 +144,7 @@ public class HolmosAnnotationTool {
 	 * @param method 指定的方法
 	 * @param clazz 指定的类
 	 * */
+	@SuppressWarnings("unchecked")
 	public static <S extends Annotation,T> T getMethodOrClassLevelAnnotationProperty(Class<S> annotationClass,
             String annotationPropertyName, T defaultValue, Method method, Class<?> clazz){
 		S annotation=method.getAnnotation(annotationClass);
@@ -316,6 +317,7 @@ public class HolmosAnnotationTool {
 	 * @param argumentTypes 参数类型列表
 	 * @param arguments 参数列表
 	 * */
+	@SuppressWarnings("rawtypes")
 	public static <T> T createInstanceOfType(Class<T>type,boolean bypassAccessibility, Class[] argumentTypes,
             Object[] arguments){
 		if(type.isMemberClass()||Modifier.isStatic(type.getModifiers())){

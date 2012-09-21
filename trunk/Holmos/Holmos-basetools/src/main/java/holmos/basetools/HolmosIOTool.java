@@ -1,4 +1,4 @@
-package Holmos.basetools;
+package holmos.basetools;
 
 import java.io.InputStream;
 
