@@ -3,22 +3,33 @@
   <parent>
     <artifactId>holmos</artifactId>
     <groupId>com.holmos</groupId>
-    <version>1.0.0</version>
+    <version>1.0.2u1</version>
     <relativePath>..</relativePath>
   </parent>
   <artifactId>holmos-android</artifactId>
   <dependencies>
-    <dependency>
-		<groupId>com.google.android</groupId>
-		<artifactId>android</artifactId>
-	</dependency>
-	<dependency>
-        <groupId>com.jayway.android.robotium</groupId>
-	    <artifactId>robotium-solo</artifactId>
-    </dependency>
-    <dependency>
-		<groupId>com.googlecode.androidannotations</groupId>
-		<artifactId>androidannotations</artifactId>
-	</dependency>
-  </dependencies>
+	    <dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android</artifactId>
+		</dependency>
+		
+	    <dependency>
+			<groupId>com.googlecode.androidannotations</groupId>
+			<artifactId>androidannotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.android</groupId>
+			<artifactId>android-test</artifactId>
+		</dependency>     
+		
+		<dependency>
+			<groupId>com.jayway.android.robotium</groupId>
+			<artifactId>robotium-solo</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+	</dependencies>
 </project>
