@@ -4,7 +4,8 @@ import holmos.webtest.asserttool.HolmosSimpleCheckTool;
 import holmos.webtest.basetools.HolmosBaseTools;
 import holmos.webtest.basetools.HolmosPropertiesTool;
 import holmos.webtest.constvalue.ConstValue;
-import holmos.webtest.element.*;
+import holmos.webtest.element.Element;
+import holmos.webtest.element.Image;
 import holmos.webtest.exceptions.HolmosFailedError;
 import holmos.webtest.log.MyLogger;
 
@@ -310,9 +311,6 @@ public class HolmosCSSTool {
 	 * 校验该元素所有属性值
 	 * */
 	public void assertAllCssValues(Element element){
-		Properties localProperties=getCSSValueFromLocal(element);
-		Properties engineProperties=getCssValuesFromEngine(element);
-		//HolmosReflectCheck.assertEquals(localProperties, engineProperties, HolmosRefectionComparatorMode.IGNORE_COLLECTION_ORDER);
 	}
 	/**
 	 * 校验元素的大小属性是否相同

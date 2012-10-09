@@ -20,7 +20,7 @@ public class TextField extends Element{
 		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).
 				type(locator.getSeleniumCurrentLocator(), value);
@@ -30,7 +30,7 @@ public class TextField extends Element{
 			message.append("设置值成功!");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("设置值失败!找不到元素!");
 			logger.error(message);
 		}
@@ -43,7 +43,7 @@ public class TextField extends Element{
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		String content=null;
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				content=((Selenium)currentWindow.getDriver().getEngine()).
 						getValue(locator.getSeleniumCurrentLocator());
@@ -53,7 +53,7 @@ public class TextField extends Element{
 			message.append("获得输入框文本内容成功!");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("获得输入框文本内容失败!找不到元素");
 			logger.error(message);
 		}
@@ -66,7 +66,7 @@ public class TextField extends Element{
 		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				((Selenium)currentWindow.getDriver().getEngine()).type(locator.getSeleniumCurrentLocator(), "");
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
@@ -75,7 +75,7 @@ public class TextField extends Element{
 			message.append("输入框的值清空成功!");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("输入框的值清空失败!找不到元素");
 			logger.error(message);
 		}

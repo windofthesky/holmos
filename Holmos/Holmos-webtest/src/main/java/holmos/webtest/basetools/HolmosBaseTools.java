@@ -136,7 +136,7 @@ public class HolmosBaseTools {
 	}
 	/**变更Collection变量的注释说明，在反射调动观察者的时候将这个变量的名字加到说明里面*/
 	public static void insertCollectionName(Collection collection,String name){
-		StringBuilder commentTemp=new StringBuilder(collection.getComment());
+		StringBuilder commentTemp=new StringBuilder(collection.getComment(false));
 		commentTemp.append("["+name+"]");
 		collection.setComment(commentTemp.toString());
 	}

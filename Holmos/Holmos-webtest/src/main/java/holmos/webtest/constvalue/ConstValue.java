@@ -45,4 +45,6 @@ public class ConstValue {
 	public static final String ELEMENTPACKAGEINFO="import Holmos.Holmos.element.*;";
 	/**截图存放地址*/
 	public static String screenShotDir;
+	/**错误代码*/
+	public static int ERROR=-1; 
 }

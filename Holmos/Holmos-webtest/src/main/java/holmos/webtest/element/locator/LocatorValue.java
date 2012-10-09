@@ -17,4 +17,5 @@ public interface LocatorValue {
 	public void setLocatorCurrent(String locatorCurrent);
 	public boolean isExist();
 	public LocatorChain getInfoChain();
+	public void setWholeComment(String currentComment);
 }

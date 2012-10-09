@@ -32,6 +32,10 @@ import com.thoughtworks.selenium.Selenium;
  * @author 吴银龙(15857164387)
  * */
 public class Collection implements LocatorValue{
+	protected String wholeComment;
+	public String getWholeComment() {
+		return wholeComment;
+	}
 	private WebElementExist exist;
 	/**此元素的全名，在css校验的时候，为了给css本地文件取名设置的变量信息*/
 	protected String fullName="";
@@ -61,6 +65,9 @@ public class Collection implements LocatorValue{
 	}
 	public String getComment() {
 		return "第"+index+"个"+comment;
+	}
+	public String getComment(boolean b){
+		return comment;
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
@@ -213,11 +220,11 @@ public class Collection implements LocatorValue{
 	public void assertExist(){
 		StringBuilder message=new StringBuilder();
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append(":元素存在性校验成功！元素存在！");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append(":元素存在校验失败！元素不存在!");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -228,11 +235,11 @@ public class Collection implements LocatorValue{
 	public void assertNotExist(){
 		StringBuilder message=new StringBuilder();
 		if(!isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素不存在性校验成功！元素不存在！");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素存在校验失败！元素存在!");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -243,11 +250,11 @@ public class Collection implements LocatorValue{
 	public void verifyExist(){
 		StringBuilder message=new StringBuilder();
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素存在性校验成功！元素存在！");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素存在校验失败！元素不存在!");
 			logger.error(message);
 		}
@@ -256,11 +263,11 @@ public class Collection implements LocatorValue{
 	public void verifyNotExist(){
 		StringBuilder message=new StringBuilder();
 		if(!isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素不存在性校验成功！元素不存在！");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素存在校验失败！元素存在!");
 			logger.error(message);
 		}
@@ -270,7 +277,7 @@ public class Collection implements LocatorValue{
 	 * */
 	public boolean waitForExist() {
 	    if(!isCollectionExist(ConfigConstValue.waitCount)){
-            logger.error("元素"+comment+"一直没有出现");
+            logger.error("元素"+wholeComment+"一直没有出现");
             return false;
         }return true;
 	}
@@ -281,5 +288,9 @@ public class Collection implements LocatorValue{
 			if(!exist.isElementExistForCheckOnce())
 				return;
 		}
+	}
+	@Override
+	public void setWholeComment(String wholeComment) {
+		this.wholeComment=wholeComment;
 	}
 }
