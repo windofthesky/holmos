@@ -231,4 +231,10 @@ public class Page implements LocatorValue{
 	public void setSelected(boolean selected) {
 		this.selected = selected;
 	}
+
+	@Override
+	public void setWholeComment(String currentComment) {
+		// TODO Auto-generated method stub
+		
+	}
 }

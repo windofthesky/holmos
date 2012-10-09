@@ -31,7 +31,7 @@ public class Table extends Element{
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		String content=null;
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				try{
 					content=((Selenium)currentWindow.getDriver().getEngine()).
@@ -53,7 +53,7 @@ public class Table extends Element{
 				}
 			}
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("第"+(row+1)+"行，第"+(col+1)+"列的元素获取失败!找不到这个table");
 			logger.error(message);
 		}
@@ -67,7 +67,7 @@ public class Table extends Element{
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		List<String> contents=new ArrayList<String>();
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				try{
 					int rowCount=0;
@@ -88,7 +88,7 @@ public class Table extends Element{
 			message.append("第"+column+"列的元素的信息获得成功!");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("第"+column+"列的元素的信息获得失败!找不到该table!");
 			logger.error(message);
 		}
@@ -116,7 +116,7 @@ public class Table extends Element{
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		List<String> contents=new ArrayList<String>();
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				try{
 					int colCount=0;
@@ -138,7 +138,7 @@ public class Table extends Element{
 			message.append("第"+row+"行的元素的信息获得成功!");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("第"+row+"行的元素的信息获得失败!找不到该table!");
 			logger.error(message);
 		}
@@ -182,7 +182,7 @@ public class Table extends Element{
 		List<List<String>>contents=new ArrayList<List<String>>();
 		message.append("开始获得所有元素的内容");
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			int rowCount=0;
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				while(true){

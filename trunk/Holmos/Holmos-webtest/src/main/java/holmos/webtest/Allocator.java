@@ -70,6 +70,18 @@ public class Allocator {
 //				break;
 //			}
 //		}
+		for(BrowserWindow window:windows){
+			try{
+				window.quit();
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+//		try {
+//			Runtime.getRuntime().exec("tskill chromedriver");
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 		windows.clear();
 	}
 	/**关闭连接为url的第一个窗口，如果没有连接为url<br>

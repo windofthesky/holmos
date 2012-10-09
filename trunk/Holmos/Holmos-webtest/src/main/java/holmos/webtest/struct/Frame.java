@@ -7,7 +7,6 @@ import holmos.webtest.WebDriverBrowserWindow;
 import holmos.webtest.constvalue.ConfigConstValue;
 import holmos.webtest.element.locator.Locator;
 import holmos.webtest.element.locator.LocatorChain;
-import holmos.webtest.element.locator.LocatorValue;
 import holmos.webtest.element.tool.SeleniumElementExist;
 import holmos.webtest.element.tool.WebDriverElementExist;
 import holmos.webtest.element.tool.WebElementExist;
@@ -89,8 +88,6 @@ public class Frame extends Page{
 	/**Frame里面所包含的链信息<br>
 	 * 用来保存这个节点所用到的comment和locator信息<br>*/
 	private LocatorChain infoChain=new LocatorChain();
-	/**当前的locatorCurrent*/
-	private String locatorCurrent;
 	public LocatorChain getInfoChain() {
 		return infoChain;
 	}
@@ -161,7 +158,6 @@ public class Frame extends Page{
 	 * 选择此Frame的父容器对象
 	 * */
 	public void selectParentContainer(){
-		StringBuilder message=new StringBuilder(this.comment+":");
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
 			((Selenium)currentWindow.getDriver().getEngine()).selectFrame("relative=up");
@@ -173,7 +169,6 @@ public class Frame extends Page{
 	 * 选择最上层的页面
 	 * */
 	public void selectTopPage(){
-		StringBuilder message=new StringBuilder(this.comment+":");
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
 			((Selenium)currentWindow.getDriver().getEngine()).selectFrame("relative=top");

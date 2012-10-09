@@ -149,6 +149,7 @@ public class HolmosAnnotationTool {
 		S annotation=method.getAnnotation(annotationClass);
 		if(annotation!=null){
 			Method property=getPropertyByName(annotationPropertyName,annotationClass);
+			@SuppressWarnings("unchecked")
 			T propertyValue=(T) getAnnotationPropertyValue(property, annotation);
 			if(!defaultValue.equals(propertyValue)){
 				return propertyValue;
@@ -316,7 +317,7 @@ public class HolmosAnnotationTool {
 	 * @param argumentTypes 参数类型列表
 	 * @param arguments 参数列表
 	 * */
-	public static <T> T createInstanceOfType(Class<T>type,boolean bypassAccessibility, Class[] argumentTypes,
+	public static <T> T createInstanceOfType(Class<T>type,boolean bypassAccessibility, @SuppressWarnings("rawtypes") Class[] argumentTypes,
             Object[] arguments){
 		if(type.isMemberClass()||Modifier.isStatic(type.getModifiers())){
 			throw new HolmosFailedError("成员类和静态类无法为其构造实例!");

@@ -31,6 +31,13 @@ import org.openqa.selenium.WebElement;
  * @author 吴银龙(15857164387)
  * */
 public class SubPage implements LocatorValue{
+	protected String wholeComment;
+	public String getWholeComment() {
+		return wholeComment;
+	}
+	public void setWholeComment(String wholeComment) {
+		this.wholeComment = wholeComment;
+	}
 	private WebElementExist exist;
 	/**此元素的全名，在css校验的时候，为了给css本地文件取名设置的变量信息*/
 	protected String fullName="";
@@ -143,29 +150,6 @@ public class SubPage implements LocatorValue{
 		return exist.isElementExist(waitCount);
 	}
 	
-	private void getMuliLevelLocatorInfo(){
-		if(locator.getLocatorById()!=null&&!"".equalsIgnoreCase(locator.getLocatorById()))
-			locatorCurrent=locator.getXpathFromId();
-		else{
-			for(int i=1;i<infoChain.getInfoNodes().size();i++){
-				if(infoChain.getInfoNodes().get(i).getLocator().getLocatorById()!=null&&
-						!"".equalsIgnoreCase(infoChain.getInfoNodes().get(i).getLocator().getLocatorById())){
-					locatorCurrent=infoChain.getInfoNodes().get(i).getLocator().getXpathFromId();
-				}else{
-					if(infoChain.getInfoNodes().get(i) instanceof Frame){
-						locatorCurrent="";
-					}else{
-						locatorCurrent+=infoChain.getInfoNodes().get(i).getLocator().getLocatorByXpath();
-						if(infoChain.getInfoNodes().get(i) instanceof Collection){
-							locatorCurrent+="["+((Collection)infoChain.getInfoNodes().get(i)).getIndex()+"]";
-						}
-					}
-				}
-			}
-			locatorCurrent+=locator.getLocatorByXpath();
-		}
-	}
-	
 	public void addIDLocator(String id){
 		this.locator.addIdLocator(id);
 	}
@@ -206,11 +190,11 @@ public class SubPage implements LocatorValue{
 	public void assertExist(){
 		StringBuilder message=new StringBuilder();
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append(":元素存在性校验成功！元素存在！");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append(":元素存在校验失败！元素不存在!");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -221,11 +205,11 @@ public class SubPage implements LocatorValue{
 	public void assertNotExist(){
 		StringBuilder message=new StringBuilder();
 		if(!isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素不存在性校验成功！元素不存在！");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素存在校验失败！元素存在!");
 			logger.error(message);
 			HolmosWindow.closeAllWindows();
@@ -236,11 +220,11 @@ public class SubPage implements LocatorValue{
 	public void verifyExist(){
 		StringBuilder message=new StringBuilder();
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素存在性校验成功！元素存在！");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素存在校验失败！元素不存在!");
 			logger.error(message);
 		}
@@ -249,11 +233,11 @@ public class SubPage implements LocatorValue{
 	public void verifyNotExist(){
 		StringBuilder message=new StringBuilder();
 		if(!isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素不存在性校验成功！元素不存在！");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("元素存在校验失败！元素存在!");
 			logger.error(message);
 		}
@@ -263,7 +247,7 @@ public class SubPage implements LocatorValue{
 	 * */
 	public boolean waitForExist() {
 	    if(!isSubPageExist(ConfigConstValue.waitCount)){
-            logger.error("元素"+comment+"一直没有出现");
+            logger.error("元素"+wholeComment+"一直没有出现");
             return false;
         }return true;
 	}

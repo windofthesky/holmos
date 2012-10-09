@@ -24,7 +24,7 @@ public class RichTextField extends TextField{
 		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				String js="selenium.browserbot.getCurrentWindow().document.body.innerHTML=\'"+value+"\';";
 				((Selenium)currentWindow.getDriver().getEngine()).getEval(js);
@@ -36,7 +36,7 @@ public class RichTextField extends TextField{
 			message.append("用body模拟的富文本设置成功!");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("用body模拟的富文本设置失败!找不到元素!");
 			logger.error(message);
 		}
@@ -48,7 +48,7 @@ public class RichTextField extends TextField{
 		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(isExist()){
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			if(currentWindow instanceof SeleniumBrowserWindow){
 				String js="selenium.browserbot.getCurrentWindow().document.body.innerHTML=\'\';";
 				((Selenium)currentWindow.getDriver().getEngine()).getEval(js);
@@ -60,7 +60,7 @@ public class RichTextField extends TextField{
 			message.append("清空富文本框的内容成功!");
 			logger.info(message);
 		}else{
-			message.append(this.comment+":");
+			message.append(this.wholeComment+":");
 			message.append("清空富文本框的内容失败!找不到元素!");
 			logger.error(message);
 		}

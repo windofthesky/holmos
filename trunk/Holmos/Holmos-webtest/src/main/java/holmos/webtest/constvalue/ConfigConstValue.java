@@ -1,7 +1,6 @@
 package holmos.webtest.constvalue;
 
 import holmos.webtest.basetools.HolmosPropertiesTool;
-import holmos.webtest.log.MyLogger;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
@@ -11,7 +10,6 @@ import java.util.Properties;
  * @author 吴银龙(15857164387)
  * */
 public class ConfigConstValue {
-	private MyLogger logger=MyLogger.getLogger(ConfigConstValue.class);
 	/**holmos配置文件*/
 	public static String HOLMOSCONFFILE=ClassLoader.getSystemResource("holmosConf.properties").getPath();
 	/**日志文件配置地址*/

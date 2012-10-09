@@ -1,6 +1,8 @@
 package holmos.webtest.element.tool;
 
 import holmos.webtest.Allocator;
+import holmos.webtest.constvalue.ConfigConstValue;
+import holmos.webtest.constvalue.ConstValue;
 import holmos.webtest.element.ListElement;
 import holmos.webtest.element.locator.Locator;
 import holmos.webtest.element.locator.LocatorFinder;
@@ -98,6 +100,152 @@ public class WebDriverElementExist extends WebElementExist{
 		}
 		return element;
 	}
+	
+	public int getListElementSize(){
+		if(isElementExist(ConfigConstValue.defaultWaitCount)){
+			LocatorValue lastNode=infoChain.getInfoNodes().get(infoChain.getInfoNodes().size()-1);
+			if(lastNode instanceof Page || lastNode instanceof Frame){
+				return getOneLevelListElementSize();
+			}else{
+				return getMuiltiLevelListElementSize();
+			}
+		}
+		return ConstValue.ERROR;
+	}
+	
+	private int getMuiltiLevelListElementSize() {
+		int startLevel=infoChain.getInfoNodes().size()-1;
+		for(;startLevel>1;startLevel--){
+			if(infoChain.getInfoNodes().get(startLevel) instanceof Frame){
+				//找到Frame层级，跳到下一层
+				startLevel++;
+				break;
+			}
+		}
+		WebDriver driverTemp=(WebDriver) Allocator.getInstance().currentWindow.getDriver().getEngine();
+		WebElement elementTemp=null;
+		elementTemp=findElement(new LocatorFinder(driverTemp), infoChain.getInfoNodes().get(startLevel));
+		if(elementTemp==null)return -1;
+		for(int i=startLevel+1;i<infoChain.getInfoNodes().size();i++){
+			elementTemp=findElement(new LocatorFinder(elementTemp), infoChain.getInfoNodes().get(startLevel));
+		}
+		return getListElementSize(new LocatorFinder(elementTemp),webElement);
+	}
+
+	private int getOneLevelListElementSize() {
+		LocatorFinder finder=new LocatorFinder(Allocator.getInstance().currentWindow.getDriver().getEngine());
+		return getListElementSize(finder,webElement);
+	}
+
+	private int getListElementSize(LocatorFinder finder,LocatorValue webElement){
+		Locator locator=webElement.getLocator();
+		int size=0;
+		size=findListElementSizeById(finder,locator.getLocatorById());
+		if(ConstValue.ERROR==size)
+			size=findListElementSizeByName(finder,locator.getLocatorByName());
+		if(ConstValue.ERROR==size)
+			size=findListElementSizeByClass(finder, locator.getLocatorByClass());
+		if(ConstValue.ERROR==size)
+			size=findListElementSizeByXpath(finder,locator.getLocatorByXpath());
+		if(ConstValue.ERROR==size)
+			size=findListElementSizeByCss(finder,locator.getLocatorByCSS());
+		if(ConstValue.ERROR==size)
+			size=findListElementSizeByLinkText(finder,locator.getLocatorByLinkText());
+		if(ConstValue.ERROR==size)
+			size=findListElementSizeByPartLinkText(finder,locator.getLocatorByPartialLinkText());
+		if(ConstValue.ERROR==size)
+			size=findListElementSizeByTagName(finder,locator.getLocatorByTagName());
+		return size;
+	}
+	
+	
+	private int findListElementSizeByTagName(LocatorFinder finder,
+			String tagName) {
+		if(null==tagName||"".equalsIgnoreCase(tagName))
+			return ConstValue.ERROR;
+		try{
+			return finder.findElements(By.tagName(tagName)).size();
+		}catch (Exception e) {
+			return ConstValue.ERROR;
+		}
+	}
+
+	private int findListElementSizeByPartLinkText(LocatorFinder finder,
+			String partialLinkText) {
+		if(null==partialLinkText||"".equalsIgnoreCase(partialLinkText))
+			return ConstValue.ERROR;
+		try{
+			return finder.findElements(By.partialLinkText(partialLinkText)).size();
+		}catch (Exception e) {
+			return ConstValue.ERROR;
+		}
+	}
+
+	private int findListElementSizeByLinkText(LocatorFinder finder,
+			String linkText) {
+		if(null==linkText||"".equalsIgnoreCase(linkText))
+			return ConstValue.ERROR;
+		try{
+			return finder.findElements(By.linkText(linkText)).size();
+		}catch (Exception e) {
+			return ConstValue.ERROR;
+		}
+	}
+
+	private int findListElementSizeByCss(LocatorFinder finder,
+			String CSS) {
+		if(null==CSS||"".equalsIgnoreCase(CSS))
+			return ConstValue.ERROR;
+		try{
+			return finder.findElements(By.cssSelector(CSS)).size();
+		}catch (Exception e) {
+			return ConstValue.ERROR;
+		}
+	}
+
+	private int findListElementSizeByXpath(LocatorFinder finder,
+			String xpath) {
+		if(null==xpath||"".equalsIgnoreCase(xpath))
+			return ConstValue.ERROR;
+		try{
+			return finder.findElements(By.xpath(xpath)).size();
+		}catch (Exception e) {
+			return ConstValue.ERROR;
+		}
+	}
+
+	private int findListElementSizeByClass(LocatorFinder finder,
+			String className) {
+		if(null==className||"".equalsIgnoreCase(className))
+			return ConstValue.ERROR;
+		try{
+			return finder.findElements(By.className(className)).size();
+		}catch (Exception e) {
+			return ConstValue.ERROR;
+		}
+	}
+
+	private int findListElementSizeByName(LocatorFinder finder,
+			String name) {
+		if(null==name||"".equalsIgnoreCase(name))
+			return ConstValue.ERROR;
+		try{
+			return finder.findElements(By.name(name)).size();
+		}catch (Exception e) {
+			return ConstValue.ERROR;
+		}
+	}
+
+	private int findListElementSizeById(LocatorFinder finder, String id) {
+		if(null==id||"".equalsIgnoreCase(id))
+			return ConstValue.ERROR;
+		try{
+			return finder.findElements(By.id(id)).size();
+		}catch (Exception e) {
+			return ConstValue.ERROR;
+		}
+	}
+
 	private WebElement findListElement(LocatorFinder finder,LocatorValue webElement,int index){
 		Locator locator=webElement.getLocator();
 		WebElement element=findListElementById(finder,locator.getLocatorById(),index);
@@ -365,7 +513,7 @@ public class WebDriverElementExist extends WebElementExist{
 		if(Xpath==null||"".equalsIgnoreCase(Xpath))
 			return null;
 		try{
-			return finder.findElements(By.xpath(Xpath)).get(index);
+			return finder.findElements(By.xpath(Xpath)).get(index-1);
 		}catch (Exception e) {
 			return null;
 		}
