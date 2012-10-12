@@ -25,6 +25,7 @@ public class TextField extends Element{
 				((Selenium)currentWindow.getDriver().getEngine()).
 				type(locator.getSeleniumCurrentLocator(), value);
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
+				element.clear();
 				element.sendKeys(value);
 			}
 			message.append("设置值成功!");
