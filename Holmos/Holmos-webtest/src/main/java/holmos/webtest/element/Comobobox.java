@@ -81,7 +81,7 @@ public class Comobobox extends Element{
 				((Selenium)currentWindow.getDriver().getEngine()).
 				select(locator.getSeleniumCurrentLocator(), "label="+value);
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
-				select.selectByValue(value);
+				select.selectByVisibleText(value);
 			}
 			message.append("选择"+value+"所在选项成功！");
 			logger.info(message);

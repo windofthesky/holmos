@@ -65,7 +65,7 @@ public class Page implements LocatorValue{
 	 * 以此来获取页面元素的信息，在重新写locator<br>
 	 * 和comment的时候用得到<br>*/
 	protected void init(){
-		Field[] fields=this.getClass().getDeclaredFields();
+		Field[] fields=this.getClass().getFields();
 		try{
 			for(Field field : fields){
 				if(field.getModifiers()==ConstValue.nestedFatherObjectModifier){
