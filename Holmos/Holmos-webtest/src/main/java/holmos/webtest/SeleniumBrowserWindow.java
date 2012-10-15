@@ -3,6 +3,10 @@ package holmos.webtest;
 import holmos.webtest.basetools.HolmosBaseTools;
 import holmos.webtest.basetools.HolmosWindow;
 
+import java.util.Set;
+
+import org.openqa.selenium.Cookie;
+
 import com.thoughtworks.selenium.Selenium;
 /**
  * @author 吴银龙(15857164387)*/
@@ -35,7 +39,7 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 	}
 
 	public SeleniumDriver getDriver() {
-		// TODO Auto-generated method stub
+		
 		return this.driver;
 	}
 
@@ -43,33 +47,33 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 	private SeleniumDriver driver;
 	
 	public String getUrl() {
-		// TODO Auto-generated method stub
+		
 		return ((Selenium)driver.getEngine()).getLocation();
 	}
 
 	public void refresh() {
-		// TODO Auto-generated method stub
+		
 		((Selenium)driver.getEngine()).refresh();
 	}
 
 	public void close() {
-		// TODO Auto-generated method stub
+		
 		((Selenium)driver.getEngine()).close();
 		((Selenium)driver.getEngine()).stop();
 	}
 
 	public void goForward() {
-		// TODO Auto-generated method stub
+		
 		((Selenium)driver.getEngine()).runScript("window.history.forward();");
 	}
 
 	public void goBack() {
-		// TODO Auto-generated method stub
+		
 		((Selenium)driver.getEngine()).goBack();
 	}
 
 	public EngineType getEngineType() {
-		// TODO Auto-generated method stub
+		
 		return this.engineType;
 	}
 	
@@ -78,13 +82,13 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 		open(url);
 	}
 	public void open(String url) {
-		// TODO Auto-generated method stub
+		
 		focus();
 		((Selenium)driver.getEngine()).open(url);
 	}
 
 	public void focus() {
-		// TODO Auto-generated method stub
+		
 		if(Allocator.getInstance().currentWindow.equals(this))
 			return;
 		for(BrowserWindow window:Allocator.getInstance().getWindows()){
@@ -96,13 +100,13 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 	}
 
 	public void maxSizeWindow() {
-		// TODO Auto-generated method stub
+		
 		focus();
 		((Selenium)driver.getEngine()).windowMaximize();
 	}
 
 	public void moveWindowTo(int xLocation, int yLocation) {
-		// TODO Auto-generated method stub
+		
 		focus();
 		StringBuilder message=new StringBuilder("移动窗口位置");
 		if(xLocation>=0&&yLocation>=0){
@@ -117,7 +121,7 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 	}
 
 	public void resizeTo(int horizonSize, int verticalSize) {
-		// TODO Auto-generated method stub
+		
 		focus();
 		StringBuilder message=new StringBuilder("窗口重新设置大小");
 		if(horizonSize>=0&&verticalSize>=0){
@@ -132,12 +136,12 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 	}
 
 	public void start() {
-		// TODO Auto-generated method stub
+		
 		((Selenium)getDriver().getEngine()).start();
 		((Selenium)driver.getEngine()).useXpathLibrary("javascript-xpath");
 	}
 	public String dealAlert() {
-		// TODO Auto-generated method stub
+		
 		focus();
 		try{
 			return ((Selenium)getDriver().getEngine()).getAlert();
@@ -155,7 +159,7 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 			logger.error("没有找到Prompt窗口!");
 		}
 		return null;
-		// TODO Auto-generated method stub
+		
 		
 	}
 	public String dealConfirm(boolean isYes) {
@@ -175,7 +179,7 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 	}
 	@Override
 	public void quit() {
-		// TODO Auto-generated method stub
+		
 		//do nothing here
 	}
 	/**
@@ -183,5 +187,27 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 	 * */
 	public void TakeScreenshot(String fileName){
 		((Selenium)getDriver().getEngine()).captureEntirePageScreenshot(Allocator.getInstance().getScreenShotDir()+fileName, "");
+	}
+	@Override
+	public void addCookie(Cookie cookie) {
+		
+	}
+	@Override
+	public Set<Cookie> getAllCookies() {
+	
+		return null;
+	}
+	@Override
+	public Cookie getCookieByName(String name) {
+		
+		return null;
+	}
+	@Override
+	public void removeCookieByName(String name) {
+		
+	}
+	@Override
+	public void removeAllCookies() {
+		
 	}
 }

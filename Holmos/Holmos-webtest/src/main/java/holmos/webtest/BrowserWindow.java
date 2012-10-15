@@ -2,6 +2,10 @@ package holmos.webtest;
 
 import holmos.webtest.log.MyLogger;
 
+import java.util.Set;
+
+import org.openqa.selenium.Cookie;
+
 /**浏览器窗口的基本单位<br>
  * 窗口句柄，句柄在整个框架里面唯一，当为webdriver的时候，由底层<br>
  * 框架自动生成，当为Selenium的时候，由Holmos框架生成并管理<br>
@@ -74,4 +78,14 @@ public interface BrowserWindow {
 	 * 截图位置放到了
 	 * */
 	public void TakeScreenshot(String fileName);
+	/**在当前窗口添加cookie*/
+	public void addCookie(Cookie cookie);
+	/**得到当前窗口所在的Driver的cookie*/
+	public Set<Cookie> getAllCookies();
+	/**得到当前窗口所在的Driver指定名字的Cookie对象*/
+	public Cookie getCookieByName(String name);
+	/**移除当前窗口所在的Driver指定name的Cookie*/
+	public void removeCookieByName(String name);
+	/**移除当前窗口所在的Driver具有的所有的Cookie*/
+	public void removeAllCookies();
 }

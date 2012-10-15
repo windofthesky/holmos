@@ -62,26 +62,10 @@ public class Allocator {
 	 * 页面，重新获取其管理资源*/
 	public void closeAllWindows(){
 		for(BrowserWindow window:windows){
-			window.close();
-		}
-//		for(BrowserWindow window:windows){
-//			if(window instanceof WebDriverBrowserWindow){
-//				((WebDriver)(window.getDriver().getEngine())).quit();
-//				break;
-//			}
-//		}
-		for(BrowserWindow window:windows){
 			try{
 				window.quit();
-			}catch (Exception e) {
-				// TODO: handle exception
-			}
+			}catch (Exception e) {}
 		}
-//		try {
-//			Runtime.getRuntime().exec("tskill chromedriver");
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 		windows.clear();
 	}
 	/**关闭连接为url的第一个窗口，如果没有连接为url<br>

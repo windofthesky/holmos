@@ -24,13 +24,15 @@ public class testFF {
 	@Test
 	public void testSubPage(){
 		TaobaoPage taobao=new TaobaoPage();
-		HolmosWindow.openNewWindow(EngineType.WebDriverChrome,"http://www.taobao.com");
+		HolmosWindow.openNewWindow(EngineType.WebDriverIE,"http://www.taobao.com");
 		System.out.println(taobao.taobaoService.isExist());
 		taobao.taobaoService.buy.outputText();
 		taobao.taobaoService.life.outputText();
 		taobao.taobaoService.other.outputText();
 		taobao.taobaoService.social.outputText();
 		taobao.taobaoService.tool.outputText();
+//		System.out.println(ClassLoader.getSystemResource("autoItScripts\\upload.au3").getPath());
+//		System.out.println(ClassLoader.getSystemResource("holmosConf.properties").getPath());
 		HolmosWindow.closeAllWindows();
 	}
 	@Test

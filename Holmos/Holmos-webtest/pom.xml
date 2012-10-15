@@ -29,6 +29,8 @@
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>**/*.properties</include>
+					<include>**/*.exe</include>
+					<include>**/*au3</include>
 					<include>**/*.xml</include>
 				</includes>
 			</resource>

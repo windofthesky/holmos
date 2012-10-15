@@ -14,15 +14,28 @@ public class ConfigConstValue {
 	public static String HOLMOSCONFFILE=ClassLoader.getSystemResource("holmosConf.properties").getPath();
 	/**日志文件配置地址*/
 	public static String LOGCONFIG=ClassLoader.getSystemResource("log4j.properties").getPath();
-
+	/**上传autoIt文件*/
+	public static String UPLOADFILE=ClassLoader.getSystemResource("autoItScripts\\upload.exe").getPath();
+	/**下载autoIt文件*/
+	public static String DOWNLOADFILE=ClassLoader.getSystemResource("autoItScripts\\download.exe").getPath();
+	/**ieDriverServer地址*/
+	public static String IEDRIVER=ClassLoader.getSystemResource("driverServers\\IEDriverServer.exe").getPath();
+	/**chromeDriverServer地址*/
+	public static String CHROMEDRIVER=ClassLoader.getSystemResource("driverServers\\chromedriver.exe").getPath();
+	
 	static{
 		try {
 			HOLMOSCONFFILE = java.net.URLDecoder.decode(HOLMOSCONFFILE,"utf8");
 			LOGCONFIG=java.net.URLDecoder.decode(LOGCONFIG,"utf8");
+			UPLOADFILE=java.net.URLDecoder.decode(UPLOADFILE,"utf8");
+			DOWNLOADFILE=java.net.URLDecoder.decode(DOWNLOADFILE,"utf8");
+			IEDRIVER=java.net.URLDecoder.decode(IEDRIVER,"utf8");
+			CHROMEDRIVER=java.net.URLDecoder.decode(CHROMEDRIVER,"utf8");
+			System.setProperty("webdriver.ie.driver", IEDRIVER);
+			System.setProperty("webdriver.chrome.driver", CHROMEDRIVER);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	/**默认等待一次的时间*/
 	public static int defaulwaitMiliSeconds=50;

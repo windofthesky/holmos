@@ -4,7 +4,6 @@ import holmos.webtest.constvalue.ConstValue;
 import holmos.webtest.element.locator.Locator;
 import holmos.webtest.element.locator.LocatorChain;
 import holmos.webtest.element.locator.LocatorValue;
-import holmos.webtest.struct.Collection;
 
 /**用来判断数据结构是否存在的工具类*/
 public class WebElementExist {
