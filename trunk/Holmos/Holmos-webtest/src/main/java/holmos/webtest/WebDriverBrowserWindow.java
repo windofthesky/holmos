@@ -6,9 +6,11 @@ import holmos.webtest.constvalue.ConfigConstValue;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.Alert;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
@@ -55,47 +57,39 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	private SeleniumDriver driver;
 	
 	public SeleniumDriver getDriver() {
-		// TODO Auto-generated method stub
 		return this.driver;
 	}
 
 	public String getUrl() {
-		// TODO Auto-generated method stub
 		focus();
 		return ((WebDriver)driver.getEngine()).getCurrentUrl();
 	}
 
 	public void refresh() {
-		// TODO Auto-generated method stub
 		focus();
 		((WebDriver)driver.getEngine()).navigate().refresh();
 	}
 
 	public void close() {
-		// TODO Auto-generated method stub
 		focus();
 		((WebDriver)driver.getEngine()).close();
 	}
 
 	public void goForward() {
-		// TODO Auto-generated method stub
 		focus();
 		((WebDriver)driver.getEngine()).navigate().forward();
 	}
 
 	public void goBack() {
-		// TODO Auto-generated method stub
 		focus();
 		((WebDriver)driver.getEngine()).navigate().back();
 	}
 
 	public EngineType getEngineType() {
-		// TODO Auto-generated method stub
 		return this.enginetype;
 	}
 
 	public void open(String url) {
-		// TODO Auto-generated method stub
 		focus();
 		MyGetThread getThread=new MyGetThread((WebDriver) driver.getEngine(), url);
 		getThread.start();
@@ -116,7 +110,6 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	}
 
 	public void focus() {
-		// TODO Auto-generated method stub
 		if(Allocator.getInstance().currentWindow.equals(this))
 			return;
 		((WebDriver)driver.getEngine()).switchTo().window(getHandle());
@@ -124,7 +117,6 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	}
 
 	public void maxSizeWindow() {
-		// TODO Auto-generated method stub
 		int width=Toolkit.getDefaultToolkit().getScreenSize().width;
 		int height=Toolkit.getDefaultToolkit().getScreenSize().height;
 		focus();
@@ -133,7 +125,6 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	}
 
 	public void moveWindowTo(int xLocation, int yLocation) {
-		// TODO Auto-generated method stub
 		focus();
 		StringBuilder message=new StringBuilder("移动窗口位置");
 		if(xLocation>=0&&yLocation>=0){
@@ -147,7 +138,6 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	}
 
 	public void resizeTo(int horizonSize, int verticalSize) {
-		// TODO Auto-generated method stub
 		focus();
 		StringBuilder message=new StringBuilder("窗口重新设置大小");
 		if(horizonSize>=0&&verticalSize>=0){
@@ -161,12 +151,10 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	}
 
 	public void start() {
-		// TODO Auto-generated method stub
 //		((WebDriver)getDriver().getEngine()).get(getUrl())
 	}
 	
 	public String dealAlert() {
-		// TODO Auto-generated method stub
 		String alertMessage=null;
 		focus();
 		try{
@@ -181,7 +169,6 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	}
 
 	public String dealPrompt(String input,boolean isYes) {
-		// TODO Auto-generated method stub
 		String promptMessage=null;
 		focus();
 		try{
@@ -199,7 +186,6 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	}
 
 	public String dealConfirm(boolean isYes) {
-		// TODO Auto-generated method stub
 		String confirmMessage=null;
 		focus();
 		try{
@@ -216,7 +202,6 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 
 	@Override
 	public void openNewWindow(String url) {
-		// TODO Auto-generated method stub
 		open(url);
 	}
 	public class MyGetThread extends Thread{
@@ -251,5 +236,34 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 			logger.error("截图失败!");
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void addCookie(Cookie cookie) {
+		focus();
+		((WebDriver)driver.getEngine()).manage().addCookie(cookie);
+	}
+
+	@Override
+	public Set<Cookie> getAllCookies() {
+		return ((WebDriver)driver.getEngine()).manage().getCookies();
+	}
+
+	@Override
+	public Cookie getCookieByName(String name) {
+		return ((WebDriver)driver.getEngine()).manage().getCookieNamed(name);
+	}
+
+	@Override
+	public void removeCookieByName(String name) {
+		((WebDriver)driver.getEngine()).manage().deleteCookieNamed(name);
+	}
+
+	@Override
+	public void removeAllCookies() {
+		((WebDriver)driver.getEngine()).manage().deleteAllCookies();
+	}
+	public void removeCookie(Cookie cookie){
+		((WebDriver)driver.getEngine()).manage().deleteCookie(cookie);
 	}
 }

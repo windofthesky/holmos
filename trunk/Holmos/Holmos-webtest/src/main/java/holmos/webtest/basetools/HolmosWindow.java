@@ -6,7 +6,7 @@ import holmos.webtest.EngineType;
 import holmos.webtest.SeleniumBrowserWindow;
 import holmos.webtest.SeleniumDriver;
 import holmos.webtest.WebDriverBrowserWindow;
-import holmos.webtest.constvalue.ConstValue;
+import holmos.webtest.constvalue.ConfigConstValue;
 import holmos.webtest.log.MyLogger;
 
 import java.awt.event.KeyEvent;
@@ -285,16 +285,15 @@ public class HolmosWindow {
 	public static void upLoad(String localFilePath){
 		StringBuilder message=new StringBuilder(localFilePath+"文件上传");
 		try {
-			String scriptPath=ConstValue.CURRENDIR+"\\autoItScripts\\upload.exe";
 			String filePath=localFilePath;
-			if(!new File(scriptPath).exists()){
+			if(!new File(ConfigConstValue.UPLOADFILE).exists()){
 				message.append(":提供上传功能的脚本不存在!请联系黄庭同学！");
 				logger.error(message);
 			}else if(!new File(filePath).exists()){
 				message.append(":上传文件不存在!请联系黄庭同学！");
 				logger.error(message);
 			}else{
-				String cmd=scriptPath+" "+"选择要上传的文件 "+filePath;
+				String cmd=ConfigConstValue.UPLOADFILE+" "+"选择要上传的文件 "+filePath;
 				Runtime.getRuntime().exec(cmd);
 				message.append(":脚本启动成功！");
 				logger.info(message);
@@ -311,16 +310,15 @@ public class HolmosWindow {
 	public static void upLoad(String windowTitle,String localFilePath){
 		StringBuilder message=new StringBuilder(localFilePath+"文件上传");
 		try {
-			String scriptPath=ConstValue.CURRENDIR+"\\autoItScripts\\upload.exe";
 			String filePath=localFilePath;
-			if(!new File(scriptPath).exists()){
+			if(!new File(ConfigConstValue.UPLOADFILE).exists()){
 				message.append(":提供上传功能的脚本不存在!请联系黄庭同学！");
 				logger.error(message);
 			}else if(!new File(filePath).exists()){
 				message.append(":上传文件不存在!请检查要上传的文件！");
 				logger.error(message);
 			}else{
-				String cmd=scriptPath+" "+windowTitle+" "+filePath;
+				String cmd=ConfigConstValue.UPLOADFILE+" "+windowTitle+" "+filePath;
 				Runtime.getRuntime().exec(cmd);
 				message.append(":脚本启动成功！");
 				logger.info(message);
@@ -335,13 +333,12 @@ public class HolmosWindow {
 	public static void downLoad(String localFilePath){
 		StringBuilder message=new StringBuilder(localFilePath+"文件下载");
 		try {
-			String scriptPath=ConstValue.CURRENDIR+"\\autoItScripts\\download.exe";
 			String filePath=localFilePath;
-			if(!new File(scriptPath).exists()){
+			if(!new File(ConfigConstValue.DOWNLOADFILE).exists()){
 				message.append(":提供上传功能的脚本不存在!请联系黄庭同学！");
 				logger.error(message);
 			}else{
-				String cmd=scriptPath+" "+"另存为 "+filePath;
+				String cmd=ConfigConstValue.DOWNLOADFILE+" "+"另存为 "+filePath;
 				Runtime.getRuntime().exec(cmd);
 				message.append(":脚本启动成功！");
 				logger.info(message);
@@ -357,13 +354,12 @@ public class HolmosWindow {
 	public static void downLoad(String windowTitle,String localFilePath){
 		StringBuilder message=new StringBuilder(localFilePath+"文件下载");
 		try {
-			String scriptPath=ConstValue.CURRENDIR+"\\autoItScripts\\download.exe";
 			String filePath=localFilePath;
-			if(!new File(scriptPath).exists()){
+			if(!new File(ConfigConstValue.DOWNLOADFILE).exists()){
 				message.append(":提供上传功能的脚本不存在!请联系黄庭同学！");
 				logger.error(message);
 			}else{
-				String cmd=scriptPath+" "+windowTitle+" "+filePath;
+				String cmd=ConfigConstValue.DOWNLOADFILE+" "+windowTitle+" "+filePath;
 				Runtime.getRuntime().exec(cmd);
 				message.append(":脚本启动成功！");
 				logger.info(message);
