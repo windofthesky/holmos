@@ -210,4 +210,8 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 	public void removeAllCookies() {
 		
 	}
+	@Override
+	public String getTitle() {
+		return ((Selenium)getDriver().getEngine()).getTitle();
+	}
 }

@@ -164,6 +164,30 @@ public class HolmosWindow {
 	public static void attachByRegular(String url){
 		Allocator.getInstance().attachByRegular(url);
 	}
+	/**
+	 * 按照windows顺序，将控制权交予页面title为title的第一个的窗口<br>
+	 * 匹配方法:全匹配
+	 * @param title 目标title<br>
+	 * */
+	public static void attachByTitle(String title){
+		Allocator.getInstance().attachByTiltle(title);
+	}
+	/**
+	 * 按照windows顺序，将控制权第一个title包含partTitle的窗口<br>
+	 * 匹配方法:部分匹配
+	 * @param partTitle 目标tilte的部分字符窜<br>
+	 * */
+	public static void attachByContainTitle(String partTitle){
+		Allocator.getInstance().attachByContainTitle(partTitle);
+	}
+	/**
+	 * 按照windows顺序，将控制权第一个title正则匹配regularTitle的窗口<br>
+	 * 匹配方法:正则匹配
+	 * @param regularTitle 目标tilte的正则字符窜<br>
+	 * */
+	public static void attachByRegularTitle(String regularTitle){
+		Allocator.getInstance().attachByRegularTitle(regularTitle);
+	}
 	/**按下Shift键,在松开之前一直处于按下状态*/
 	public static void shiftKeyDown(){
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;

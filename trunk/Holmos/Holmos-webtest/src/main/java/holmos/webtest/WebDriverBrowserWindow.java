@@ -266,4 +266,9 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	public void removeCookie(Cookie cookie){
 		((WebDriver)driver.getEngine()).manage().deleteCookie(cookie);
 	}
+
+	@Override
+	public String getTitle() {
+		return ((WebDriver)driver.getEngine()).getTitle();
+	}
 }
