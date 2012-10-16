@@ -95,6 +95,10 @@ public class HolmosWindow {
 	public static String getUrl(){
 		return Allocator.getInstance().currentWindow.getUrl();
 	}
+	/**获得当前窗口的title*/
+	public static String getTitle(){
+		return Allocator.getInstance().currentWindow.getTitle();
+	}
 	/**对当前窗口的的当前页面进行刷新<br>
 	 * 对于webdrvier先将控制权交予用到的窗口<br>
 	 * */
