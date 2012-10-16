@@ -340,5 +340,27 @@ public class Allocator {
 		addBrowserWindow(engineType, url);
 		currentWindow=windows.get(windows.size()-1);
 	}
+	public void attachByTiltle(String title) {
+		for(BrowserWindow window:windows){
+			if(window.getTitle().equalsIgnoreCase(title)){
+				window.focus();break;
+			}
+		}
+	}
+	public void attachByContainTitle(String partTitle) {
+		for(BrowserWindow window:windows){
+			if(window.getTitle().contains(partTitle)){
+				window.focus();break;
+			}
+		}
+	}
+	public void attachByRegularTitle(String regularTitle) {
+		Pattern pattern=Pattern.compile(regularTitle);
+		for(BrowserWindow window:windows){
+			if(pattern.matcher(window.getTitle()).matches()){
+				window.focus();break;
+			}
+		}
+	}
 	
 }

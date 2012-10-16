@@ -14,7 +14,8 @@ import org.openqa.selenium.Cookie;
 public interface BrowserWindow {
 
 	static MyLogger logger=MyLogger.getLogger(BrowserWindow.class);
-
+	/**获取当前窗体的title*/
+	public String getTitle();
 	public String getHandle();
 	/**获得当前窗口当前页面的url<br>*/
 	public String getUrl();
