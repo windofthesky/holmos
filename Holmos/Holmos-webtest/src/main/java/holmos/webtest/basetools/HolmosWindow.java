@@ -9,7 +9,6 @@ import holmos.webtest.WebDriverBrowserWindow;
 import holmos.webtest.constvalue.ConfigConstValue;
 import holmos.webtest.log.MyLogger;
 
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 
@@ -283,13 +282,13 @@ public class HolmosWindow {
 		}
 	}
 	/**松开某个键*/
-	public static void KeyUp(KeyEvent key){
+	public static void KeyUp(Keys key){
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
-			((Selenium)currentWindow.getDriver().getEngine()).keyDownNative(Character.toString(key.getKeyChar()));
+			((Selenium)currentWindow.getDriver().getEngine()).keyDownNative(String.valueOf(key.toString()));
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyUp(Keys.valueOf(Character.toString(key.getKeyChar())));
+			action.keyUp(key);
 		}
 	}
 

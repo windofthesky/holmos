@@ -26,6 +26,9 @@ public class ListElement extends Element{
 	public String getComment(){
 		return "第"+index+"个"+comment;
 	}
+	public String getComment(boolean tag){
+		return this.comment;
+	}
 	/**
 	 * 获得ListElement里面包含的Element数量
 	 * */
