@@ -1,6 +1,7 @@
 package holmos.webtest.element.tool;
 
 import holmos.webtest.constvalue.ConstValue;
+import holmos.webtest.element.ListElement;
 import holmos.webtest.element.locator.Locator;
 import holmos.webtest.element.locator.LocatorChain;
 import holmos.webtest.element.locator.LocatorValue;
@@ -20,7 +21,10 @@ public class WebElementExist {
 		for(int i=0;i<infoChain.getInfoNodes().size();i++){
 			commentTemp.append(infoChain.getInfoNodes().get(i).getComment()+"-->");
 		}
-		commentTemp.append(webElement.getComment());
+		if(webElement instanceof ListElement)
+			commentTemp.append(((ListElement)webElement).getComment(false));
+		else
+			commentTemp.append(webElement.getComment());
 		webElement.setWholeComment(commentTemp.toString());
 	}
 	/**
