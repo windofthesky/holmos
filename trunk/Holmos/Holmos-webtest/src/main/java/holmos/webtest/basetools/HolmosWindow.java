@@ -198,7 +198,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).shiftKeyDown();
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyDown(Keys.SHIFT);
+			action.build();
+			action.keyDown(Keys.SHIFT).perform();
 		}
 	}
 	/**按下Ctrl键,在松开之前一直处于按下状态*/
@@ -208,7 +209,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).controlKeyDown();
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyDown(Keys.CONTROL);
+			action.build();
+			action.keyDown(Keys.CONTROL).perform();
 		}
 	}
 	/**按下Meta键,在松开之前一直处于按下状态*/
@@ -218,7 +220,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).metaKeyDown();
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyDown(Keys.META);
+			action.build();
+			action.keyDown(Keys.META).perform();
 		}
 	}
 	/**按下Alt键,在松开之前一直处于按下状态*/
@@ -228,7 +231,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).altKeyDown();
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyDown(Keys.ALT);
+			action.build();
+			action.keyDown(Keys.ALT).perform();;
 		}
 	}
 	/**松开Shift键,若之前处于松开状态，则没有影响*/
@@ -238,7 +242,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).shiftKeyUp();
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyUp(Keys.SHIFT);
+			action.build();
+			action.keyUp(Keys.SHIFT).perform();
 		}
 	}
 	/**松开Ctrl键,若之前处于松开状态，则没有影响*/
@@ -248,7 +253,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).controlKeyUp();
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyUp(Keys.CONTROL);
+			action.build();
+			action.keyUp(Keys.CONTROL).perform();
 		}
 	}
 	/**松开Meta键,若之前处于松开状态，则没有影响*/
@@ -258,7 +264,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).metaKeyUp();
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyUp(Keys.META);
+			action.build();
+			action.keyUp(Keys.META).perform();
 		}
 	}
 	/**松开Alt键,若之前处于松开状态，则没有影响*/
@@ -268,7 +275,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).altKeyUp();
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyUp(Keys.ALT);
+			action.build();
+			action.keyUp(Keys.ALT).perform();
 		}
 	}
 	/**按下某个键*/
@@ -278,7 +286,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).keyPressNative(String.valueOf(key.toString()));
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyDown(key);
+			action.build();
+			action.keyDown(key).perform();
 		}
 	}
 	/**松开某个键*/
@@ -288,7 +297,8 @@ public class HolmosWindow {
 			((Selenium)currentWindow.getDriver().getEngine()).keyDownNative(String.valueOf(key.toString()));
 		}else if(currentWindow instanceof WebDriverBrowserWindow){
 			Actions action=new Actions((WebDriver)currentWindow.getDriver().getEngine());
-			action.keyUp(key);
+			action.build();
+			action.keyUp(key).perform();
 		}
 	}
 
