@@ -5,14 +5,14 @@
 	<url>http://www.holmos.com</url>
 	<groupId>com.holmos</groupId>
 	<artifactId>holmos</artifactId>
-	<version>1.0.2u1</version>
+	<version>1.0.2u2</version>
 	<packaging>pom</packaging>
 	<description>An automated testing framework for web testing,interface testing,database testing;also contains regression testing and the management for testcase</description>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.jdk>1.6</project.build.jdk>
-		<holmos.version>1.0.2u1</holmos.version>
+		<holmos.version>1.0.2u2</holmos.version>
 	</properties>
 
 	<developers>
@@ -31,14 +31,8 @@
 	</developers>
 
 	<modules>
-		<module>Holmos-dbtest</module>
-		<module>Holmos-integration</module>
-		<module>Holmos-managePlatform</module>
-		<module>Holmos-regression</module>
-		<module>Holmos-reflectAssert</module>
 		<module>Holmos-webtest</module>
-		<module>holmos-android</module>
-		<module>holmos-iphone</module>
+		<module>Holmos-reflectAssert</module>
 	</modules>
 
 	<licenses>
@@ -57,31 +51,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<groupId>com.holmos</groupId>
-				<artifactId>holmos-basetools</artifactId>
-				<version>${holmos.version}</version>
-			</dependency>
-			<dependency>
-			<groupId>com.holmos</groupId>
-				<artifactId>holmos-dbtest</artifactId> 
-				<version>${holmos.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.holmos</groupId>
-				<artifactId>holmos-integration</artifactId>
-				<version>${holmos.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.holmos</groupId>
-				<artifactId>holmos-managePlatform</artifactId>
-				<version>${holmos.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.holmos</groupId>
-				<artifactId>holmos-regression</artifactId>
-				<version>${holmos.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>com.holmos</groupId>
 				<artifactId>holmos-reflectAssert</artifactId>
