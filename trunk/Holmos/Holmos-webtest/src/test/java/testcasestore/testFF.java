@@ -31,8 +31,6 @@ public class testFF {
 		taobao.taobaoService.other.outputText();
 		taobao.taobaoService.social.outputText();
 		taobao.taobaoService.tool.outputText();
-//		System.out.println(ClassLoader.getSystemResource("autoItScripts\\upload.au3").getPath());
-//		System.out.println(ClassLoader.getSystemResource("holmosConf.properties").getPath());
 		HolmosWindow.closeAllWindows();
 	}
 	@Test
