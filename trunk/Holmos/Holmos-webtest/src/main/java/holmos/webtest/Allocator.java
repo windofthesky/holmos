@@ -61,19 +61,23 @@ public class Allocator {
 	 * 但是分配者无资源进行管理，就是一个光杆司令，当然了，这个分配者可以继续打开<br>
 	 * 页面，重新获取其管理资源*/
 	public void closeAllWindows(){
-		Runtime runTime = Runtime.getRuntime();
+		
 		for(BrowserWindow window:windows){
 			try{
 				window.quit();
 			}catch (Exception e) {}
 		}
+		killProcess("chromedriver");
+		killProcess("IEDriverServer");
+		windows.clear();
+	}
+	private void killProcess(String processName){
+		Runtime runTime = Runtime.getRuntime();
 		try{
-			runTime.exec("tskill chromedriver");
+			runTime.exec("tskill "+processName);
 		}catch(Exception e){
 			
 		}
-		
-		windows.clear();
 	}
 	/**关闭连接为url的第一个窗口，如果没有连接为url<br>
 	 * 那么将不会影响管理者的资源，并返回false<br>
