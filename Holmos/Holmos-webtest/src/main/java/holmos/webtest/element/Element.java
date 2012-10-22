@@ -977,11 +977,9 @@ public class Element implements LocatorValue{
 		}
 	}
 	public String getLocatorCurrent() {
-		// TODO Auto-generated method stub
 		return locatorCurrent;
 	}
 	public void setLocatorCurrent(String locatorCurrent) {
-		// TODO Auto-generated method stub
 		this.locatorCurrent=locatorCurrent;
 	}
 	/**获得元素css属性值<br>
@@ -1044,6 +1042,24 @@ public class Element implements LocatorValue{
 				HolmosWindow.runJavaScript("arguments[0].style.border = \"5px solid yellow\"",element);
 			}
 			
+		}
+	}
+	
+	/**
+	 * 提交Element里面输入的信息
+	 * */
+	public void submit(){
+		StringBuilder message=new StringBuilder(this.wholeComment+":");
+		if(isExist()){
+			message.append(this.wholeComment+":");
+			BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
+			if(currentWindow instanceof SeleniumBrowserWindow){
+				Selenium selenium=(Selenium) currentWindow.getDriver().getEngine();
+				selenium.submit(locatorCurrent);
+			}else if(currentWindow instanceof WebDriverBrowserWindow){
+				element.submit();
+				logger.info("submit操作执行成功");
+			}
 		}
 	}
 }

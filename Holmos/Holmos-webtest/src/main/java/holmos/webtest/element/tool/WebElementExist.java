@@ -22,7 +22,7 @@ public class WebElementExist {
 			commentTemp.append(infoChain.getInfoNodes().get(i).getComment()+"-->");
 		}
 		if(webElement instanceof ListElement)
-			commentTemp.append(((ListElement)webElement).getComment(false));
+			commentTemp.append(((ListElement)webElement).getComment());
 		else
 			commentTemp.append(webElement.getComment());
 		webElement.setWholeComment(commentTemp.toString());

@@ -279,7 +279,7 @@ public class HolmosWindow {
 			action.keyUp(Keys.ALT).perform();
 		}
 	}
-	/**按下某个键*/
+	/**按下某个modifer key键*/
 	public static void KeyDown(Keys key){
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
@@ -290,7 +290,7 @@ public class HolmosWindow {
 			action.keyDown(key).perform();
 		}
 	}
-	/**松开某个键*/
+	/**松开某个modifier key键*/
 	public static void KeyUp(Keys key){
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
 		if(currentWindow instanceof SeleniumBrowserWindow){
