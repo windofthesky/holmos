@@ -293,4 +293,11 @@ public class Collection implements LocatorValue{
 	public void setWholeComment(String wholeComment) {
 		this.wholeComment=wholeComment;
 	}
+	/**
+	 * 获取Collection中集合的个数
+	 * @param 集合的个数
+	 * */
+	public int getSize(){
+		return exist.getCollectionSize();
+	}
 }

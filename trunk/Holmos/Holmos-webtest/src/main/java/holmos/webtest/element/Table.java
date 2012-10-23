@@ -23,7 +23,7 @@ public class Table extends Element{
 		super(comment);
 	}
 	/**获得table的第row行，col列的值<br>
-	 * 行号和列号都从0开始<br>
+	 * 行号和列号都从1开始<br>
 	 * @param row 行号  
 	 * @param col 列号
 	 * @return 此table指定行，指定列的值*/
@@ -37,30 +37,30 @@ public class Table extends Element{
 				try{
 					content=((Selenium)currentWindow.getDriver().getEngine()).
 							getTable(locator.getSeleniumCurrentLocator()+"."+row+"."+col);
-					message.append("第"+(row+1)+"行，第"+(col+1)+"列的元素获取成功!");
+					message.append("第"+row+"行，第"+col+"列的元素获取成功!");
 					logger.info(message);
 				}catch (Exception e) {
-					message.append("第"+(row+1)+"行，第"+(col+1)+"列的元素获取失败!找不到这个table的这个元素");
+					message.append("第"+row+"行，第"+col+"列的元素获取失败!找不到这个table的这个元素");
 					logger.error(message);
 				}
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
 				try{
 					content=element.findElement(By.xpath(".//tr["+(row)+"]/td["+(col)+"]")).getText();
-					message.append("第"+(row+1)+"行，第"+(col+1)+"列的元素获取成功!");
+					message.append("第"+row+"行，第"+col+"列的元素获取成功!");
 					logger.info(message);
 				}catch(Exception e){
-					message.append("第"+(row+1)+"行，第"+(col+1)+"列的元素获取失败!找不到这个table的这个元素");
+					message.append("第"+row+"行，第"+col+"列的元素获取失败!找不到这个table的这个元素");
 					logger.error(message);
 				}
 			}
 		}else{
 			message.append(this.wholeComment+":");
-			message.append("第"+(row+1)+"行，第"+(col+1)+"列的元素获取失败!找不到这个table");
+			message.append("第"+row+"行，第"+col+"列的元素获取失败!找不到这个table");
 			logger.error(message);
 		}
 		return content;
 	}
-	/**获得此table第column列所有行的值，列号从0开始<br>
+	/**获得此table第column列所有行的值，列号从1开始<br>
 	 * @param column 列号
 	 * @return 字符窜List，column列所有行的信息*/
 	public List<String> getElementsContentByColumn(int column){
@@ -81,7 +81,7 @@ public class Table extends Element{
 					
 				}
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
-				List<WebElement>cells=element.findElements(By.xpath(".//td["+(column+1)+"]"));
+				List<WebElement>cells=element.findElements(By.xpath(".//td["+column+"]"));
 				for(WebElement cell:cells){
 					contents.add(cell.getText());
 				}
@@ -108,7 +108,7 @@ public class Table extends Element{
 		}
 		return contents;
 	}
-	/**获得此table第row行所有列的值，行号从0开始<br>
+	/**获得此table第row行所有列的值，行号从1开始<br>
 	 * @param row 行号
 	 * @return 字符窜List，row列所有列的信息*/
 	public List<String> getElementsContentByRow(int row){
@@ -130,7 +130,7 @@ public class Table extends Element{
 					
 				}
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
-				WebElement rowCell=element.findElement(By.xpath(".//tr["+(row+1)+"]"));
+				WebElement rowCell=element.findElement(By.xpath(".//tr["+row+"]"));
 				List<WebElement>cells=rowCell.findElements(By.xpath(".//td"));
 				for(WebElement cell:cells){
 					contents.add(cell.getText());
@@ -198,7 +198,7 @@ public class Table extends Element{
 				}
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
 				while(true){
-					if(element.findElements(By.xpath(".//tr["+(rowCount+1)+"]")).size()==0){
+					if(element.findElements(By.xpath(".//tr["+rowCount+"]")).size()==0){
 						break;
 					}
 					contents.add(getElementsContentByRow(rowCount));

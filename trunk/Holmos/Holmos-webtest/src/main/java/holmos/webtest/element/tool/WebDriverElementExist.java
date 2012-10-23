@@ -100,7 +100,7 @@ public class WebDriverElementExist extends WebElementExist{
 		}
 		return element;
 	}
-	
+	@Override
 	public int getListElementSize(){
 		if(isElementExist(ConfigConstValue.defaultWaitCount)){
 			LocatorValue lastNode=infoChain.getInfoNodes().get(infoChain.getInfoNodes().size()-1);
@@ -112,7 +112,9 @@ public class WebDriverElementExist extends WebElementExist{
 		}
 		return ConstValue.ERROR;
 	}
-	
+	public int getCollectionSize(){
+		return getListElementSize();
+	}
 	private int getMuiltiLevelListElementSize() {
 		int startLevel=infoChain.getInfoNodes().size()-1;
 		for(;startLevel>1;startLevel--){

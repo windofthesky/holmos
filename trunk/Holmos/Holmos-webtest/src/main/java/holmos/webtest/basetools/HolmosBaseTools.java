@@ -23,6 +23,19 @@ import org.apache.log4j.PropertyConfigurator;
  * @author 吴银龙(15857164387)
  * */
 public class HolmosBaseTools {
+	
+	/**
+	 * 强制杀掉名字为processName的进程
+	 * @param processName 进程名字
+	 * */
+	public static void killProcess(String processName){
+		Runtime runTime = Runtime.getRuntime();
+		try{
+			runTime.exec("tskill "+processName);
+		}catch(Exception e){
+			
+		}
+	}
 	/**配置日志文件的地址，打印必要的日志<br>
 	 * 如果日志文件地址找不到，那么就在框架里面默认的地址创建日志文件<br>*/
 	public static void configLogProperties(){

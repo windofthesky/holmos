@@ -40,6 +40,9 @@ public class WebElementExist {
 	}
 	public int getListElementSize(){
 		return ConstValue.ERROR;
-		
 	}
+	public int getCollectionSize(){
+		return ConstValue.ERROR;
+	}
+	
 }
