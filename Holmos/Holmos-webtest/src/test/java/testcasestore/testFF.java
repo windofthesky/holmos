@@ -24,7 +24,7 @@ public class testFF {
 	@Test
 	public void testSubPage(){
 		TaobaoPage taobao=new TaobaoPage();
-		HolmosWindow.openNewWindow(EngineType.WebDriverIE,"http://www.taobao.com");
+		HolmosWindow.openNewWindow(EngineType.WebDriverChrome,"http://www.taobao.com");
 		System.out.println(taobao.taobaoService.isExist());
 		taobao.taobaoService.buy.outputText();
 		taobao.taobaoService.life.outputText();
