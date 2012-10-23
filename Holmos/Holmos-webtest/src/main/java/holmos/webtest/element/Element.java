@@ -293,7 +293,7 @@ public class Element implements LocatorValue{
 				element.click();
 				if(Allocator.getInstance().currentWindow.getEngineType().equals(EngineType.WebDriverFirefox))
 					((WebDriver)(Allocator.getInstance().currentWindow.getDriver().getEngine())).manage().timeouts()
-						.pageLoadTimeout(10, TimeUnit.SECONDS);
+						.pageLoadTimeout(ConfigConstValue.waitPageLoadTime, TimeUnit.MILLISECONDS);
 				else{
 					HolmosBaseTools.sleep(1000);
 				}
@@ -368,11 +368,11 @@ public class Element implements LocatorValue{
 			}else if(currentWindow instanceof WebDriverBrowserWindow){
 				text=element.getText();
 			}
-			message.append("文本活的成功，为:"+text);
+			message.append("文本获得成功，为:"+text);
 			logger.info(message);
 		}else{
 			message.append(this.wholeComment+":");
-			message.append("文本活的失败，元素找不到!");
+			message.append("文本获得失败，元素找不到!");
 			logger.error(message);
 		}
 		return text;
@@ -381,7 +381,7 @@ public class Element implements LocatorValue{
 	public void outputText(){
 		System.out.println(getText());
 	}
-	/**让当前组件活的焦点*/
+	/**让当前组件获得焦点*/
 	public void focus(){
 		StringBuilder message=new StringBuilder();
 		BrowserWindow currentWindow=Allocator.getInstance().currentWindow;
