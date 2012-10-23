@@ -68,8 +68,6 @@ public class Allocator {
 				continue;
 			}
 		}
-//		killProcess("chromedriver");
-//		killProcess("IEDriverServer");
 		windows.clear();
 	}
 	

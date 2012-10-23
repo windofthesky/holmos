@@ -73,6 +73,7 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	public void close() {
 		focus();
 		((WebDriver)driver.getEngine()).close();
+		Allocator.getInstance().getWindows().remove(this);
 	}
 
 	public void goForward() {
