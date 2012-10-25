@@ -1,5 +1,6 @@
 package holmos.webtest;
 
+import holmos.webtest.asynchronous.AsynchronousOpen;
 import holmos.webtest.basetools.HolmosBaseTools;
 import holmos.webtest.constvalue.ConfigConstValue;
 
@@ -92,21 +93,17 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 
 	public void open(String url) {
 		focus();
-		MyGetThread getThread=new MyGetThread((WebDriver) driver.getEngine(), url);
+		AsynchronousOpen getThread=new AsynchronousOpen(this, url);
 		getThread.start();
 		int count=0;
 		while(count++<ConfigConstValue.defaultWaitCount){
-			if(getThread.isGetSucceed)
+			if(getThread.isGetSucceed())
 				break;
+			System.out.println(count);
 			HolmosBaseTools.sleep(1000);
 		}
 		if(count>ConfigConstValue.defaultWaitCount){
-			try{
-				getThread.interrupt();
-				getThread=null;
-			}catch (Exception e) {
-				System.out.println("页面加载超时了!但是case继续执行了，不影响~");
-			}
+			System.out.println("页面加载超时了!但是case继续执行了，不影响~");
 		}
 	}
 
@@ -205,21 +202,7 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	public void openNewWindow(String url) {
 		open(url);
 	}
-	public class MyGetThread extends Thread{
-		private WebDriver driver;
-		private boolean isGetSucceed=false;
-		private String url;
-		public MyGetThread(WebDriver driver,String url){
-			this.driver=driver;
-			this.url=url;
-		}
-		@Override
-		public void run() {
-			driver.get(url);
-			isGetSucceed=true;
-			windowHandle=driver.getWindowHandle();
-		}
-	}
+	
 	@Override
 	public void quit() {
 		((WebDriver)driver.getEngine()).quit();
@@ -271,5 +254,10 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	@Override
 	public String getTitle() {
 		return ((WebDriver)driver.getEngine()).getTitle();
+	}
+
+	@Override
+	public void setHandle(String handle) {
+		this.windowHandle=handle;
 	}
 }

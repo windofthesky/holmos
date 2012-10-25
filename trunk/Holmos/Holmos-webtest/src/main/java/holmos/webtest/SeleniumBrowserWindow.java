@@ -214,4 +214,8 @@ public class SeleniumBrowserWindow implements BrowserWindow{
 	public String getTitle() {
 		return ((Selenium)getDriver().getEngine()).getTitle();
 	}
+	@Override
+	public void setHandle(String handle) {
+		this.windowHandle=handle;
+	}
 }

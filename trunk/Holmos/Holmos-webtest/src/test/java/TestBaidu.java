@@ -1,8 +1,5 @@
 import holmos.webtest.EngineType;
 import holmos.webtest.basetools.HolmosWindow;
-
-import org.junit.Test;
-
 import pagestore.BaiduPage;
 
 public class TestBaidu {
@@ -10,7 +7,6 @@ public class TestBaidu {
 	/**
 	 * 获得logo url实现
 	 * */
-	@Test
 	public void testGetLogoUrl(){
 		HolmosWindow.openNewWindow(EngineType.WebDriverChrome, "http://www.baidu.com/");
 		System.out.println(baiduPage.logo.getSrc());
@@ -19,7 +15,6 @@ public class TestBaidu {
 	/**
 	 * 登录实现
 	 * */
-	@Test
 	public void testLogin(){
 		HolmosWindow.openNewWindow(EngineType.WebDriverChrome, "http://www.baidu.com/");
 		baiduPage.loginLink.click();
@@ -33,7 +28,6 @@ public class TestBaidu {
 	/**
 	 * 搜索实现
 	 * */
-	@Test
 	public void testSearch(){
 		HolmosWindow.openNewWindow(EngineType.WebDriverChrome, "http://www.baidu.com/");
 		baiduPage.input.setText("福尔摩斯");

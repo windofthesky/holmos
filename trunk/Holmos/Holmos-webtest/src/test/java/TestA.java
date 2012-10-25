@@ -1,5 +1,4 @@
 import holmos.webtest.EngineType;
-import holmos.webtest.basetools.HolmosBaseTools;
 import holmos.webtest.basetools.HolmosWindow;
 
 import org.junit.Test;
@@ -12,11 +11,11 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 public class TestA {
 	@Test
 	public void test(){
-		HolmosWindow.openNewWindow(EngineType.WebDriverIE,"http://www.baidu.com");
-		HolmosBaseTools.sleep(5000);
-		HolmosWindow.closeAllWindows();
+		HolmosWindow.openNewWindow(EngineType.WebDriverChrome,"http://www.yellowpages.com/san-francisco-ca/mip/ego-enterprises-16349614");
+		System.out.print("done");
+		//HolmosBaseTools.sleep(5000);
+		//HolmosWindow.closeAllWindows();
 	}
-	@Test
 	public void testB(){
 		WebDriver   iedriver= new  InternetExplorerDriver();
 		iedriver.get("http://202.110.200.130:9082/szyj1205/jsp/dcwork/portal/oaindex.jsp");
@@ -42,4 +41,5 @@ public class TestA {
 		//JavascriptExecutor driver = null;
 		//((JavascriptExecutor)driver).executeScript("sysMenuClick(this)()");
 	}
+	
 }

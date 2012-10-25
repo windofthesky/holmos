@@ -6,6 +6,7 @@ import holmos.webtest.BrowserWindow;
 import holmos.webtest.EngineType;
 import holmos.webtest.SeleniumBrowserWindow;
 import holmos.webtest.WebDriverBrowserWindow;
+import holmos.webtest.asynchronous.AsynchronousClick;
 import holmos.webtest.basetools.HolmosBaseTools;
 import holmos.webtest.basetools.HolmosWindow;
 import holmos.webtest.constvalue.ConfigConstValue;
@@ -240,6 +241,23 @@ public class Element implements LocatorValue{
 			message.append(this.wholeComment+":");
 			message.append("click鼠标左键单击失败!找不到元素！");
 			logger.error(message);
+		}
+	}
+	/**
+	 * 如果发生跳转，等待second s时间，如果页面没有加载完成，继续走，不等待
+	 * */
+	public void clickAndWaitForSecond(int second){
+		AsynchronousClick getThread=new AsynchronousClick(this);
+		getThread.start();
+		int count=0;
+		while(count++<ConfigConstValue.defaultWaitCount){
+			if(getThread.isGetSucceed())
+				break;
+			System.out.println(count);
+			HolmosBaseTools.sleep(1000);
+		}
+		if(count>ConfigConstValue.defaultWaitCount){
+			System.out.println("页面加载超时了!但是case继续执行了，不影响~");
 		}
 	}
 	/**click元素操作，这个用于下面这种比较特殊的情况：<br>
