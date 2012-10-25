@@ -17,6 +17,7 @@ public interface BrowserWindow {
 	/**获取当前窗体的title*/
 	public String getTitle();
 	public String getHandle();
+	public void setHandle(String handle);
 	/**获得当前窗口当前页面的url<br>*/
 	public String getUrl();
 	/**对当前窗口的的当前页面进行刷新<br>

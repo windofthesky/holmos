@@ -14,14 +14,12 @@ import pagestore.SinaResultPage;
 import pagestore.TaobaoPage;
 
 public class testFF {
-	@Test
 	public void testCreateDriver(){
 		WebDriver driver=new FirefoxDriver();
 		driver.get("http://www.baidu.com");
 		WebElement input=driver.findElement(By.id("kw"));
 		input.sendKeys("哈哈");
 	}
-	@Test
 	public void testSubPage(){
 		TaobaoPage taobao=new TaobaoPage();
 		HolmosWindow.openNewWindow(EngineType.WebDriverChrome,"http://www.taobao.com");
@@ -33,7 +31,6 @@ public class testFF {
 		taobao.taobaoService.tool.outputText();
 		HolmosWindow.closeAllWindows();
 	}
-	@Test
 	public void testCollection(){
 		SinaResultPage sina=new SinaResultPage();
 		SinaHomePage sinaHome=new SinaHomePage();
