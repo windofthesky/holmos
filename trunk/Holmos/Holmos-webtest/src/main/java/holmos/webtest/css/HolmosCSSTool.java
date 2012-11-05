@@ -3,6 +3,7 @@ package holmos.webtest.css;
 import holmos.webtest.asserttool.HolmosSimpleCheckTool;
 import holmos.webtest.basetools.HolmosBaseTools;
 import holmos.webtest.basetools.HolmosPropertiesTool;
+import holmos.webtest.constvalue.ConfigConstValue;
 import holmos.webtest.constvalue.ConstValue;
 import holmos.webtest.element.Element;
 import holmos.webtest.element.Image;
@@ -18,17 +19,12 @@ import org.openqa.selenium.Point;
 /**页面样式校验工具*/
 public class HolmosCSSTool {
 	private static MyLogger logger=MyLogger.getLogger(HolmosBaseTools.class);
-	private static String commProConf="css_comman_property_config.properties";
-	private static String imgProConf="css_img_property_config.properties";
 	private static Properties cssCommanPropertiesConfig;
-	private static Properties cssImgPropertiesConfig;
-	/**初始化css配置文件*/
-	private static void initCssConfigs(){
-		cssCommanPropertiesConfig=HolmosPropertiesTool.getPropertyInfo(ConstValue.CSSPROPERTIESCONFIGDIR+"\\"+commProConf);
-		cssImgPropertiesConfig=HolmosPropertiesTool.getPropertyInfo(ConstValue.CSSPROPERTIESCONFIGDIR+"\\"+imgProConf);
-	}
+	private static Properties imgCssPropertiesConfig;
+	
 	static {
-		initCssConfigs();
+		cssCommanPropertiesConfig=HolmosPropertiesTool.getPropertiesFromClassPath(ConfigConstValue.CSSPROPERTIESCONFIG);
+		imgCssPropertiesConfig=HolmosPropertiesTool.getPropertiesFromClassPath(ConfigConstValue.IMGCSSPROPERTIESCONFIG);
 		HolmosBaseTools.configLogProperties();
 	}
 	/**
@@ -45,11 +41,11 @@ public class HolmosCSSTool {
 	 * */
 	private static Properties getImgCssValues(Element element){
 		Properties imgCssProperties=new Properties();
-		Iterator<Object> imgCssKeyIterator=cssImgPropertiesConfig.keySet().iterator();
+		Iterator<Object> imgCssKeyIterator=imgCssPropertiesConfig.keySet().iterator();
 		if(element.isExist()){
 			while(imgCssKeyIterator.hasNext()){
 				String cssKey=(String) imgCssKeyIterator.next();
-				if(HolmosPropertiesTool.getBoolean(cssImgPropertiesConfig, cssKey)){
+				if(HolmosPropertiesTool.getBoolean(imgCssPropertiesConfig, cssKey)){
 					imgCssProperties.put(cssKey,element.getElement().getCssValue(cssKey));
 				}
 			}
@@ -290,7 +286,7 @@ public class HolmosCSSTool {
 	public void assertCssValue(Element element,String cssKey){
 		Properties localProperties=getCSSValueFromLocal(element);
 		if(element instanceof Image){
-			if(!HolmosPropertiesTool.getBoolean(cssImgPropertiesConfig, cssKey)){
+			if(!HolmosPropertiesTool.getBoolean(imgCssPropertiesConfig, cssKey)){
 				logger.warn(cssKey+"在设置中不做校验,在本地的css属性文件中没有该属性信息");
 				return;
 			}

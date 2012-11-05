@@ -33,16 +33,6 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	private EngineType enginetype;
 	/**获得webdriver页面的句柄*/
 	public String getHandle() {
-		if(windowHandle==null){
-			BrowserWindow windBrowserWindow=Allocator.getInstance().currentWindow;
-			if(!windBrowserWindow.equals(this)){
-				this.focus();
-				windowHandle=((WebDriver)getDriver()).getWindowHandle();
-				windBrowserWindow.focus();
-			}else{
-				windowHandle=((WebDriver)driver.getEngine()).getWindowHandle();
-			}
-		}
 		return windowHandle;
 	}
 
@@ -191,7 +181,6 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 			confirmMessage=alert.getText();
 			if(isYes)alert.accept();
 			else alert.dismiss();
-			alert.accept();
 			return confirmMessage;
 		}catch (Exception e) {
 			logger.error("没有找到Prompt窗口!");
@@ -201,6 +190,7 @@ public class WebDriverBrowserWindow implements BrowserWindow{
 	@Override
 	public void openNewWindow(String url) {
 		open(url);
+		this.windowHandle=((WebDriver)driver.getEngine()).getWindowHandle();
 	}
 	
 	@Override

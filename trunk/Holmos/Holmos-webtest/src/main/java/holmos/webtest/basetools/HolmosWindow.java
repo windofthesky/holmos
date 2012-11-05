@@ -139,7 +139,7 @@ public class HolmosWindow {
 	 * @param url 新开页面的url*/
 	public static void openNewWindow(String url){
 		Allocator.getInstance().addAndSetBrowserWindow(EngineType.WebDriverIE, url);
-		Allocator.getInstance().currentWindow.open(url);
+		Allocator.getInstance().currentWindow.openNewWindow(url);
 	}
 	/**在新的页面开启一个窗口，并将该窗口设置为当前窗口<br>
 	 * 根据参数类型来选择浏览器和底层框架<br>
