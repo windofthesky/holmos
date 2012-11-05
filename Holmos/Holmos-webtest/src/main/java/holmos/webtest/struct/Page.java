@@ -53,7 +53,7 @@ public class Page implements LocatorValue{
 	protected List<SubPage> subpages=new ArrayList<SubPage>();
 	/**这个页面中的嵌套的iframe和frameset，在清空页面缓存的时候用到*/
 	protected List<Frame> frames=new ArrayList<Frame>();
-	private static MyLogger logger=MyLogger.getLogger(Frame.class);
+	private static MyLogger logger=MyLogger.getLogger(Page.class);
 	/**这个页面的集合Collections*/
 	protected List<Collection> collections=new ArrayList<Collection>();
 	public Page(){

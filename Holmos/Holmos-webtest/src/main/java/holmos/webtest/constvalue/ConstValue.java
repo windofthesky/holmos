@@ -31,8 +31,7 @@ public class ConstValue {
 	public final static String TESTDIR=CURRENDIR+"\\src\\test\\java";
 	/**测试用例资源库*/
 	public static final String TESTCASESTOREDIR = TESTDIR+"\\Holmos\\Holmos\\testcasestore";
-	/**css属性检查列表文件所在目录*/
-	public static final String CSSPROPERTIESCONFIGDIR=TESTDIR+"\\src\\main\\java\\Holmos\\Holmos\\css";
+
 	/**holmos框架css校验的时候元素的css属性存放位置*/
 	public static final String CSSPROPERTIESDIR="D:\\holmos\\css";
 	///**Holmos 框架的page 库的基地址，由配置得来*/

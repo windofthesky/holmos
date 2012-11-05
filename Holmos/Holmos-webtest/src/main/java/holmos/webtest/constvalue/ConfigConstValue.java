@@ -22,7 +22,10 @@ public class ConfigConstValue {
 	public static String IEDRIVER=ClassLoader.getSystemResource("driverServers\\IEDriverServer.exe").getPath();
 	/**chromeDriverServer地址*/
 	public static String CHROMEDRIVER=ClassLoader.getSystemResource("driverServers\\chromedriver.exe").getPath();
-	
+	/**普通元素css属性检查列表文件所在位置*/
+	public static String CSSPROPERTIESCONFIG=ClassLoader.getSystemResource("cssProperties\\css_comman_property_config.properties").getPath();
+	/**图片元素css属性检查列表文件所在位置*/
+	public static String IMGCSSPROPERTIESCONFIG=ClassLoader.getSystemResource("cssProperties\\css_img_property_config.properties").getPath();
 	static{
 		try {
 			HOLMOSCONFFILE = java.net.URLDecoder.decode(HOLMOSCONFFILE,"utf8");
@@ -31,6 +34,8 @@ public class ConfigConstValue {
 			DOWNLOADFILE=java.net.URLDecoder.decode(DOWNLOADFILE,"utf8");
 			IEDRIVER=java.net.URLDecoder.decode(IEDRIVER,"utf8");
 			CHROMEDRIVER=java.net.URLDecoder.decode(CHROMEDRIVER,"utf8");
+			CSSPROPERTIESCONFIG=java.net.URLDecoder.decode(CSSPROPERTIESCONFIG,"utf8");
+			IMGCSSPROPERTIESCONFIG=java.net.URLDecoder.decode(IMGCSSPROPERTIESCONFIG,"utf8");
 			System.setProperty("webdriver.ie.driver", IEDRIVER);
 			System.setProperty("webdriver.chrome.driver", CHROMEDRIVER);
 		} catch (UnsupportedEncodingException e) {
