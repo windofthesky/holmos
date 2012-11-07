@@ -28,4 +28,7 @@ public class AndroidActivity {
 			return false;
 		}return true;
 	}
+	public void setOrientation(int orientation){
+		this.activity.setRequestedOrientation(orientation);
+	}
 }
