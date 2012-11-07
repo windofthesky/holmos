@@ -153,12 +153,6 @@ public abstract class DBToolBox {
 	    return false;
 	}
 	/**
-	 * 限制在当前数据库下
-	 * */
-	private String qulifyStr(String databaseObjectName){
-		return quoteStr(schemaName)+"."+quoteStr(databaseObjectName);
-	}
-	/**
 	 * 添加引用字符窜
 	 * */
 	private String quoteStr(String identifierString){

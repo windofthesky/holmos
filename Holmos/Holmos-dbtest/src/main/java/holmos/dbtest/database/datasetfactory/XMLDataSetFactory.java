@@ -8,8 +8,6 @@ import java.util.Properties;
 
 public class XMLDataSetFactory implements HolmosDataSetFactory{
 
-	private String defaultSchemaName;
-	
 	public HolmosMultiDataSet createMultiDataSet(File... dataSetFiles) {
 		
 		return null;
@@ -31,7 +29,6 @@ public class XMLDataSetFactory implements HolmosDataSetFactory{
 	}
 
 	public void init(Properties properties, String defaultSchemaName) {
-		this.defaultSchemaName=defaultSchemaName;
 	}
 
 }
