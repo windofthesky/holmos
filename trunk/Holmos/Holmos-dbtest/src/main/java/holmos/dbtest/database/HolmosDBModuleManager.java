@@ -93,7 +93,8 @@ public class HolmosDBModuleManager {
 	 * @throws HolmosFailedError 存在但不是一个
 	 * */
 	public boolean isModuleExist(String typeName){
-		Class<? extends HolmosModule> type=HolmosReflectionTool.createInstanceAsType(typeName, false);
+		@SuppressWarnings("unchecked")
+		Class<? extends HolmosModule> type=(Class<? extends HolmosModule>) HolmosReflectionTool.createInstanceAsType(typeName, false);
 		return isModuleExist(type);
 	}
 	/**根据指定的key-> module来获取相应的testListener
