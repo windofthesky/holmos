@@ -1,5 +1,6 @@
 package holmos.android;
 
+import holmos.android.log.AMyLogger;
 import holmos.android.utils.ThreadUtils;
 
 import java.lang.ref.WeakReference;
@@ -10,8 +11,8 @@ import java.util.Stack;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.app.Instrumentation.ActivityMonitor;
-import android.content.Intent;
 import android.content.IntentFilter;
+import android.view.KeyEvent;
 
 /**
  * 完成所有Activity的管理工作，包括打开、控制权分配、销毁
@@ -96,11 +97,112 @@ public class ActivityAllocator {
 		}return activeActivityInfos;
 	}
 	/**
+	 * 关闭所有已经打开的Activity
+	 * */
+	public void finishAllActiveActivities(){
+		AMyLogger.info("开始执行finishAllActiveActivities()关闭所有活动的Activity!");
+		ArrayList<AndroidActivity>activeActivies=getAllActiveActivities();
+		for(int i=activeActivies.size()-1;i>=0;i--){
+			finishActivity(activeActivies.get(i));
+		}activeActivies=null;
+		finishActivity(getCurrentActivity());
+		activities.clear();
+		activityInfos.clear();
+		if(activityMonitor!=null){
+			instrumentation.removeMonitor(activityMonitor);
+		}
+	}
+	/**
+	 * 关闭所有的不活跃的的Activity
+	 * */
+	public void finishAllInactiveActivities(){
+		for(Iterator<WeakReference<AndroidActivity>>it=activities.iterator();it.hasNext();){
+			AndroidActivity activity=it.next().get();
+			if(activity!=null && activity!=getCurrentActivity()){
+				finishActivity(activity);
+				it.remove();
+			}
+		}
+	}
+	/**
+	 * 关闭Activity
+	 * */
+	private void finishActivity(AndroidActivity activity) {
+		try{
+			if(activity!=null){
+				activity.getActivity().finish();
+				AMyLogger.success("关闭"+activity.getActivity().getClass().getSimpleName()+"成功!");
+			}
+		}catch (Exception e) {
+			AMyLogger.error("关闭"+activity.getActivity().getClass().getSimpleName()+"失败!");
+		}
+	}
+	/**
 	 * 开启一个新的Activity
 	 * */
 	public void startActivity(){
-	
-//		instrumentation.startActivitySync(intent)
+		
+	}
+	/**
+	 * 从Activity Stack里面移除activity
+	 * @param activity 待移除的activity
+	 * */
+	public void removeActivity(Activity activity){
+		Iterator<WeakReference<AndroidActivity>>it=activities.iterator();
+		while(it.hasNext()){
+			AndroidActivity activityReference=it.next().get();
+			if(null!=activityReference && null!=activity &&activity.equals(activityReference.getActivity())){
+				it.remove();
+			}
+		}
+	}
+	/**
+	 * 转向一个已经打开的Activity，将当前的控制权交予这个Activity，方法是不断的按后退键
+	 * @param simpleName 待转向Activity的类名(不是全类名)
+	 * */
+	public void gotoActivity(String simpleName){
+		ArrayList<AndroidActivity>activities=getAllActiveActivities();
+		if(isActivityActive(simpleName)){
+			gotoActiveActivity(simpleName);
+		}else{
+			AMyLogger.error("没有找到"+simpleName+"在当前打开的所有的Activity里面没有"+simpleName+
+					"当前所有已经打开的Activity列表如下");
+			for(int i=0;i<activities.size();i++){
+				AMyLogger.info(activities.get(i).getActivity().getClass().getSimpleName());
+			}
+		}
+	}
+	/**
+	 * 设置当前Activity的屏幕朝向
+	 * */
+	public void setActivityOrientation(int orientation){
+		AndroidActivity activity=getCurrentActivity();
+		activity.setOrientation(orientation);
+	}
+	/**
+	 * 转向一个活动的Activity
+	 * @param 待转向的Activity，这个已经确保是一个活动的Activity
+	 * */
+	private void gotoActiveActivity(String simpleName){
+		while(getCurrentActivity().getActivity().getClass().getSimpleName().equalsIgnoreCase(simpleName)){
+			try{
+				instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+			}catch(SecurityException ignored){
+				AMyLogger.error("无法转向"+simpleName+"!当前异常是:"+ignored.getMessage());
+			}
+		}
+		AMyLogger.info("当前Activity已经转向"+simpleName);
+	}
+	/**
+	 * 判断给定名字的Activity是否在活动
+	 * */
+	private boolean isActivityActive(String simpleName){
+		ArrayList<AndroidActivity>activities=getAllActiveActivities();
+		for(int i=0;i<activities.size();i++){
+			if(activities.get(i).getActivity().getClass().getSimpleName().equalsIgnoreCase(simpleName)){
+				return true;
+			}
+		}return false;
 	}
 	/**
 	 * 如果Activity堆栈不空，代表当前还有Activity，那么这个函数的功能就是等待最近一次入栈的Activity<br>

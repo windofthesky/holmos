@@ -1,5 +1,7 @@
 package com.holmos.android;
 
+import holmos.android.element.AElement;
+
 import java.lang.ref.SoftReference;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -66,5 +68,9 @@ public class ReferenceTest {
 		System.gc();
 		System.out.println(c.get());
 		a.child=b;
+	}
+	@Test
+	public void testSimpleName(){
+		System.out.println(AElement.class.getSimpleName());
 	}
 }
